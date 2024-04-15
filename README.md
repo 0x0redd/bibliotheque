@@ -10,3 +10,8 @@ Activating the Virtual Environment
 Installing Django
 ```pip install Django ```
 
+admin page 
+
+```Username (leave blank to use 'ferra'): admin ```
+```Email address: admin@admin.com ```
+```Password: admin```
