@@ -1,41 +1,64 @@
 from django.db import models
 
+class Etudiant(models.Model):
+    id_etudiant = models.IntegerField(primary_key=True )
+    nom = models.CharField(max_length=255)
+    prenom = models.CharField(max_length=255)
+    cni = models.CharField(max_length=255)
+    massar = models.CharField(max_length=255)
+    date_naissance = models.DateField()
+    email = models.EmailField(max_length=255)
+    password = models.CharField(max_length=255)
+    filiere = models.CharField(max_length=255)
+
 class Livre(models.Model):
-    IDlivres = models.BigAutoField(primary_key=True)
+    id_livre = models.IntegerField(primary_key=True)
     titre = models.CharField(max_length=255)
     description = models.TextField()
     auteur = models.CharField(max_length=255)
-    editeur = models.CharField(max_length=255)
-    genre = models.CharField(max_length=255)
-    langue = models.CharField(max_length=2)
-    image_couverture = models.ImageField(upload_to='frontend/public/books/', null=True, blank=True)
-
-class User(models.Model):
-    IDuser = models.BigAutoField(primary_key=True)
-    nombigint = models.CharField(max_length=255)
-    prenom = models.CharField(max_length=255)
-    CNI = models.CharField(max_length=255)
-    Massar = models.CharField(max_length=255)
-    Date_naissance = models.DateField()
-    email = models.EmailField()
-    password = models.CharField(max_length=255)
-    filliere = models.CharField(max_length=255)
+    langue = models.CharField(max_length=50)
+    quantite = models.IntegerField()
+    genre = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='book_images/')  # Changed to ImageField
 
 class Exemplaire(models.Model):
-    IDexemplaire = models.BigAutoField(primary_key=True)
-    IDlivre = models.ForeignKey(Livre, on_delete=models.CASCADE)
-    date_entre = models.BigIntegerField()
-    disponibilite = models.BigIntegerField()
-    ETAT_CHOICES = [
-        ('neuf', 'Neuf'),
-        ('abime', 'Abîmé'),
+    id_exemplaire = models.IntegerField(primary_key=True)
+    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='exemplaires')
+    etat_choices = [
+        ('disponible', 'Disponible'),
+        ('hors-pret', 'Hors-pret'),
+        ('a_enlever', 'A enlever')
     ]
-    etat = models.CharField(max_length=20, choices=ETAT_CHOICES)
+    etat = models.CharField(max_length=20, choices=etat_choices)
+    date_achat = models.DateField()
 
 class Emprunt(models.Model):
-    IDemprunt = models.BigAutoField(primary_key=True)
-    IDuser = models.ForeignKey(User, on_delete=models.CASCADE)
-    IDexemplaire = models.ForeignKey(Exemplaire, on_delete=models.CASCADE)
-    date_pret = models.DateField()
-    date_finpret = models.DateField()
-    rendu = models.BooleanField(default=0)
+    id_emprunt = models.AutoField(primary_key=True)  
+    id_exemplaire = models.ForeignKey(Exemplaire, on_delete=models.CASCADE, related_name='emprunts')
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='emprunts')
+    date_emprunt = models.DateField(default='1900-01-01') 
+    date_retour_prevue = models.DateField(default='1900-01-01') 
+    date_retour_effectif = models.DateField(default='1900-01-01')  
+
+class Sanction(models.Model):
+    id_sanction = models.IntegerField(primary_key=True)
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='sanctions')
+    sanction_choices = [
+        ('retard', 'Retard'),
+        ('perte', 'Perte')
+    ]
+    type_sanction = models.CharField(max_length=10, choices=sanction_choices)
+    date_sanction = models.DateField()
+    montant = models.DecimalField(max_digits=10, decimal_places=2)
+
+class Reservation(models.Model):
+    id_reservation = models.AutoField(primary_key=True)  
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='reservations')
+    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='reservations')
+    date_reservation = models.DateField(default='2024-01-01')  
+
+class Livre_Reservation(models.Model):
+    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE)
+    id_reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = (("id_livre", "id_reservation"),)

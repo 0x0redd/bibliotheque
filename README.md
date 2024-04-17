@@ -10,6 +10,11 @@ Activating the Virtual Environment
 Installing Django
 ```pip install Django ```
 
+
+
+
+```py -m pip install -r requirements.txt```
+
 admin page 
 
 ```Username (leave blank to use 'ferra'): admin ```
