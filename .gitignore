@@ -1,2 +1,15 @@
 /__pycache__/
 /venv/
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+
+
+# Tailwind CSS
+npm-debug.log
+.yarn-integrity
+
+# Virtual Environment
+venv/

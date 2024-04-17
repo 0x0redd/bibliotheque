@@ -10,78 +10,40 @@
   <meta name="theme-color" content="#000000" />
   <link rel="shortcut icon" href="./assets/img/favicon.ico" />
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css" />
-    <style>
-      video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  <link rel="stylesheet" href="{%static 'css/all.min.css'%}" />
+  <link rel="stylesheet" href=" {%static 'css/compiled-tailwid.min.css'%}" />
+  <style>
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
 
-    </style>
-  <title>Landing</title>
+  <title>FS-LIB</title>
+  
 </head>
 
 <body class="text-gray-800 antialiased">
-  <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
-    <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-      <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-        <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-          href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation">Tailwind Starter
-          Kit</a><button
-          class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-          type="button" onclick="toggleNavbar('example-collapse-navbar')">
-          <i class="text-white fas fa-bars"></i>
-        </button>
-      </div>
-      <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
-        id="example-collapse-navbar">
-        <ul class="flex flex-col lg:flex-row list-none mr-auto">
-          <li class="flex items-center">
-            <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/landing"><i
-                class="lg:text-gray-300 text-gray-500 far fa-file-alt text-lg leading-lg mr-2"></i>
-              Docs</a>
-          </li>
-        </ul>
-        <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-          <li class="flex items-center">
-            <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg "></i><span
-                class="lg:hidden inline-block ml-2">Share</span></a>
-          </li>
-          <li class="flex items-center">
-            <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg "></i><span
-                class="lg:hidden inline-block ml-2">Tweet</span></a>
-          </li>
-          <li class="flex items-center">
-            <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-              href="#pablo"><i class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg "></i><span
-                class="lg:hidden inline-block ml-2">Star</span></a>
-          </li>
-          <li class="flex items-center">
-            <button
-              class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-              type="button" style="transition: all 0.15s ease 0s;">
-              <i class="fas fa-arrow-alt-circle-down"></i> Download
-            </button>
-          </li>
-        </ul>
-      </div>
+  <header>
+    <div>
+      {% include 'header.html' %}
     </div>
-  </nav>
+  </header>
+
+
+
+  <!-- nav bar -->
+
   <main>
-<!-- video and title -->
+    <!-- video and title -->
     <div class="relative pt-15 pb-50 flex content-center items-center justify-center" style="min-height: 80vh;">
-      
+
       <!-- video -->
 
       <div class="absolute top-0 w-full h-full bg-center bg-cover">
         <video autoplay muted loop id="video-background" class="w-full h-full object-cover">
-          <source src="{% static '/source/vid1.mp4' %}" type="video/mp4">
+          <source src="{% static '/source/vid2.mp4' %}" type="video/mp4">
         </video>
       </div>
 
@@ -91,11 +53,14 @@
         <div class="items-center flex flex-wrap">
           <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
             <div class="pr-12">
-              <h1 class="text-black-400 font-semibold text-5xl">
+              <h1 class="text-white font-semibold text-5xl">
                 Gestion de Bibliothèque
               </h1>
-              <p class="mt-4 text-2xl text-black-300">
-                Bienvenue sur notre plateforme de gestion de bibliothèque simplifiée,conçue pour répondre aux besoins des bibliothèques universitaires et scolaires. Notre solution informatique offre une approche moderne pour cataloguer les livres, gérer les prêts, et améliorer l'expérience des utilisateurs.
+              <p class="mt-4 text-2xl text-white">
+                Bienvenue sur notre plateforme de gestion de bibliothèque simplifiée,conçue pour répondre aux besoins
+                des bibliothèques universitaires et scolaires.
+                Notre solution informatique offre une approche moderne pour cataloguer les livres, gérer les prêts, et
+                améliorer l'expérience des utilisateurs.
               </p>
             </div>
           </div>
@@ -109,9 +74,9 @@
         </svg>
       </div>
     </div>
-<!-- video and title -->
-    
-<section class="relative py-20">
+    <!-- video and title -->
+
+    <section class="relative py-20">
       <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
         style="height: 80px;">
         <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
@@ -181,115 +146,132 @@
           </div>
         </div>
       </div>
-</section>
+    </section>
 
 
 
 
-<!-- team  section -->
-<section class="pt-20 pb-20">
-  <div class="container mx-auto px-5">
-    <div class="flex flex-wrap justify-center text-center mb-24">
-      <div class="w-full lg:w-6/12 px-4">
-        <h2 class="text-4xl font-semibold">Notre équipe</h2>
-        <p class="text-lg leading-relaxed m-4 text-gray-600">
-          Nous avons développé une application de gestion de bibliothèque simple et efficace. 
-          Elle permet aux bibliothécaires de cataloguer les livres, de gérer les membres et les prêts, et offre aux utilisateurs une recherche rapide et des fonctionnalités de suivi des emprunts. 
-          Notre solution vise à simplifier les opérations quotidiennes des bibliothèques et à améliorer l'expérience des utilisateurs.
-        </p>
-      </div>
-    </div>
-    <div class="flex flex-wrap  justify-center">
-      <!-- othmane ferrah-->
-      <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-        <div class="px-6">
-          <img alt="..." src="https://avatars.githubusercontent.com/u/101396622?v=4" class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-          <div class="pt-6 text-center">
-            <h5 class="text-xl font-bold">OTHMANE FERRAH</h5>
-            <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-              forntend and backend 
+    <!-- team  section -->
+    <section class="pt-20 pb-20">
+      <div class="container mx-auto px-5">
+        <div class="flex flex-wrap justify-center text-center mb-24">
+          <div class="w-full lg:w-6/12 px-4">
+            <h2 class="text-4xl font-semibold">Notre équipe</h2>
+            <p class="text-lg leading-relaxed m-4 text-gray-600">
+              Nous avons développé une application de gestion de bibliothèque simple et efficace.
+              Elle permet aux bibliothécaires de cataloguer les livres, de gérer les membres et les prêts, et offre aux
+              utilisateurs une recherche rapide et des fonctionnalités de suivi des emprunts.
+              Notre solution vise à simplifier les opérations quotidiennes des bibliothèques et à améliorer l'expérience
+              des utilisateurs.
             </p>
-            <div class="mt-4 flex justify-center">
-              <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                <a href="https://github.com/0x0redd" target="_blank" rel="noopener noreferrer" class="fab fa-github"></a>
-              </button>
+          </div>
+        </div>
+        <div class="flex flex-wrap  justify-center">
+          <!-- othmane ferrah-->
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
+            <div class="px-6">
+              <img alt="..." src="https://avatars.githubusercontent.com/u/101396622?v=4"
+                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+              <div class="pt-6 text-center">
+                <h5 class="text-xl font-bold">OTHMANE FERRAH</h5>
+                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  forntend and backend
+                </p>
+                <div class="mt-4 flex justify-center">
+                  <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    type="button">
+                    <a href="https://github.com/0x0redd" target="_blank" rel="noopener noreferrer"
+                      class="fab fa-github"></a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- khalil el amraoui-->
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
+            <div class="px-6">
+              <img alt="..." src="https://avatars.githubusercontent.com/u/95870831?v=4"
+                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+              <div class="pt-6 text-center">
+                <h5 class="text-xl font-bold">El Amraoui Khalil</h5>
+                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  backend and frontend
+                </p>
+                <div class="mt-4 flex justify-center">
+                  <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    type="button">
+                    <a href="https://github.com/khalilelamraoui" target="_blank" rel="noopener noreferrer"
+                      class="fab fa-github"></a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- el habib chama-->
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
+            <div class="px-6">
+              <img alt="..." src="https://avatars.githubusercontent.com/u/69660981?v=4"
+                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+              <div class="pt-6 text-center">
+                <h5 class="text-xl font-bold">EL HABIB CHAMA</h5>
+                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  backend
+                </p>
+                <div class="mt-4 flex justify-center">
+                  <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    type="button">
+                    <a href="https://github.com/elhabib-bit" target="_blank" rel="noopener noreferrer"
+                      class="fab fa-github"></a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- BOUYMEJJANE BADR-->
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
+            <div class="px-6">
+              <img alt="..." src="https://avatars.githubusercontent.com/u/62801522?v=4"
+                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+              <div class="pt-6 text-center">
+                <h5 class="text-xl font-bold">BADR BOUYMEJJANE </h5>
+                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  backend
+                </p>
+                <div class="mt-4 flex justify-center">
+                  <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    type="button">
+                    <a href="https://github.com/Badr-Bouymejjane" target="_blank" rel="noopener noreferrer"
+                      class="fab fa-github"></a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TOURARI ANAS-->
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
+            <div class="px-6">
+              <img alt="..." src="https://avatars.githubusercontent.com/u/163757687?v=4"
+                class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
+              <div class="pt-6 text-center">
+                <h5 class="text-xl font-bold">ANAS TOURARI</h5>
+                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
+                  backend
+                </p>
+                <div class="mt-4 flex justify-center">
+                  <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
+                    type="button">
+                    <a href="https://github.com/TatsuyaSoft" target="_blank" rel="noopener noreferrer"
+                      class="fab fa-github"></a>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- khalil el amraoui-->
-      <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-        <div class="px-6">
-          <img alt="..." src="https://avatars.githubusercontent.com/u/95870831?v=4" class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-          <div class="pt-6 text-center">
-            <h5 class="text-xl font-bold">El Amraoui Khalil</h5>
-            <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-              backend and frontend 
-            </p>
-            <div class="mt-4 flex justify-center">
-              <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                <a href="https://github.com/khalilelamraoui" target="_blank" rel="noopener noreferrer" class="fab fa-github"></a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- el habib chama-->
-      <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-        <div class="px-6">
-          <img alt="..." src="https://avatars.githubusercontent.com/u/69660981?v=4" class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-          <div class="pt-6 text-center">
-            <h5 class="text-xl font-bold">EL HABIB CHAMA</h5>
-            <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-              backend
-            </p>
-            <div class="mt-4 flex justify-center">
-              <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                <a href="https://github.com/elhabib-bit" target="_blank" rel="noopener noreferrer" class="fab fa-github"></a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- BOUYMEJJANE BADR-->
-      <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-        <div class="px-6">
-          <img alt="..." src="https://avatars.githubusercontent.com/u/62801522?v=4" class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-          <div class="pt-6 text-center">
-            <h5 class="text-xl font-bold">BADR BOUYMEJJANE </h5>
-            <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-              backend
-            </p>
-            <div class="mt-4 flex justify-center">
-              <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                <a href="https://github.com/Badr-Bouymejjane" target="_blank" rel="noopener noreferrer" class="fab fa-github"></a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- TOURARI ANAS-->
-      <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-        <div class="px-6">
-          <img alt="..." src="https://avatars.githubusercontent.com/u/163757687?v=4" class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-          <div class="pt-6 text-center">
-            <h5 class="text-xl font-bold">ANAS TOURARI</h5>
-            <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-              backend
-            </p>
-            <div class="mt-4 flex justify-center">
-              <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1" type="button">
-                <a href="https://github.com/TatsuyaSoft" target="_blank" rel="noopener noreferrer" class="fab fa-github"></a>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-    
+
   </main>
   <footer class="relative bg-gray-300 pt-8 pb-6">
     <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
@@ -383,11 +365,5 @@
     </div>
   </footer>
 </body>
-<script>
-  function toggleNavbar(collapseID) {
-    document.getElementById(collapseID).classList.toggle("hidden");
-    document.getElementById(collapseID).classList.toggle("block");
-  }
-</script>
 
 </html>
