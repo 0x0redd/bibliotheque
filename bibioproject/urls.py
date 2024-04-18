@@ -18,14 +18,14 @@ from django.contrib import admin
 from django.urls import include, path  
 from django.conf import settings
 from django.conf.urls.static import static
-from BiblioAPP.views import index
+from BiblioAPP.views import index, profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path("__reload__/", include("django_browser_reload.urls")), #new
+    path('profile/', profile, name='profile'),
 ]
-
 
 # Add static files serving in development mode
 if settings.DEBUG:

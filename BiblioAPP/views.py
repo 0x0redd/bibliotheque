@@ -6,6 +6,10 @@ def index(request):
     # Example view function to render the index page
     return render(request, 'index.html')
 
+def profile(request):
+    context = {}
+    return render(request, 'profile.html', context)
+
 def etudiant_detail(request, etudiant_id):
     # View function to retrieve and display details of a specific student
     etudiant = get_object_or_404(Etudiant, pk=etudiant_id)
