@@ -21,7 +21,7 @@ def inscription(request):
         form = EtudiantForm()
     
     context = {'form': form}
-    return render(request, 'inscription.html', context)
+    return render(request, 'inscription and login.html', context)
 
 def inscription_success(request):
     return HttpResponse("Inscription réussie!")  # You can customize this success message

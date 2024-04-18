@@ -40,21 +40,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BiblioAPP',
     'compressor',
-    "django_browser_reload" 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    "django_browser_reload.middleware.BrowserReloadMiddleware", 
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Bibioproject.urls'
+ROOT_URLCONF = 'BiblioAPP.urls'
 
 
 TEMPLATES = [
@@ -122,10 +120,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'BiblioAPP/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'BiblioAPP/static/'),
 ]
 
 # Default primary key field type
@@ -136,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Compressor settings
 COMPRESS_ROOT = BASE_DIR / 'static'  # Adjust this to an appropriate directory
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 

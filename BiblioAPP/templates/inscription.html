@@ -11,61 +11,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
     <style>
         body {
-            background-image: url('../static/source/opened-book-bookstore.jpg');
+            background-image: url('https://images.unsplash.com/photo-1607193634806-5c28805731aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
+            backdrop-filter: blur(3px);
+        }
+        .bg-radial-gradient {
+            background-image: radial-gradient(circle, #2865c07a, #ebebebd7);
         }
     </style>
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
     
-    <div class="bg-white p-8 rounded shadow-md max-w-md w-full mx-auto">
-        <h2 class="text-2xl font-semibold mb-4">Inscription</h2>
+    <div class="bg-radial-gradient p-8 rounded shadow-md max-w-md w-full mx-auto">
+        <h2 class="text-2xl font-semibold mb-4 text-center">Bienvenue a FSUMI-LIB</h2>
 
-        <form action="{% url 'inscription_etudiant' %}" method="POST">
-            {% csrf_token %}
+        <form action="" method="POST">
+            
             <!-- Nom et Prénom -->
             <div class="grid grid-cols-2 gap-4">
                 <div>
-                    <label for="firstName" class="block text-sm font-medium text-gray-700">Prénom</label>
+                    <label for="firstName" class="block text-sm font-medium text-white">Prénom</label>
                     <input type="text" id="firstName" name="prenom" class="mt-1 p-2 w-full border rounded-md">
                 </div>
                 <div>
-                    <label for="lastName" class="block text-sm font-medium text-gray-700">Nom</label>
+                    <label for="lastName" class="block text-sm font-medium text-white">Nom</label>
                     <input type="text" id="lastName" name="nom" class="mt-1 p-2 w-full border rounded-md">
                 </div>
             </div>
             <!-- CNI -->
             <div class="mt-4">
-                <label for="cni" class="block text-sm font-medium text-gray-700">CNI</label>
+                <label for="cni" class="block text-sm font-medium text-white">CNI</label>
                 <input type="text" id="cni" name="cni" class="mt-1 p-2 w-full border rounded-md">
             </div>
             <!-- CNE -->
             <div class="mt-4">
-                <label for="cne" class="block text-sm font-medium text-gray-700">CNE</label>
+                <label for="cne" class="block text-sm font-medium text-white">CNE</label>
                 <input type="text" id="cne" name="massar" class="mt-1 p-2 w-full border rounded-md">
             </div>
             <!-- DATE DE naissance -->
             <div class="mt-4">
-                <label for="dateNaissance" class="block text-sm font-medium text-gray-700">Date de naissance</label>
+                <label for="dateNaissance" class="block text-sm font-medium text-white">Date de naissance</label>
                 <input type="date" id="dateNaissance" name="date_naissance" class="mt-1 p-2 w-full border rounded-md">
             </div>
             <!-- FILIERE -->
             <div class="mt-4">
-                <label for="filiere" class="block text-sm font-medium text-gray-700">Filière</label>
+                <label for="filiere" class="block text-sm font-medium text-white">Filière</label>
                 <input type="text" id="filiere" name="filiere" class="mt-1 p-2 w-full border rounded-md">
             </div>
 
             <!-- Adresse email -->
             <div class="mt-4">
-                <label for="email" class="block text-sm font-medium text-gray-700">Adresse email</label>
+                <label for="email" class="block text-sm font-medium text-white">Adresse email</label>
                 <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
             </div>
 
             <!-- Mot de passe -->
             <div class="mt-4">
-                <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                <label for="password" class="block text-sm font-medium text-white">Mot de passe</label>
                 <input type="password" id="password" name="password" class="mt-1 p-2 w-full border rounded-md">
             </div>
 

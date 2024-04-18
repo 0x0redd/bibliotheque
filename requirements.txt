@@ -1,3 +1,2 @@
 Pillow
 django-compressor
-django-browser-reload
