@@ -12,7 +12,17 @@
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
-
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#ff22ff',
+          }
+        }
+      }
+    }
+  </script>
   <style>
     video {
       width: 100%;
@@ -156,7 +166,7 @@
       </div>
     </div>
     <!-- video and title -->
-
+    
     <section class="relative py-20">
       <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
         style="height: 80px;">
@@ -227,11 +237,11 @@
         </div>
         <div class="flex flex-wrap  justify-center">
           <!-- othmane ferrah-->
-          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-            <div class="px-6">
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30">
+            <div class="px-6 h-full">
               <img alt="..." src="https://avatars.githubusercontent.com/u/101396622?v=4"
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-              <div class="pt-6 text-center">
+              <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">OTHMANE FERRAH</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   forntend and backend
@@ -239,19 +249,20 @@
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                     type="button">
-                    <a href="https://github.com/0x0redd" target="_blank" rel="noopener noreferrer"
-                      class="fab fa-github"></a>
+                    <a href="https://github.com/0x0redd" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- khalil el amraoui-->
-          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-            <div class="px-6">
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30">
+            <div class="px-6 h-full">
               <img alt="..." src="https://avatars.githubusercontent.com/u/95870831?v=4"
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-              <div class="pt-6 text-center">
+              <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">El Amraoui Khalil</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   backend and frontend
@@ -259,19 +270,20 @@
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                     type="button">
-                    <a href="https://github.com/khalilelamraoui" target="_blank" rel="noopener noreferrer"
-                      class="fab fa-github"></a>
+                    <a href="https://github.com/khalilelamraoui" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- el habib chama-->
-          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-            <div class="px-6">
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30">
+            <div class="px-6 h-full">
               <img alt="..." src="https://avatars.githubusercontent.com/u/69660981?v=4"
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-              <div class="pt-6 text-center">
+              <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">EL HABIB CHAMA</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   backend
@@ -279,19 +291,20 @@
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                     type="button">
-                    <a href="https://github.com/elhabib-bit" target="_blank" rel="noopener noreferrer"
-                      class="fab fa-github"></a>
+                    <a href="https://github.com/elhabib-bit" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- BOUYMEJJANE BADR-->
-          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-            <div class="px-6">
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30">
+            <div class="px-6 h-full">
               <img alt="..." src="https://avatars.githubusercontent.com/u/62801522?v=4"
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-              <div class="pt-6 text-center">
+              <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">BADR BOUYMEJJANE </h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   backend
@@ -299,28 +312,30 @@
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                     type="button">
-                    <a href="https://github.com/Badr-Bouymejjane" target="_blank" rel="noopener noreferrer"
-                      class="fab fa-github"></a>
+                    <a href="https://github.com/Badr-Bouymejjane" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
                   </button>
                 </div>
               </div>
             </div>
           </div>
           <!-- TOURARI ANAS-->
-          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30 px-20">
-            <div class="px-6">
+          <div class="w-full md:w-6/12 lg:w-2/12 lg:mb-0 mb-30">
+            <div class="px-6 h-full">
               <img alt="..." src="https://avatars.githubusercontent.com/u/163757687?v=4"
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
-              <div class="pt-6 text-center">
-                <h5 class="text-xl font-bold">ANAS TOURARI</h5>
+              <div class="pt-6 text-center flex flex-col align-between">
+                <h5 class="text-xl font-bold">ANAS<br/>TOURARI</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   backend
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
                     type="button">
-                    <a href="https://github.com/TatsuyaSoft" target="_blank" rel="noopener noreferrer"
-                      class="fab fa-github"></a>
+                    <a href="https://github.com/TatsuyaSoft" target="_blank" rel="noopener noreferrer" class="flex justify-center items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    </a>
                   </button>
                 </div>
               </div>
@@ -329,6 +344,156 @@
         </div>
       </div>
     </section>
+    
+    
+    <section class="pt-20 pb-20">
+      <!-- component -->
+      <div class="p-24 flex flex-wrap items-center justify-center">
+          
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
+          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+          </svg>
+          <div class="relative p-0 flex items-center justify-center">
+            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+            <img class="book-hovered transition-all duration-200 relative w-[300px] h-[400px] object-cover object-top" src="https://editions.covecollective.org/sites/default/files/chronology-uploads/Les%20Mis%20Poster.jpg" alt="">
+          </div>
+          <div class="relative text-white px-6 pb-6 mt-6">
+            <span class="block opacity-75 -mb-1">Outdoor</span>
+            <div class="flex justify-between">
+              <span class="block font-semibold text-xl">Monstera</span>
+              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
+          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+          </svg>
+          <div class="relative p-0 flex items-center justify-center">
+            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+            <img class="book-hovered transition-all duration-200 relative w-[300px] h-[400px] object-cover object-top" src="https://m.media-amazon.com/images/I/91HPG31dTwL._AC_UF894,1000_QL80_.jpg" alt="">
+          </div>
+          <div class="relative text-white px-6 pb-6 mt-6">
+            <span class="block opacity-75 -mb-1">Outdoor</span>
+            <div class="flex justify-between">
+              <span class="block font-semibold text-xl">Monstera</span>
+              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
+          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+          </svg>
+          <div class="relative p-0 flex items-center justify-center">
+            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+            <img class="book-hovered transition-all duration-200 relative w-[300px] h-[400px] object-cover object-top" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg" alt="">
+          </div>
+          <div class="relative text-white px-6 pb-6 mt-6">
+            <span class="block opacity-75 -mb-1">Outdoor</span>
+            <div class="flex justify-between">
+              <span class="block font-semibold text-xl">Monstera</span>
+              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
+          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+          </svg>
+          <div class="relative p-0 flex items-center justify-center">
+            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+            <img class="book-hovered transition-all duration-200 relative w-[300px] h-[400px] object-cover object-top" src="https://m.media-amazon.com/images/I/71XqqKTZz7L._AC_UF1000,1000_QL80_.jpg" alt="">
+          </div>
+          <div class="relative text-white px-6 pb-6 mt-6">
+            <span class="block opacity-75 -mb-1">Outdoor</span>
+            <div class="flex justify-between">
+              <span class="block font-semibold text-xl">Monstera</span>
+              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
+          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+          </svg>
+          <div class="relative p-0 flex items-center justify-center">
+            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+            <img class="book-hovered transition-all duration-200 relative w-[300px] h-[400px] object-cover object-top" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/b468d093312907.5e6139cf2ab03.png" alt="">
+          </div>
+          <div class="relative text-white px-6 pb-6 mt-6">
+            <span class="block opacity-75 -mb-1">Outdoor</span>
+            <div class="flex justify-between">
+              <span class="block font-semibold text-xl">Monstera</span>
+              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- component -->
+      <!-- This is an example component -->
+      <div class='flex items-center justify-center h-screen bg-[#0d1829] '>
+        <div class=' mx-auto bg-white rounded-3xl shadow-xl'>
+             <div class="grid rounded-3xl max-w-[370px] shadow-sm bg-slate-100  flex-col">
+          <img
+              src="https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_QL75_UX380_CR0,1,380,562_.jpg"
+              width="375"
+              height="200"
+             class="rounded-t-3xl justify-center grid h-80 object-cover"
+              alt="movie.title"
+            /> 
+      
+          <div class="group p-6 grid z-10">
+            <a
+              href={`${movie.link}`}
+              class="group-hover:text-cyan-700 font-bold sm:text-2xl line-clamp-2"
+            >
+             Spider-Man: Across the Spider-Verse
+            </a>
+            <span class="text-slate-400 pt-2 font-semibold">
+              
+      (2023)
+            </span>
+            <div class="h-28">
+              <span class="line-clamp-4 py-2 text-sm font-light leading-relaxed">
+      Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. When the heroes clash on how to handle a new threat, Miles must redefine what it means to be a hero.
+              </span>
+            </div>
+            <div class=" grid-cols-2 flex group justify-between">
+              <div class="font-black flex flex-col">
+                <span class="text-yellow-500 text-xl">IMDB SCORE</span>
+                <span class="text-3xl flex gap-x-1 items-center group-hover:text-yellow-600">
+                 8.8
+                 <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      
+      <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+      
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+      
+      <g id="SVGRepo_iconCarrier"> <path d="M9.15316 5.40838C10.4198 3.13613 11.0531 2 12 2C12.9469 2 13.5802 3.13612 14.8468 5.40837L15.1745 5.99623C15.5345 6.64193 15.7144 6.96479 15.9951 7.17781C16.2757 7.39083 16.6251 7.4699 17.3241 7.62805L17.9605 7.77203C20.4201 8.32856 21.65 8.60682 21.9426 9.54773C22.2352 10.4886 21.3968 11.4691 19.7199 13.4299L19.2861 13.9372C18.8096 14.4944 18.5713 14.773 18.4641 15.1177C18.357 15.4624 18.393 15.8341 18.465 16.5776L18.5306 17.2544C18.7841 19.8706 18.9109 21.1787 18.1449 21.7602C17.3788 22.3417 16.2273 21.8115 13.9243 20.7512L13.3285 20.4768C12.6741 20.1755 12.3469 20.0248 12 20.0248C11.6531 20.0248 11.3259 20.1755 10.6715 20.4768L10.0757 20.7512C7.77268 21.8115 6.62118 22.3417 5.85515 21.7602C5.08912 21.1787 5.21588 19.8706 5.4694 17.2544L5.53498 16.5776C5.60703 15.8341 5.64305 15.4624 5.53586 15.1177C5.42868 14.773 5.19043 14.4944 4.71392 13.9372L4.2801 13.4299C2.60325 11.4691 1.76482 10.4886 2.05742 9.54773C2.35002 8.60682 3.57986 8.32856 6.03954 7.77203L6.67589 7.62805C7.37485 7.4699 7.72433 7.39083 8.00494 7.17781C8.28555 6.96479 8.46553 6.64194 8.82547 5.99623L9.15316 5.40838Z" fill="#eab308"/> </g>
+      
+      </svg>
+                </span>
+              </div>
+              <div class="flex flex-col items-end">
+                <div class="h-7" />
+                <span class="text-3xl  font-bold  gap-x-2 text-slate-300">
+                  # 8
+                </span>
+              </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+    
 </main>
 
 
