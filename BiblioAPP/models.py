@@ -6,7 +6,7 @@ class Etudiant(models.Model):
     prenom = models.CharField(max_length=255)
     cni = models.CharField(max_length=255)
     massar = models.CharField(max_length=255)
-    date_naissance = models.DateField()
+    date_naissance = models.DateField() 
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
     filiere = models.CharField(max_length=255)
@@ -19,7 +19,7 @@ class Livre(models.Model):
     langue = models.CharField(max_length=50)
     quantite = models.IntegerField()
     genre = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='book_images/')  # Changed to ImageField
+    image = models.ImageField(upload_to='./static/boock')  
 
 class Exemplaire(models.Model):
     id_exemplaire = models.IntegerField(primary_key=True)
@@ -36,9 +36,9 @@ class Emprunt(models.Model):
     id_emprunt = models.AutoField(primary_key=True)  
     id_exemplaire = models.ForeignKey(Exemplaire, on_delete=models.CASCADE, related_name='emprunts')
     id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='emprunts')
-    date_emprunt = models.DateField(default='1900-01-01') 
-    date_retour_prevue = models.DateField(default='1900-01-01') 
-    date_retour_effectif = models.DateField(default='1900-01-01')  
+    date_emprunt = models.DateField()  
+    date_retour_prevue = models.DateField() 
+    date_retour_effectif = models.DateField()   
 
 class Sanction(models.Model):
     id_sanction = models.IntegerField(primary_key=True)
@@ -48,14 +48,14 @@ class Sanction(models.Model):
         ('perte', 'Perte')
     ]
     type_sanction = models.CharField(max_length=10, choices=sanction_choices)
-    date_sanction = models.DateField()
+    date_sanction = models.DateField() 
     montant = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Reservation(models.Model):
     id_reservation = models.AutoField(primary_key=True)  
     id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='reservations')
     id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='reservations')
-    date_reservation = models.DateField(default='2024-01-01')  
+    date_reservation = models.DateField() 
 
 class Livre_Reservation(models.Model):
     id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE)
