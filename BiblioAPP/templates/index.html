@@ -202,33 +202,33 @@
       <div class="container mx-auto px-4">
         <div class="items-center flex flex-wrap">
           <div class="w-full md:w-6/12 ml-auto mr-auto px-4">
+            <div  class="text-center">
+              <h1  class="block antialiased font-sans relative my-5 text-center text-2xl font-bold leading-tight tracking-normal text-black md:text-5xl"> Modèle Conceptuel de Données (MCD) pour un Système de Gestion de Bibliothèque </h1>
+            </div>
             <img alt="..." class="max-w-full rounded-lg shadow-lg"
-              src="{% static "/source/bd.png"%}" />
+              src="{% static 'source/bd.png' %}" />
           </div>
           <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
               <div>
-                <section  class="px-35">
-                  <div  class="mb-10 text-center">
-                      <h1  class="block antialiased font-sans relative my-5 text-center text-2xl font-bold leading-tight tracking-normal text-black md:text-5xl"> Modèle Conceptuel de Données (MCD) pour un Système de Gestion de Bibliothèque </h1>
-                  </div>
-                  <div  class="grid grid-cols-12 ">
+                <section  class="px-0">
+                  <div  class="w-full ">
                       <div  class="col-span-12 lg:col-start-4 lg:col-span-6">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Étudiant :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-teal-500">Étudiant :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">Représente un étudiant inscrit à la bibliothèque. Chaque étudiant a un identifiant unique, un nom, un prénom, une carte nationale d'identité (CNI), un identifiant Massar, une date de naissance, une adresse e-mail, un mot de passe et une filière.</div>
                       <hr  class="my-2 border-blue-gray-50">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Livre :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-orange-400">Livre :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">Représente un livre disponible dans la bibliothèque. Chaque livre a un identifiant unique, un titre, une description, un auteur, une langue, une quantité disponible, un genre et une image de couverture.</div>
                       <hr  class="my-2 border-blue-gray-50">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Exemplaire :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-blue-500">Exemplaire :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">Représente une copie spécifique d'un livre. Chaque exemplaire a un identifiant unique, est lié à un livre spécifique, a un état (disponible, hors-pret, à enlever) et une date d'achat.</div>
                       <hr  class="my-2 border-blue-gray-50">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Emprunt :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-pink-500">Emprunt :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">Représente un emprunt de livre effectué par un étudiant. Chaque emprunt a un identifiant unique, est lié à un exemplaire et à un étudiant spécifique, a une date d'emprunt, une date de retour prévue et une date de retour effective.</div>
                       <hr  class="my-2 border-blue-gray-50">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Sanction :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-red-700">Sanction :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">Représente une sanction appliquée à un étudiant en cas de retard ou de perte de livre. Chaque sanction a un identifiant unique, est associée à un étudiant spécifique, a un type de sanction (retard ou perte), une date de sanction et un montant éventuel.</div>
                       <hr  class="my-2 border-blue-gray-50">
-                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black">Relations :</h5>
+                      <h5  class="block antialiased tracking-normal font-sans text-xl leading-snug text-inherit mt-6 mb-1 font-semibold !text-black decoration-[3px] underline underline-offset-8 decoration-purple-700">Relations :</h5>
                       <div  class="block antialiased font-sans text-base leading-relaxed mb-4 font-normal text-gray-600">     Un étudiant peut réserver plusieurs livres (relation 1:N entre Étudiant et Réservation).
                         Un livre peut être réservé par plusieurs étudiants (relation N:M entre Livre et Réservation).</div>
                       </div>
