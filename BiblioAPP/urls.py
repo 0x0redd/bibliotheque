@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from BiblioAPP.views import index, profile, inscription, inscription_success  # Import the new view function
+from BiblioAPP.views import index, profile, inscription, inscription_success , singup # Import the new view function
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
     path('profile/', profile, name='profile'),
-    path('inscription/', inscription, name='inscription'),  # Corrected the path for registration
+    path('Sing-in/', inscription, name='inscription'),
+    path('Sing-up/', singup, name='singup'),# Corrected the path for registration
     path('inscription/success/', inscription_success, name='inscription_success'),  # New path for registration success
 ]
 

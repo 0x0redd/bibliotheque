@@ -9,7 +9,10 @@ def index(request):
 
 def profile(request):
     context = {}
-    return render(request, 'profile.html', context)
+    return render(request, 'profile.html', context)\
+        
+def singup(request):
+    return render(request, 'singup.html') 
 
 def inscription(request):
     if request.method == 'POST':
@@ -21,7 +24,7 @@ def inscription(request):
         form = EtudiantForm()
     
     context = {'form': form}
-    return render(request, 'inscription and login.html', context)
+    return render(request, 'singin.html', context)
 
 def inscription_success(request):
     return HttpResponse("Inscription réussie!")  # You can customize this success message
