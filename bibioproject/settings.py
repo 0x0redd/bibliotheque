@@ -137,7 +137,7 @@ COMPRESS_ROOT = BASE_DIR / 'static'  # Adjust this to an appropriate directory
 COMPRESS_ENABLED = False
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+AUTH_USER_MODEL="BiblioAPP.Etudiant"
 
 
 

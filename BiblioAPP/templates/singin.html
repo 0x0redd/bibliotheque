@@ -27,7 +27,7 @@
 
     <!-- Left Pane -->
     <div class="w-full bg-gray-100 lg:w-1/2 flex items-center justify-center">
-      <div class="max-w-md w-full p-6">
+      < class="max-w-md w-full p-6">
         <h1 class="text-3xl font-semibold mb-6 text-black text-center">
           Sign in
         </h1>
@@ -90,54 +90,80 @@
         <div class="mt-4 text-sm text-gray-600 text-center">
           <p>or with email</p>
         </div>
-        <form action="#" method="POST" class="space-y-4">
+        <form action="" method="POST" class="space-y-4">
           <!-- Your form elements go here -->
+          {% csrf_token %}
+          
           <div>
-            <label
-              for="username"
-              class="block text-sm font-medium text-gray-700"
-              >Username</label
-            >
-            <input
-              type="text"
-              id="username"
-              name="username"
-              class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-            />
+            <label class="block text-sm font-medium text-gray-700">First Name</label>
+            <input type="text" name="nom" placeholder="John"
+              class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Last name</label>
+            <input type="text" name="prenom" placeholder="Snow"
+              class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700">CNI</label>
+            <input type="text" name="cni" placeholder="X123123"
+              class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700"
-              >Email</label
-            >
-            <input
-              type="text"
-              id="email"
-              name="email"
-              class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-            />
+            <label class="block text-sm font-medium text-gray-700">Massar</label>
+            <input type="text" name="massar" placeholder="D123456789"
+              class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Email address</label>
+            <input type="email" name="email" placeholder="johnsnow@edu.umi.ac.ma"
+              class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
           </div>
           <div>
-            <label
-              for="password"
-              class="block text-sm font-medium text-gray-700"
-              >Password</label
-            >
-            <input
-              type="password"
-              id="password"
-              name="password"
-              class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
-            />
+            <label class="block text-sm font-medium text-gray-700">Date de naissance</label>
+            <input type="date" name="date_naissance" min="1960-01-01" max="2008-12-31"
+              class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" name="password" placeholder="Enter your password"
+              class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Confirm password</label>
+            <input type="password" name="confirmpassword" placeholder="Enter your password"
+              class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300" />
           </div>
           <div>
-            <button
-              type="submit"
-              class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300"
-            >
+            <label class="block text-sm font-medium text-gray-700">Confirm password</label>
+            <select name="filiere"
+              class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300">
+              <option selected value="SMI">SMI</option>
+              <option value="MIP">MIP</option>
+              <option value="PC">PC</option>
+              <option value="SMP">SMP</option>
+              <option value="SMA">SMA</option>
+          
+            </select>
+          </div>
+          <div></div>
+          <div>
+            <button type="submit"
+              class="w-full bg-black text-white p-2 rounded-md hover:bg-gray-800 focus:outline-none focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">
               Sign Up
             </button>
           </div>
         </form>
+        {% if error_message %}
+        <div class="border-red-700 text-red-800">
+          {{ error_message }}
+        </div>
+        {% endif %}
         <div class="mt-4 text-sm text-gray-600 text-center">
           <p>
             Already have an account?

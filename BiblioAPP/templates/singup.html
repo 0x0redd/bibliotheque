@@ -97,29 +97,30 @@
         <div class="mt-4 text-sm text-gray-600 text-center">
           <p>or with email</p>
         </div>
-        <form action="#" method="POST" class="space-y-4">
+        <form action="" method="POST" class="space-y-4">
           <!-- Your form elements go here -->
+          {% csrf_token %}
           <div>
             <label
-              for="username"
+              for="cni"
               class="block text-sm font-medium text-gray-700"
-              >Username</label
+              >CNI</label
             >
             <input
               type="text"
-              id="username"
-              name="username"
+              id="cni"
+              name="cni"
               class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
             />
           </div>
           <div>
-            <label for="email" class="block text-sm font-medium text-gray-700"
-              >Email</label
+            <label for="massar class="block text-sm font-medium text-gray-700"
+              >Massar</label
             >
             <input
               type="text"
-              id="email"
-              name="email"
+              id="massar"
+              name="massar"
               class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
             />
           </div>
@@ -145,9 +146,14 @@
             </button>
           </div>
         </form>
+        {% if error_message %}
+        <div class="border-red-700 text-red-800">
+          {{ error_message }}
+        </div>
+        {% endif %}
         <div class="mt-4 text-sm text-gray-600 text-center">
           <p>
-            Already have an account?
+            Don't have an account? wa sir lah yssehl 3lik
             <a href="#" class="text-black hover:underline">Login here</a>
           </p>
         </div>

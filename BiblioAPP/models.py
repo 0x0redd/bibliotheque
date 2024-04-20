@@ -1,19 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
-class Etudiant(models.Model):
-    id_etudiant = models.IntegerField(primary_key=True )
-    nom = models.CharField(max_length=255)
-    prenom = models.CharField(max_length=255)
-    cni = models.CharField(max_length=255)
-    massar = models.CharField(max_length=255)
-    date_naissance = models.DateField() 
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)
+class Etudiant(AbstractUser):
+    id_etudiant = models.AutoField(auto_created = True,primary_key=True )
+    username = models.CharField(unique=True,max_length=150, default='no_name')
+    cni = models.CharField(max_length=255 ,unique=True)
+    massar = models.CharField(max_length=255,unique=True)
+    date_naissance = models.DateField()
     filiere = models.CharField(max_length=255)
+    last_login = models.DateTimeField(default=timezone.now)
 
 class Livre(models.Model):
-    id_livre = models.IntegerField(primary_key=True)
-    titre = models.CharField(max_length=255)
+    id_livre = models.AutoField(auto_created = True,primary_key=True)
+    titre = models.CharField(max_length=255,unique=True)
     description = models.TextField()
     auteur = models.CharField(max_length=255)
     langue = models.CharField(max_length=50)
@@ -22,7 +22,7 @@ class Livre(models.Model):
     image = models.ImageField(upload_to='./static/boock')  
 
 class Exemplaire(models.Model):
-    id_exemplaire = models.IntegerField(primary_key=True)
+    id_exemplaire = models.AutoField(auto_created = True,primary_key=True)
     id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='exemplaires')
     etat_choices = [
         ('disponible', 'Disponible'),
@@ -41,7 +41,7 @@ class Emprunt(models.Model):
     date_retour_effectif = models.DateField()   
 
 class Sanction(models.Model):
-    id_sanction = models.IntegerField(primary_key=True)
+    id_sanction = models.AutoField(auto_created = True,primary_key=True)
     id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='sanctions')
     sanction_choices = [
         ('retard', 'Retard'),
