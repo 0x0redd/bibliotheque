@@ -23,10 +23,12 @@ from BiblioAPP.views import * # Import the new view function
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('', user_login, name='index'),
     path('profile/', profile, name='profile'),
     path('Sign-in/', inscription, name='inscription'),
     path('Sign-up/', user_login, name='singup'),# Corrected the path for registration
     path('logout/', user_logout, name='logout'),
+    path('randbook/',fakeBook,name='randbook')
 ]
 
 # Add static files serving in development mode
