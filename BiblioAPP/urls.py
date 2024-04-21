@@ -25,8 +25,8 @@ urlpatterns = [
     path('', index, name='index'),
     path('', user_login, name='index'),
     path('profile/', profile, name='profile'),
-    path('Sign-in/', inscription, name='inscription'),
-    path('Sign-up/', user_login, name='singup'),# Corrected the path for registration
+    path('Sing-in/', inscription, name='inscription'),
+    path('Sing-up/', user_login, name='singup'),# Corrected the path for registration
     path('logout/', user_logout, name='logout'),
     path('randbook/',fakeBook,name='randbook')
 ]

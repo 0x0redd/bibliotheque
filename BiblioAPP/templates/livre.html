@@ -1,0 +1,26 @@
+{% for book in books %}
+    <div data-book="{{book.id}}" class="book-card w-[250px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-300">
+        <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
+        {{ book.description }}
+        </h3>
+        <!-- Contenu pour utilisateurs connectés -->
+        <button id="myBtn"  class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" {% if user.is_authenticated %}onclick="" {%else%} onclick="openModal()" {%endif%}>Reserver</button>
+        <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+        <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+        <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+        </svg>
+        <div class="relative w-[250px] p-0 flex items-center justify-center">
+        <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 " style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+        <img class="book-img transition-all duration-200 relative w-[250px] h-[300px] object-cover object-top" src="https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg" alt="">
+        </div>
+        <div class="book-title transition-all duration-200 relative text-white px-4 pb-6 mt-6 w-fit">
+        
+        <div class="book-title transition-all duration-200 ">
+            <p class="block opacity-75 -mb-1">{{ book.genre}}:</p>
+            <span class="block font-semibold text-xl">{{ book.titre }}</span>
+            <p class="block opacity-75 -mb-1">auteur:{{ book.auteur}}</p>
+            
+        </div>
+        </div>
+    </div>
+  {% endfor %}
