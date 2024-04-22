@@ -16,7 +16,12 @@ class studentForm(forms.Form):
     password = forms.CharField(label="password", max_length=255)
     confirmpassword = forms.CharField(label="confirmpassword", max_length=255)
     filiere = forms.CharField(label="filiere", max_length=255)
+    
 class loginForm(forms.Form):
     cni = forms.CharField(label="cni", max_length=255)
     massar = forms.CharField(label="massar", max_length=255)
     password = forms.CharField(label="password", max_length=255)
+
+
+class BookSearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100)

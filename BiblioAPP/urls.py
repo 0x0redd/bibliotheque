@@ -28,7 +28,9 @@ urlpatterns = [
     path('Sing-in/', inscription, name='inscription'),
     path('Sing-up/', user_login, name='singup'),# Corrected the path for registration
     path('logout/', user_logout, name='logout'),
-    path('randbook/',fakeBook,name='randbook')
+    path('randbook/',fakeBook,name='randbook'),
+    path('livre/', livre, name='livre'),
+
 ]
 
 # Add static files serving in development mode

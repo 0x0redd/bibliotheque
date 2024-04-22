@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from .forms import studentForm,loginForm # Assuming you have created a form for student registration
+from .forms import studentForm,loginForm,BookSearchForm # Assuming you have created a form for student registration
 from .models import Etudiant , Livre
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
@@ -141,3 +141,12 @@ def fakeBook(self, *args, **kwargs):
             )
 
 
+def livre(request):
+    form = BookSearchForm(request.GET)
+    books = Livre.objects.all()  # Get all books initially
+    
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
+
+    return render(request, 'livre.html', {'form': form, 'books': books})
