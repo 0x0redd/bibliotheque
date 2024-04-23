@@ -10,98 +10,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <link rel="shortcut icon" href="./assets/img/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Profile </title>
+    <style>
+      .bg-cover{
+        background-image: url("https://images.unsplash.com/photo-1607193634806-5c28805731aa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") !important; 
+        backdrop-filter: blur(5px) !important;
+      }
+    </style>
   </head>
+  
   <body class="text-gray-800 antialiased">
-    <nav
-      class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 "
-    >
-      <div
-        class="container px-4 mx-auto flex flex-wrap items-center justify-between"
-      >
-        <div
-          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
-        >
-          <a
-            class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-            href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
-            >Tailwind Starter Kit</a
-          ><button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-            type="button"
-            onclick="toggleNavbar('example-collapse-navbar')"
-          >
-            <i class="text-white fas fa-bars"></i>
-          </button>
-        </div>
-        <div
-          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden"
-          id="example-collapse-navbar"
-        >
-          <ul class="flex flex-col lg:flex-row list-none mr-auto">
-            <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/profile"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 far fa-file-alt text-lg leading-lg mr-2"
-                ></i>
-                Docs</a
-              >
-            </li>
-          </ul>
-          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-            <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-facebook text-lg leading-lg "
-                ></i
-                ><span class="lg:hidden inline-block ml-2">Share</span></a
-              >
-            </li>
-            <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-twitter text-lg leading-lg "
-                ></i
-                ><span class="lg:hidden inline-block ml-2">Tweet</span></a
-              >
-            </li>
-            <li class="flex items-center">
-              <a
-                class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                href="#pablo"
-                ><i
-                  class="lg:text-gray-300 text-gray-500 fab fa-github text-lg leading-lg "
-                ></i
-                ><span class="lg:hidden inline-block ml-2">Star</span></a
-              >
-            </li>
-            <li class="flex items-center">
-              <button
-                class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
-                type="button"
-                style="transition: all 0.15s ease 0s;"
-              >
-                <i class="fas fa-arrow-alt-circle-down"></i> Download
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    {% include 'header.html' %}
     <main class="profile-page">
       <section class="relative block" style="height: 500px;">
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          style='background-image: url("https://images.unsplash.com/photo-1499336315816-097655dcfbda?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=2710&amp;q=80");'
+          style='background-image: url("../../static/source/profile/bg.jpg");'
         >
           <span
             id="blackOverlay"
@@ -141,7 +68,7 @@
                   <div class="relative  ">
                     <!-- image profile -->
                     <img 
-                    src="{% static 'source/profile/'|add:user.first_name|stringformat:'s.jpg' %}""
+                    src="{% static 'source/profile/'|add:user.first_name|stringformat:'s.jpg' %}"
                     alt="User Image"
                     class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16"
                     style="max-width: 150px;"
@@ -151,15 +78,25 @@
                 <div
                   class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center"
                 >
-                  <div class="py-6 px-3 mt-32 sm:mt-0">
+                  <div class="py-6 px-3 mt-32 sm:mt-0 flex gap-2 items-center float-right">
                     
                     {% if user.is_authenticated %}
                     <form action="{% url 'logout' %}" method="post">
                       {% csrf_token %}
                       <button
-                        class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                        class="flex items-center gap-1 bg-green-500  hover:shadow-lg uppercase text-white font-bold shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                         type="submit" style="transition: all 0.15s ease 0s;">
-                        disconect
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                        dashboard
+                      </button>
+                    </form>
+                    <form action="{% url 'logout' %}" method="post">
+                      {% csrf_token %}
+                      <button
+                        class="flex items-center gap-1 bg-red-500 uppercase text-white font-bold hover:shadow-lg shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                        type="submit" style="transition: all 0.15s ease 0s;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                        Disconnect
                       </button>
                     </form>
                     {% endif %}

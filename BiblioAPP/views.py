@@ -104,7 +104,7 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     # Redirect to the homepage or some other view after logout
-    return redirect('singup')
+    return redirect('index')
 
 
 def generate_random_image(self, width=200, height=300):
