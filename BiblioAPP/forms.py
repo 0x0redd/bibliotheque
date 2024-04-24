@@ -25,3 +25,5 @@ class loginForm(forms.Form):
 
 class BookSearchForm(forms.Form):
     query = forms.CharField(label='Search', max_length=100)
+class reservForm(forms.Form):
+    IDlivre = forms.IntegerField(label="IDlivre")

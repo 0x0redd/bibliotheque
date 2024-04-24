@@ -107,20 +107,20 @@
                     <div class="mr-4 p-3 text-center">
                       <span
                         class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                        >22</span
-                      ><span class="text-sm text-gray-500">livre empreinte</span>
+                        >{{count}}</span
+                      ><span class="text-sm text-gray-500">livre reserver</span>
                     </div>
                     <div class="mr-4 p-3 text-center">
                       <span
                         class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                        >10</span
-                      ><span class="text-sm text-gray-500">livre rendu </span>
+                        >0</span
+                      ><span class="text-sm text-gray-500">Livre empreinte</span>
                     </div>
                     <div class="lg:mr-4 p-3 text-center">
                       <span
                         class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                        >89</span
-                      ><span class="text-sm text-gray-500">Comments</span>
+                        >0</span
+                      ><span class="text-sm text-gray-500">Penalite</span>
                     </div>
                   </div>
                 </div> 
@@ -139,14 +139,69 @@
                 </div>
                 <div class="mb-2 text-gray-700 mt-10">
                   <i class="fas fa-briefcase mr-2 text-lg text-gray-500"></i
-                  >Solution Manager - Creative Tim Officer
+                  >{% if User.is_staff %}
+                    Administrateur
+                    {%else%}
+                    Etudiant
+                    {%endif%}
                 </div>
                 <div class="mb-2 text-gray-700">
                   <i class="fas fa-university mr-2 text-lg text-gray-500"></i
-                  >University of Computer Science
+                  >University Molay Ismail
                 </div>
               </div>
-              <div class="mt-10 py-10 border-t border-gray-300 text-center">
+              <h1 class="font-bold text-3xl">Reservations</h1>
+              <ul>
+                <!-- Iterate over the 'reservation' context data -->
+                <!-- component -->
+                <section class="container mx-auto p-6 font-mono">
+                  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                    <div class="w-full overflow-x-auto">
+                      <table class="w-full">
+                        <thead>
+                          <tr
+                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                            <th class="px-4 py-3">Livres</th>
+                            <th class="px-4 py-3">Date</th>
+                            <th class="px-4 py-3">Status</th>
+                            <th class="px-4 py-3">Annuler</th>
+                          </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                          {% for res in reservation %}
+                          <tr class="text-gray-700">
+                            <td class="px-4 py-3 border">
+                              <div class="flex items-center text-sm">
+                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                  <img class="object-cover w-full h-full rounded-full"
+                                    src="{{res.id_livre.image}}"
+                                    alt="" loading="lazy" />
+                                  <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                </div>
+                                <div>
+                                  <p class="font-semibold text-black">{{res.id_livre.titre}}</p>
+                                </div>
+                              </div>
+                            </td>
+                            <td class="px-4 py-3 text-ms font-semibold border">{{res.date_reservation}}</td>
+                            <td class="px-4 py-3 text-xs border">
+                              <span class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-sm"> En Cours de traitement
+                              </span>
+                            </td>
+                            <form action="{% url 'annuler'%}" method="post">
+                              {% csrf_token %}
+                              <input type="hidden" name="reservation" value="{{res.id_reservation}}">
+                              <td class="px-4 py-3 text-sm border bg-red-500"><button class="font-bold text-center text-white" type="submit" value="Annuler">Confirmer</button></td>
+                            </form>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+              </ul>
+              <!-- <div class="mt-10 py-10 border-t border-gray-300 text-center">
                 <div class="flex flex-wrap justify-center">
                   <div class="w-full lg:w-9/12 px-4">
                     <p class="mb-4 text-lg leading-relaxed text-gray-800">
@@ -161,7 +216,7 @@
                     >
                   </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

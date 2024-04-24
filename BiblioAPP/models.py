@@ -23,7 +23,7 @@ class Livre(models.Model):
 
 class Exemplaire(models.Model):
     id_exemplaire = models.AutoField(auto_created = True,primary_key=True)
-    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='exemplaires')
+    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE)
     etat_choices = [
         ('disponible', 'Disponible'),
         ('hors-pret', 'Hors-pret'),
@@ -34,15 +34,15 @@ class Exemplaire(models.Model):
 
 class Emprunt(models.Model):
     id_emprunt = models.AutoField(primary_key=True)  
-    id_exemplaire = models.ForeignKey(Exemplaire, on_delete=models.CASCADE, related_name='emprunts')
-    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='emprunts')
+    id_exemplaire = models.ForeignKey(Exemplaire, on_delete=models.CASCADE)
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
     date_emprunt = models.DateField()  
     date_retour_prevue = models.DateField() 
     date_retour_effectif = models.DateField()   
 
 class Sanction(models.Model):
     id_sanction = models.AutoField(auto_created = True,primary_key=True)
-    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='sanctions')
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
     sanction_choices = [
         ('retard', 'Retard'),
         ('perte', 'Perte')
@@ -53,8 +53,8 @@ class Sanction(models.Model):
 
 class Reservation(models.Model):
     id_reservation = models.AutoField(primary_key=True)  
-    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE, related_name='reservations')
-    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE, related_name='reservations')
+    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
+    id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE)
     date_reservation = models.DateField() 
 
 class Livre_Reservation(models.Model):

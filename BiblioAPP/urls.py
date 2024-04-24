@@ -23,13 +23,14 @@ from BiblioAPP.views import * # Import the new view function
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
-    path('', user_login, name='index'),
     path('profile/', profile, name='profile'),
     path('Sing-up/', inscription, name='singup'),
     path('Sing-in/', user_login, name='inscription'),# Corrected the path for registration
     path('logout/', user_logout, name='logout'),
+    path('reserver/', reservation, name='reserver'),
     path('randbook/',fakeBook,name='randbook'),
     path('livre/', livre, name='livre'),
+    path('Annuler/', annule, name='annuler'),
 
 ]
 

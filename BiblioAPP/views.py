@@ -1,61 +1,66 @@
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from .forms import studentForm,loginForm,BookSearchForm # Assuming you have created a form for student registration
-from .models import Etudiant , Livre
-from django.contrib.auth import authenticate, login
-from django.contrib.auth import logout
+from .forms import *# Assuming you have created a form for student registration
+from .models import *
+from django.contrib.auth import authenticate, login,logout
 #
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from faker import Faker
 import random
-import os
-from PIL import Image
-import io
+import datetime
 def index(request):
     # Example view function to render the index page
     books ={
         'books':Livre.objects.all()
     }
-    if request.method == 'POST':
-        form = loginForm(request.POST)
-        if form.is_valid():
-            student = Etudiant.objects.filter(cni=form.cleaned_data["cni"], massar=form.cleaned_data["massar"],password=form.cleaned_data["password"]).first()
-            if student is not None:
-                login(request, student)
-                # Redirect to a success page or some other view
-                #return render(request, 'profile.html')
-                return redirect("profile")
-            else:
-                # Return an invalid login message or render the login page again
-                return render(request, 'index.html', {'error_message': 'Invalid username or password','books':Livre.objects.all()})
-                
-                #return redirect(request.META.get('HTTP_REFERER', '/'),{'error_message': 'Invalid username or password','books':Livre.objects.all()})
-    else:
-        form = loginForm()
-    
-        #return redirect(request.META.get('HTTP_REFERER', '/'))
+    #return redirect(request.META.get('HTTP_REFERER', '/'))
     if request.method == 'GET':
         form = loginForm()
         return render(request, 'index.html',books)
-
 def profile(request):
-    context = {}
-    return render(request, 'profile.html', context)
-
-# def inscription(request):
-#     if request.method == 'POST':
-#         form = EtudiantForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('inscription_success')  # Redirect to a success page after registration
-#     else:
-#         form = EtudiantForm()
+    if not request.user.is_authenticated:
+        return redirect('index')
+    if(User is not None):
+        if(User.is_staff == 0):
+            context = {
+                'reservation':Reservation.objects.filter(id_etudiant=User.id_etudiant),
+                'Emprunt':Emprunt.objects.filter(id_etudiant=User.id_etudiant),
+            }
+        else:
+            context = {
+                'reservation':Reservation.objects.all(),
+                'Emprunt':Emprunt.objects.all(),
+                'etudiants':Etudiant.objects.filter(is_staff=0,is_superuser=0),
+                'count':Reservation.objects.filter(id_etudiant=request.user).count(),
+            }
+        if request.user.is_authenticated:
+            return render(request, 'profile.html', context)
+    else:
+        return redirect('index')
     
-#     context = {'form': form}
-#     return render(request, 'singin.html', context)
+
+@login_required
+def reservation(request):
+    if request.method == 'POST':
+        form=reservForm(request.POST)
+        if form.is_valid():
+            res= Reservation.objects
+            if(res.all().filter(id_etudiant= request.user).count()<=3):
+                book = Livre.objects.filter(id_livre= form.cleaned_data["IDlivre"]).first()
+                res =Reservation.objects.create(id_etudiant=request.user ,id_livre= book, date_reservation= datetime.datetime.now()).save()
+                return redirect('profile')
+            else:
+                #send message the use alredy have other book
+                form = reservForm()
+                #return render(request,'livre.html',{'nomore':"Vos avez reservez plus de 3 livre"})
+                #redirect("livre").write({'nomore':"Vos avez reservez plus de 3 livre"})
+        return redirect('livre')
+
 def inscription(request):
     if request.method == 'POST':
         form = studentForm(request.POST)
@@ -94,6 +99,7 @@ def user_login(request):
             if student is not None:
                 login(request, student)
                 # Redirect to a success page or some other view
+                
                 return redirect('profile')
             else:
                 # Return an invalid login message or render the login page again
@@ -115,38 +121,33 @@ def generate_random_image(self, width=200, height=300):
         return output.getvalue()
 
 def fakeBook(self, *args, **kwargs):
-        faker = Faker()
-        genres = ["Fiction", "Non-Fiction", "Fantasy", "Sci-Fi", "Mystery", "Romance", "Thriller", "Biography"]
-        image_path = os.path.join(settings.BASE_DIR, "staticfiles", "books")
-
-        if not os.path.exists(image_path):
-            os.makedirs(image_path)
-        for _ in range(10):  # Change 10 to the desired number of books
-            title = faker.catch_phrase()
-            image_filename = f"{title.replace(' ', '_')}.png"
-            image_full_path = os.path.join(image_path, image_filename)
-
-            # Save the generated image to the filesystem
-            # with open(image_full_path, "wb") as img_file:
-            #     img_file.write(self.generate_random_image())
-            
-            Livre.objects.create(
-                titre=title,
-                description=faker.text(),  # Random description
-                auteur=faker.name(),
-                langue=faker.language_name(),  # Random language name
-                quantite=random.randint(1, 100),
-                genre=random.choice(genres),
-                image=f"static/book/{image_filename}",
-            )
-
+    faker = Faker()
+    genres = ["Fiction", "Non-Fiction", "Fantasy", "Sci-Fi", "Mystery", "Romance", "Thriller", "Biography"]
+    for x in range(20):
+        book=Livre.objects.create(
+            titre=random.choice(genres)+faker.name(),
+            description=faker.text(),  # Random description
+            auteur=faker.name(),
+            langue=faker.language_name(),  # Random language name
+            quantite=random.randint(1, 100),
+            genre=random.choice(genres),
+            image=f"static/book/{faker.name()}",
+        )
+    return HttpResponse(book)
 
 def livre(request):
     form = BookSearchForm(request.GET)
-    books = Livre.objects.all()  # Get all books initially
-    
+    books = Livre.objects.all() # Get all books initially
+    if not request.user.is_anonymous:
+        count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
+    else:
+        count=0
     if form.is_valid():
         query = form.cleaned_data['query']
         books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
+    return render(request, 'livre.html', {'form': form, 'books': books,'count':count})
 
-    return render(request, 'livre.html', {'form': form, 'books': books})
+def annule(request):
+    res = request.POST.get('reservation')
+    Reservation.objects.filter(id_reservation=res).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
