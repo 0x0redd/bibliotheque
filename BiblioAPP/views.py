@@ -13,6 +13,10 @@ from django.conf import settings
 from faker import Faker
 import random
 import datetime
+
+def contact(request):
+    return render(request, 'contact.html')
+
 def index(request):
     # Example view function to render the index page
     books ={

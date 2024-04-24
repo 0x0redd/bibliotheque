@@ -31,7 +31,7 @@ urlpatterns = [
     path('randbook/',fakeBook,name='randbook'),
     path('livre/', livre, name='livre'),
     path('Annuler/', annule, name='annuler'),
-
+    path('Contact', contact, name='contact')
 ]
 
 # Add static files serving in development mode
