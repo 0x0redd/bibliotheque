@@ -29,18 +29,21 @@ def index(request):
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('index')
-    if(User is not None):
-        if(User.is_staff == 0):
+    if(request.user is not None):
+        if(request.user.is_staff == 0):
+            #data to sent if is not admin
             context = {
-                'reservation':Reservation.objects.filter(id_etudiant=User.id_etudiant),
-                'Emprunt':Emprunt.objects.filter(id_etudiant=User.id_etudiant),
+                'reservation':Reservation.objects.filter(id_etudiant=request.user),
+                'emprunt':Emprunt.objects.filter(id_etudiant=request.user),
+                'count':Reservation.objects.filter(id_etudiant=request.user).count(),
             }
+            render(request, 'profile.html', context)
         else:
+            #data to sent if HE IS ADMIN
             context = {
                 'reservation':Reservation.objects.all(),
                 'Emprunt':Emprunt.objects.all(),
                 'etudiants':Etudiant.objects.filter(is_staff=0,is_superuser=0),
-                'count':Reservation.objects.filter(id_etudiant=request.user).count(),
             }
         if request.user.is_authenticated:
             return render(request, 'profile.html', context)
@@ -89,6 +92,7 @@ def inscription(request):
                     filiere=form.cleaned_data["filiere"]
                 )
                 login(request, student)
+                
                 return redirect('profile')  # Assuming you have a URL named 'profile' configured in your urls.py
 
     else:  # GET request
