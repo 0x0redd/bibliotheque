@@ -44,6 +44,7 @@ def profile(request):
                 'reservation':Reservation.objects.all(),
                 'Emprunt':Emprunt.objects.all(),
                 'etudiants':Etudiant.objects.filter(is_staff=0,is_superuser=0),
+                'count':Reservation.objects.all().count(),
             }
         if request.user.is_authenticated:
             return render(request, 'profile.html', context)
