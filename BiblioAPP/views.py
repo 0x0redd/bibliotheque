@@ -1,3 +1,5 @@
+import io
+from tkinter import Image
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -16,6 +18,21 @@ import datetime
 
 def contact(request):
     return render(request, 'contact.html')
+
+def dashboard(request):
+    num_etudiants = Etudiant.objects.count()
+    num_livre = Livre.objects.count()
+    num_reservation =  Reservation.objects.count()
+    num_emprunt = Emprunt.objects.count()
+
+    context = {
+        'num_etudiants': num_etudiants,
+        'num_livre': num_livre,
+        'num_reservation':  num_reservation,
+        'num_emprunt':  num_emprunt,
+    }
+
+    return render(request, 'dashboard.html', context)
 
 def index(request):
     # Example view function to render the index page

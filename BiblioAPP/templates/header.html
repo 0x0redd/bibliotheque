@@ -85,12 +85,17 @@
   
                 <div class="hidden lg:flex lg:items-center gap-1">
                     {% if user.is_authenticated %}
-                    <form action="{% url 'profile' %}" method="post">
+                    <form action="{% url 'dashboard' %}" method="post">
                       {% csrf_token %}
                       <button
                         class="flex items-center gap-2 bg-green-500  hover:scale-105 uppercase text-white transition-all duration-300 font-bold shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
                         type="submit">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard">
+                            <rect width="7" height="9" x="3" y="3" rx="1"/>
+                            <rect width="7" height="5" x="14" y="3" rx="1"/>
+                            <rect width="7" height="9" x="14" y="12" rx="1"/>
+                            <rect width="7" height="5" x="3" y="16" rx="1"/>
+                        </svg>
                         dashboard
                       </button>
                     </form>
