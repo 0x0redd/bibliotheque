@@ -27,7 +27,8 @@ class Exemplaire(models.Model):
     etat_choices = [
         ('disponible', 'Disponible'),
         ('hors-pret', 'Hors-pret'),
-        ('a_enlever', 'A enlever')
+        ('a_enlever', 'A enlever'),
+        ('perdu', 'perdu'),
     ]
     etat = models.CharField(max_length=20, choices=etat_choices)
     date_achat = models.DateField()
@@ -38,7 +39,8 @@ class Emprunt(models.Model):
     id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
     date_emprunt = models.DateField()  
     date_retour_prevue = models.DateField() 
-    date_retour_effectif = models.DateField()   
+    date_retour_effectif = models.DateField(null=True)
+    retourner = models.BooleanField(default=False)
 
 class Sanction(models.Model):
     id_sanction = models.AutoField(auto_created = True,primary_key=True)

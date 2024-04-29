@@ -20,19 +20,19 @@ def contact(request):
     return render(request, 'contact.html')
 
 def dashboard(request):
-    num_etudiants = Etudiant.objects.count()
-    num_livre = Livre.objects.count()
-    num_reservation =  Reservation.objects.count()
-    num_emprunt = Emprunt.objects.count()
-
-    context = {
-        'num_etudiants': num_etudiants,
-        'num_livre': num_livre,
-        'num_reservation':  num_reservation,
-        'num_emprunt':  num_emprunt,
-    }
-
-    return render(request, 'dashboard.html', context)
+    if(request.user.is_staff):
+        context = {
+            'Etudiants':Etudiant.objects.filter(is_staff=0),
+            'Reservations':Reservation.objects.all(),
+            'Emprunts':Emprunt.objects.filter(retourner=False),
+            'historique':Emprunt.objects.all(),
+            'Livres':Livre.objects.all(),
+            'Exemplaires':Exemplaire.objects.all(),
+            'Sanctions':Sanction.objects.all(),
+        }
+        return render(request, 'dashboard.html', context)
+    
+    return redirect('index')
 
 def index(request):
     # Example view function to render the index page
@@ -75,7 +75,7 @@ def reservation(request):
         form=reservForm(request.POST)
         if form.is_valid():
             res= Reservation.objects
-            if(res.all().filter(id_etudiant= request.user).count()<=3):
+            if(res.all().filter(id_etudiant= request.user).count()<=3 or Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count()<=3):
                 book = Livre.objects.filter(id_livre= form.cleaned_data["IDlivre"]).first()
                 res =Reservation.objects.create(id_etudiant=request.user ,id_livre= book, date_reservation= datetime.datetime.now()).save()
                 return redirect('profile')
@@ -155,7 +155,7 @@ def fakeBook(self, *args, **kwargs):
             description=faker.text(),  # Random description
             auteur=faker.name(),
             langue=faker.language_name(),  # Random language name
-            quantite=random.randint(1, 100),
+            quantite=random.randint(1, 4),
             genre=random.choice(genres),
             image=f"static/book/{faker.name()}",
         )
@@ -166,14 +166,44 @@ def livre(request):
     books = Livre.objects.all() # Get all books initially
     if not request.user.is_anonymous:
         count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
+        count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant).count()
     else:
         count=0
     if form.is_valid():
         query = form.cleaned_data['query']
         books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
-    return render(request, 'livre.html', {'form': form, 'books': books,'count':count})
+    return render(request, 'livre.html', {'form': form, 'books': books,'Res_count':count,'Emp_count':count1})
 
 def annule(request):
     res = request.POST.get('reservation')
     Reservation.objects.filter(id_reservation=res).delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def valider(request):
+    id_reserve = request.POST.get('reservation')
+    res = Reservation.objects.get(pk=id_reserve)
+    exemplaire=Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").first()
+    Emprunt.objects.create(id_etudiant=res.id_etudiant,id_exemplaire=exemplaire,date_emprunt=datetime.datetime.now(),date_retour_prevue=datetime.datetime.now()+datetime.timedelta(days=15)).save()
+    exemplaire.etat = "Hors-pret"
+    exemplaire.save()
+    Livre_Reservation.objects.create(id_livre=res.id_livre,id_reservation=res)
+    res.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def createExemplaire(request):
+    for book in Livre.objects.all():
+        if book.quantite>1:
+            etat = "Disponible"
+        else:
+            etat ="Hors-pret"
+        
+        for i in range(book.quantite) :
+            Exemplaire.objects.create(id_livre=book,etat=etat,date_achat=datetime.datetime.now())
+
+def retourner(request):
+    id_emprunt = request.POST.get('emprunts')
+    emprunt=Emprunt.objects.get(pk=id_emprunt)
+    emprunt.date_retour_effectif=datetime.datetime.now()
+    emprunt.retourner = 1
+    emprunt.save()
+    #Emprunt.objects.filter(id_emprunt=id_emprunt).update(date_retour_effectif=datetime.datetime.now,retourner=True)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

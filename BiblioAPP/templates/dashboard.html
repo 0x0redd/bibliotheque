@@ -448,7 +448,7 @@
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                             <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre d'utilisateurs</h5>
                             <span class="font-semibold text-xl text-blueGray-700">
-                                {{ num_etudiants }} 
+                                {{ Etudiants.count}} 
                             </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
@@ -467,7 +467,7 @@
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                             <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre total de livre</h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{ num_livre }} </span>
+                            <span class="font-semibold text-xl text-blueGray-700">{{ Livres.count }} </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
                             <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
@@ -485,7 +485,7 @@
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                             <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre total des reservation</h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{ num_reservation }}</span>
+                            <span class="font-semibold text-xl text-blueGray-700">{{ Reservations.count }}</span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
                             <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
@@ -503,7 +503,7 @@
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
                             <h5 class="text-blueGray-400 uppercase font-bold text-xs">livre emprunter </h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{num_emprunt}}</span>
+                            <span class="font-semibold text-xl text-blueGray-700">{{Emprunts.count}}</span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
                             <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-lightBlue-500">
@@ -573,61 +573,131 @@
                   </div>
                   <div class="block w-full overflow-x-auto">
                     <!-- Projects table -->
+                    <p class="font-bold text-xl">Reservation</p>
                     <table class="items-center w-full bg-transparent border-collapse">
                       <thead>
                         <tr>
-                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Page name</th>
-                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Visitors</th>
-                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Unique users</th>
-                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Bounce rate</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nom et prenom</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Filliere</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Livre</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Valider emprunt</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {% for item in Reservations  %}
                         <tr>
-                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">/argon/</th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">4,569</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">340</td>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">{{item.id_etudiant}}</th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.id_etudiant.filiere}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.id_livre.titre}}</td>
                           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <img src="{{item.id_livre.image}}" alt="">
+                            <!-- <i class="fas fa-arrow-up text-emerald-500 mr-4"></i> -->
+                          </td>
+                          <form action="{% url 'valider' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="reservation" value="{{item.id_reservation}}">
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><button>Valider</button>
+                            </td>
+                          </form>
+                        </tr>
+                        {%empty%}
+                        <p class="text-2xl"> Pas de reservation pour le momment</p>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <p class="font-bold text-xl">Emprunts</p>
+                    <table class="items-center w-full bg-transparent border-collapse">
+                      <thead>
+                        <tr>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nom et prenom</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Livre</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">ID Exemplaire</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date d'Emprunts</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date prevu de retour</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Retourne?</th>
+                          <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Valider le retour</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in Emprunts  %}
+                        <tr>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">{{item.id_etudiant}}</th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.id_exemplaire.id_livre.titre}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.id_exemplaire.id_exemplaire}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_emprunt}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_retour_prevue}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.retourner}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <img src="{{item.id_livre.image}}" alt="">
+                            <!-- <i class="fas fa-arrow-up text-emerald-500 mr-4"></i> -->
+                          </td>
+                          <form action="{% url 'retourner' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="emprunts" value="{{item.id_emprunt}}">
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><button>oui</button>
+                            </td>
+                          </form>
+                        </tr>
+                        {%empty%}
+                        <p class="text-2xl text-center font-bold"> Pas d'Emprunts pour le momment</p>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <p class="font-bold text-xl">Historique</p>
+                    <table class="items-center w-full bg-transparent border-collapse">
+                      <thead>
+                        <tr>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Nom et prenom</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Livre</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            ID Exemplaire</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Date d'Emprunts</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Date prevu de retour</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Retourne?</th>
+                          <th
+                            class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                            Date retour effectif</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for item in historique %}
+                        <tr>
+                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                            {{item.id_etudiant}}</th>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{item.id_exemplaire.id_livre.titre}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{item.id_exemplaire.id_exemplaire}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_emprunt}}
+                          </td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            {{item.date_retour_prevue}}</td>
+                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.retourner}}
+                          </td>
+                          <!-- <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                            <img src="{{item.id_livre.image}}" alt="">
                             <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                            46,53%
-                          </td>
+                          </td> -->
+
+                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                              {{item.date_retour_effectif}}
+                            </td>
+
                         </tr>
-                        <tr>
-                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">/argon/index.html</th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">3,985</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">319</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                            46,53%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">/argon/charts.html</th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">3,513</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">294</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-arrow-down text-orange-500 mr-4"></i>
-                            36,49%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">/argon/tables.html</th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">2,050</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">147</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                            50,87%
-                          </td>
-                        </tr>
-                        <tr>
-                          <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">/argon/profile.html</th>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">1,795</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">190</td>
-                          <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                            <i class="fas fa-arrow-down text-red-500 mr-4"></i>
-                            46,53%
-                          </td>
-                        </tr>
+                        {%empty%}
+                        <p class="text-2xl"> Pas d'historique pour le momment</p>
+                        {% endfor %}
                       </tbody>
                     </table>
                   </div>

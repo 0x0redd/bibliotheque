@@ -32,7 +32,10 @@ urlpatterns = [
     path('livre/', livre, name='livre'),
     path('Annuler/', annule, name='annuler'),
     path('Contact', contact, name='contact'),
-    path('dashboard', dashboard, name='dashboard')
+    path('dashboard', dashboard, name='dashboard'),
+    path('valider/',valider,name='valider'),
+    path('exemplaire',createExemplaire,name="createExemplaire"),
+    path('retourner/',retourner,name='retourner'),
 ]
 
 # Add static files serving in development mode
