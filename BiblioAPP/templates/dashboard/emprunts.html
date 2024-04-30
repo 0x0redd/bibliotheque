@@ -1,0 +1,77 @@
+{% load compress %}
+{% load static %}
+{% load tz %}
+<!-- emprunt -->
+<div class="flex flex-wrap -mx-3 mb-5">
+    <div class="w-full max-w-full px-3 mb-6  mx-auto">
+      <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white-100 m-5">
+        <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
+          <h1 class="text-xl text-bold mg-16 text-orange-400 bg-neutral-100 w-fit px-4 py-2 rounded-lg">Emprunts </h1>
+          <!-- card body  -->
+          <div class="flex-auto block py-8 pt-6 px-9">
+            <div class="overflow-x-auto">
+              <table class="w-full my-0 align-middle text-dark border-neutral-200">
+                <thead class="align-bottom">
+                  <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                    <th class="px-4 py-3 text-start">Nom et prenom</th>
+                    <th class="px-4 py-3 text-start "> Livre </th>
+                    <th class="px-4 py-3 text-start ">Exemplaire </th>
+                    <th class="px-4 py-3 text-start ">Date d'Emprunts</th>
+                    <th class="px-4 py-3 text-start ">Date prevu de retour</th>
+                    <!-- <th class="  text-center ">Retourne?</th> -->
+                    <th class="px-4 py-3 text-start ">Valider le retour</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in Emprunts  %}
+                  <tr class="border-b border-dashed last:border-b-0">
+                    <!-- etudiant -->
+                    <td class="px-4 py-3 border">
+                        <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant}}</span>
+                    </td>
+                    <!-- Livre -->
+                    <td class="px-4 py-3 border">
+                        <span class="font-semibold text-light-inverse text-md/normal">{{item.id_exemplaire.id_livre.titre}}</span>
+                    </td>
+                    <!--ID Exemplaire -->
+                    <td class="px-4 py-3 border">
+                        <span class="font-semibold text-light-inverse text-md/normal">{{item.id_exemplaire.id_exemplaire}}</span>
+                    </td>
+                    <!-- Date d'Emprunts -->
+                    <td class="px-4 py-3 border">
+                        <span class="font-semibold text-light-inverse text-md/normal">{{item.date_emprunt}}</span>
+                    </td>
+                    <!-- Date prevu de retour  -->
+                    <td class="px-4 py-3 border">
+                        {% if current_date > item.date_retour_prevue %}
+                            <span class="font-semibold text-light-inverse text-md/normal text-red-500">{{ item.date_retour_prevue }}</span>
+                        {% elif current_date == item.date_retour_prevue %}
+                            <span class="font-semibold text-light-inverse text-md/normal text-orange-300">{{ item.date_retour_prevue }}</span>
+                        {% else %}
+                            <span class="font-semibold text-light-inverse text-md/normal text-green-500">{{ item.date_retour_prevue }}</span>
+                        {% endif %}
+                    </td>
+                    <!-- Retourne?  -->
+                    <!-- <td class="p-3 pr-0 text-center">
+                        <span class="font-semibold text-light-inverse text-md/normal">{{item.retourner}}</span>
+                    </td> -->
+                    <!-- Valider retour -->
+                    <form action="{% url 'retourner' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="emprunts" value="{{item.id_emprunt}}">
+                        <td class="p-0 border bg-green-600 hover:bg-green-400 transition-all duration-200">
+                            <button class="font-bold text-md/normal py-4 px-4 w-full text-left text-white" type="submit" value="Confirmer">Valider le retour</button>
+                        </td>
+                    </form>
+                  </tr>
+                  {%empty%}
+                  <p class="text-2xl"> Pas d'historique pour le moment</p>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

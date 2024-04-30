@@ -1,0 +1,88 @@
+{% load compress %}
+{% load static %}
+
+<!--reservation -->
+<div class="flex flex-wrap -mx-3 mb-5">
+    <div class="w-full max-w-full px-3 mb-6  mx-auto">
+      <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white m-5">
+        <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
+          <h1 class="text-xl text-bold mg-16 text-orange-400 bg-gray-100 w-fit px-4 py-2 rounded-lg">Réservations</h1>
+          <!-- card body  -->
+          <div class="flex-auto block py-8 pt-6 px-9">
+            <div class="overflow-x-auto">
+            {% if Reservations.count == 0 %}
+            <p class="text-2xl text-red-600 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-octagon-x"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+              Pas de réservation pour le moment</p>
+            {% else %}
+              <table class="w-full my-0 align-middle text-dark border-neutral-200 rounded-lg">
+                <thead class="align-bottom rounded-lg">
+                  <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                    <th class="px-4 py-3 text-start ">Livre</th>
+                    <th class="px-4 py-3 text-start ">Nom et prenom</th>
+                    <th class="px-4 py-3 text-start ">Penalites</th>
+                    <th class="px-4 py-3 text-start ">Filliere</th>
+                    <th class="px-4 py-3 text-start ">date de reservation</th>
+                    <th class="px-4 py-3 text-start ">Valider</th>
+                    <th class="px-4 py-3 text-start ">Annuler</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in Reservations  %}
+                  <tr class="border-b border-dashed last:border-b-0">
+                      <!--livre-->
+                    <td class="px-4 py-3 border">
+                      <div class="flex items-center">
+                        <div class="relative inline-block shrink-0  me-3">
+                          <img src="{{item.id_livre.image}}" class="w-[50px] h-[50px] inline-block shrink-0 rounded-sm" alt="">
+                        </div>
+                        <div class="flex flex-col justify-start">
+                          <a href="javascript:void(0)" class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse">{{item.id_livre.titre}}</a>
+                        </div>
+                      </div>
+                    </td>
+                    <!-- etudiant -->
+                    <td class="px-4 py-3 h-full border">
+                      <span class="font-semibold text-light-inverse text-md/normal flex gap-2 items-center">
+                        {{item.id_etudiant}}
+                      </span>
+                    </td>
+                    <td class="px-4 py-3 border">
+                      <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant.filiere}}</span>
+                    </td>
+                    <!--Filliere -->
+                    <td class="px-4 py-3 border">
+                      <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant.filiere}}</span>
+                    </td>
+                    <!-- date de reservation  -->
+                    <td class="px-4 py-3 border">
+                      <span class="font-semibold text-light-inverse text-md/normal">{{item.date_reservation}}</span>
+                    </td>
+                    <!-- Valider emprunt -->
+                    <form action="{% url 'valider' %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="reservation" value="{{item.id_reservation}}" class="p-0">
+                      <td class="p-0 border bg-green-600 hover:bg-green-400 transition-all duration-200">
+                        <button class="font-bold text-md/normal py-4 px-4 w-full text-left text-white" type="submit" value="Confirmer">Valider Emprunt</button>
+                      </td>
+                    </form>
+                    <form action="{% url 'annuler' %}" method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="reservation" value="{{item.id_reservation}}" class="p-0">
+                      <td class="p-0 border bg-red-600 hover:bg-red-400 transition-all duration-200">
+                        <button class="font-bold text-md/normal py-4 px-4 w-full text-left text-white" type="submit" value="Confirmer">Annuler Emprunt</button>
+                      </td>
+                    </form>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

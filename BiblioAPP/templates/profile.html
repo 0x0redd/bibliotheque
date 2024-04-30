@@ -135,10 +135,8 @@
                       <span class="text-md text-gray-500">Livres réservés</span>
                     </div>
                     <div class="mr-4 p-3 text-center">
-                      <span
-                        class="text-xl font-bold block uppercase tracking-wide text-gray-700"
-                        >{{emprunt.count}}</span
-                      ><span class="text-md text-gray-500">Livres empruntés</span>
+                      <span class="text-xl font-bold block uppercase tracking-wide text-gray-700">{{emprunt_count}}</span>
+                        <span class="text-md text-gray-500">Livres empruntés</span>
                     </div>
                     <div class="lg:mr-4 p-3 text-center">
                       <span
@@ -226,7 +224,7 @@
                               </span>
                             </td>
                             {% if user.is_staff %}
-                            <form action="{% url 'annuler'%}" method="post">
+                            <form action="{% url 'valider'%}" method="post">
                               {% csrf_token %}
                               <input type="hidden" name="reservation" value="{{res.id_reservation}}">
                               <td class="p-0 text-sm border bg-green-600 hover:bg-green-400 transition-all duration-200"><button class="font-bold py-4 px-4 w-full text-left text-white" type="submit" value="Confirmer">Confirmer</button></td>
@@ -245,7 +243,7 @@
                   </div>
                 </section>
               </ul>
-              <h1 class="font-bold text-3xl"><h1 class="font-bold text-3xl">emprunt</h1>
+              <h1 class="font-bold text-3xl"><h1 class="font-bold text-3xl">Livres Empruntes</h1>
               <ul>
                 <!-- Iterate over the 'reservation' context data -->
                 <!-- component -->
@@ -264,24 +262,34 @@
                         </thead>
                         <tbody class="bg-white">
                           {% for emp in emprunt %}
-                          <tr class="text-gray-700">
-                            <td class="px-4 py-3 border">
-                              <div class="flex items-center text-sm">
-                                <div class="relative w-8 h-8 mr-3 rounded-full md:block">
-                                  <img class="object-cover w-full h-full rounded-full"
-                                    src="{{emp.id_livre.image}}"
-                                    alt="" loading="lazy" />
-                                  <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                            {% if emp.retourner == 0 %}
+                            <tr class="text-gray-700">
+                              <td class="px-4 py-3 border">
+                                <div class="flex items-center text-sm">
+                                  <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                      src="{{emp.id_exemplaire.id_livre.image}}"
+                                      alt="" loading="lazy" />
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                  </div>
+                                  <div>
+                                    <p class="font-semibold text-black">{{emp.id_exemplaire.id_livre.titre}}</p>
+                                  </div>
                                 </div>
-                                <div>
-                                  <p class="font-semibold text-black">{{emp.id_exemplaire.id_livre.titre}}</p>
-                                </div>
-                              </div>
-                            </td>
-                            <td class="px-4 py-3 text-ms font-semibold border">{{emp.date_emprunt}}</td>
-                            
-                              <td class="p-0 text-sm border {%if emp.date_retour_effectif > emp.date_retour_prevue %} text-red-500{%else %}text-green-500 {% endif %} ">{{emp.date_retour_prevue}}</td>
-                          </tr>
+                              </td>
+                              <td class="px-4 py-3 text-ms font-semibold border">{{emp.date_emprunt}}</td>
+                              
+                              <td class="px-4 py-3 border">
+                                {% if current_date > emp.date_retour_prevue %}
+                                    <span class="font-semibold text-light-inverse text-md/normal text-red-500">{{ emp.date_retour_prevue }}</span>
+                                {% elif current_date == emp.date_retour_prevue %}
+                                    <span class="font-semibold text-light-inverse text-md/normal text-orange-300">{{ emp.date_retour_prevue }}</span>
+                                {% else %}
+                                    <span class="font-semibold text-light-inverse text-md/normal text-green-500">{{ emp.date_retour_prevue }}</span>
+                                {% endif %}
+                              </td>
+                            </tr>
+                            {% endif %}
                           {% endfor %}
                         </tbody>
                       </table>
@@ -305,6 +313,53 @@
                   </div>
                 </div>
               </div> -->
+              
+              <h1 class="font-bold text-3xl"><h1 class="font-bold text-3xl">Historique des emprunts</h1>
+              <ul>
+                <!-- Iterate over the 'reservation' context data -->
+                <!-- component -->
+                <section class="container mx-auto p-6 font-mono">
+                  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
+                    <div class="w-full overflow-x-auto">
+                      <table class="w-full">
+                        <thead>
+                          <tr
+                            class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                            <th class="px-4 py-3">Livres</th>
+                            <th class="px-4 py-3">Date d'emprunt</th>
+                            <th class="px-4 py-3">Date de Retour Effectif</th>
+                            
+                          </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                          {% for emp in emprunt %}
+                            {% if emp.retourner == 1 %}
+                            <tr class="text-gray-700">
+                              <td class="px-4 py-3 border">
+                                <div class="flex items-center text-sm">
+                                  <div class="relative w-8 h-8 mr-3 rounded-full md:block">
+                                    <img class="object-cover w-full h-full rounded-full"
+                                      src="{{emp.id_exemplaire.id_livre.image}}"
+                                      alt="" loading="lazy" />
+                                    <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                                  </div>
+                                  <div>
+                                    <p class="font-semibold text-black">{{emp.id_exemplaire.id_livre.titre}}</p>
+                                  </div>
+                                </div>
+                              </td>
+                              <td class="px-4 py-3 text-ms font-semibold border">{{emp.date_emprunt}}</td>
+                              
+                              <td class="px-4 py-3 text-ms font-semibold border">{{emp.date_retour_effectif}}</td>
+                            </tr>
+                            {% endif %}
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </section>
+              </ul></h1>
             </div>
           </div>
         </div>

@@ -20,6 +20,7 @@ def contact(request):
     return render(request, 'contact.html')
 
 def dashboard(request):
+
     if(request.user.is_staff):
         context = {
             'Etudiants':Etudiant.objects.filter(is_staff=0),
@@ -28,7 +29,7 @@ def dashboard(request):
             'historique':Emprunt.objects.all(),
             'Livres':Livre.objects.all(),
             'Exemplaires':Exemplaire.objects.all(),
-            'Sanctions':Sanction.objects.all(),
+            'current_date': datetime.date.today(),
         }
         return render(request, 'dashboard.html', context)
     
@@ -53,6 +54,8 @@ def profile(request):
                 'reservation':Reservation.objects.filter(id_etudiant=request.user),
                 'emprunt':Emprunt.objects.filter(id_etudiant=request.user),
                 'count':Reservation.objects.filter(id_etudiant=request.user).count(),
+                'emprunt_count':Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count(),
+                'current_date': datetime.date.today(),
             }
             render(request, 'profile.html', context)
         else:
@@ -62,6 +65,7 @@ def profile(request):
                 'Emprunt':Emprunt.objects.all(),
                 'etudiants':Etudiant.objects.filter(is_staff=0,is_superuser=0),
                 'count':Reservation.objects.all().count(),
+                'current_date': datetime.date.today(),
             }
         if request.user.is_authenticated:
             return render(request, 'profile.html', context)
@@ -75,7 +79,7 @@ def reservation(request):
         form=reservForm(request.POST)
         if form.is_valid():
             res= Reservation.objects
-            if(res.all().filter(id_etudiant= request.user).count()<=3 or Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count()<=3):
+            if((res.all().filter(id_etudiant= request.user).count() + Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count()) <=3):
                 book = Livre.objects.filter(id_livre= form.cleaned_data["IDlivre"]).first()
                 res =Reservation.objects.create(id_etudiant=request.user ,id_livre= book, date_reservation= datetime.datetime.now()).save()
                 return redirect('profile')
@@ -166,13 +170,14 @@ def livre(request):
     books = Livre.objects.all() # Get all books initially
     if not request.user.is_anonymous:
         count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
-        count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant).count()
+        count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant, retourner=False).count()
+        sum = count + count1
     else:
         count=0
     if form.is_valid():
         query = form.cleaned_data['query']
         books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
-    return render(request, 'livre.html', {'form': form, 'books': books,'Res_count':count,'Emp_count':count1})
+    return render(request, 'livre.html', {'form': form, 'books': books,'Res_count':count,'Emp_count':count1, 'sum':sum})
 
 def annule(request):
     res = request.POST.get('reservation')

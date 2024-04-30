@@ -1,0 +1,49 @@
+{% load compress %}
+{% load static %}
+<!--reservation -->
+<div class="flex flex-wrap -mx-3 mb-5">
+    <div class="w-full max-w-full px-3 mb-6  mx-auto">
+      <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white m-5">
+        <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
+          <h1 class="text-xl text-bold mg-16 text-orange-400 bg-gray-100 w-fit px-4 py-2 rounded-lg">Exemplaires</h1>
+          <!-- card body  -->
+          <div class="flex-auto block py-8 pt-6 px-9">
+            <div class="overflow-x-auto">
+              <table class="w-full my-0 align-middle text-dark border-neutral-200 rounded-lg">
+                    <thead class="align-bottom rounded-lg">
+                      <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                        <th class="px-4 py-3 text-start ">Nom et prenom</th>
+                        <th class="px-4 py-3 text-start ">Livre</th>
+                        <th class="px-4 py-3 text-start ">Exemplaire</th>
+                        <th class="px-4 py-3 text-start ">Date d'Emprunt</th>
+                        <th class="px-4 py-3 text-start ">Date prevu de retour</th>
+                        <th class="px-4 py-3 text-start ">Date retour effectif</th>
+                        <th class="px-4 py-3 text-start ">Retourne</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in historique %}
+                        <tr class="border-b border-dashed last:border-b-0">
+                            <td class="px-4 py-3 border">{{item.id_etudiant}}</td>
+                            <td class="px-4 py-3 border">{{item.id_exemplaire.id_livre.titre}}</td>
+                            <td class="px-4 py-3 border">{{item.id_exemplaire.id_exemplaire}}</td>
+                            <td class="px-4 py-3 border">{{item.date_emprunt}}</td>
+                            <td class="px-4 py-3 border">{{item.date_retour_prevue}}</td>
+                            <td class="px-4 py-3 border">{{item.date_retour_effectif}}</td>
+                            <td class="px-4 py-3 border">
+                                {% if item.retourner == True %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                                {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff1111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-x"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m14.5 7-5 5"/><path d="m9.5 7 5 5"/></svg>
+                                {% endif %}
+                            </td>
+                        </tr>
+                      {%empty%}
+                      <p class="text-2xl"> Pas d'historique pour le moment</p>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> 

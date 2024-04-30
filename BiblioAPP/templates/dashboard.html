@@ -22,249 +22,21 @@
       }
     </script>
     <style>
-      /*--------------------------------------Loader---------------------------------------*/
-      .loader {
-        --background: linear-gradient(135deg, #23c4f8, #275efe);
-        --shadow: rgba(39, 94, 254, 0.28);
-        --text: #6c7486;
-        --page: rgba(255, 255, 255, 0.36);
-        --page-fold: rgba(255, 255, 255, 0.52);
-        --duration: 3s;
-        width: 200px;
-        height: 140px;
-        position: relative;
+      .bg-cover{
+        background-image: url("{% static 'source/bg-lib.svg' %}") !important; 
+        background-position: center !important;
+        backdrop-filter: blur(5px) !important;
       }
-      
-      .loader:before,
-      .loader:after {
-        --r: -6deg;
-        content: '';
-        position: absolute;
-        bottom: 8px;
-        width: 120px;
-        top: 80%;
-        box-shadow: 0 16px 12px var(--shadow);
-        transform: rotate(var(--r));
-      }
-      
-      .loader:before {
-        left: 4px;
-      }
-      
-      .loader:after {
-        --r: 6deg;
-        right: 4px;
-      }
-      
-      .loader div {
-        width: 100%;
-        height: 100%;
-        border-radius: 13px;
-        position: relative;
-        z-index: 1;
-        perspective: 600px;
-        box-shadow: 0 4px 6px var(--shadow);
-        background-image: var(--background);
-      }
-      
-      .loader div ul {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        position: relative;
-      }
-      
-      .loader div ul li {
-        --r: 180deg;
-        --o: 0;
-        --c: var(--page);
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        transform-origin: 100% 50%;
-        color: var(--c);
-        opacity: var(--o);
-        transform: rotateY(var(--r));
-        -webkit-animation: var(--duration) ease infinite;
-        animation: var(--duration) ease infinite;
-      }
-      
-      .loader div ul li:nth-child(2) {
-        --c: var(--page-fold);
-        -webkit-animation-name: page-2;
-        animation-name: page-2;
-      }
-      
-      .loader div ul li:nth-child(3) {
-        --c: var(--page-fold);
-        -webkit-animation-name: page-3;
-        animation-name: page-3;
-      }
-      
-      .loader div ul li:nth-child(4) {
-        --c: var(--page-fold);
-        -webkit-animation-name: page-4;
-        animation-name: page-4;
-      }
-      
-      .loader div ul li:nth-child(5) {
-        --c: var(--page-fold);
-        -webkit-animation-name: page-5;
-        animation-name: page-5;
-      }
-      
-      .loader div ul li svg {
-        width: 90px;
-        height: 120px;
-        display: block;
-      }
-      
-      .loader div ul li:first-child {
-        --r: 0deg;
-        --o: 1;
-      }
-      
-      .loader div ul li:last-child {
-        --o: 1;
-      }
-      
-      .loader span {
-        display: block;
-        left: 0;
-        right: 0;
-        top: 100%;
-        margin-top: 20px;
-        text-align: center;
-        color: var(--text);
-      }
-      
-      @keyframes page-2 {
-        0% {
-          transform: rotateY(180deg);
-          opacity: 0;
-        }
-      
-        20% {
-          opacity: 1;
-        }
-      
-        35%,
-        100% {
-          opacity: 0;
-        }
-      
-        50%,
-        100% {
-          transform: rotateY(0deg);
-        }
-      }
-      
-      @keyframes page-3 {
-        15% {
-          transform: rotateY(180deg);
-          opacity: 0;
-        }
-      
-        35% {
-          opacity: 1;
-        }
-      
-        50%,
-        100% {
-          opacity: 0;
-        }
-      
-        65%,
-        100% {
-          transform: rotateY(0deg);
-        }
-      }
-      
-      @keyframes page-4 {
-        30% {
-          transform: rotateY(180deg);
-          opacity: 0;
-        }
-      
-        50% {
-          opacity: 1;
-        }
-      
-        65%,
-        100% {
-          opacity: 0;
-        }
-      
-        80%,
-        100% {
-          transform: rotateY(0deg);
-        }
-      }
-      
-      @keyframes page-5 {
-        45% {
-          transform: rotateY(180deg);
-          opacity: 0;
-        }
-      
-        65% {
-          opacity: 1;
-        }
-      
-        80%,
-        100% {
-          opacity: 0;
-        }
-      
-        95%,
-        100% {
-          transform: rotateY(0deg);
-        }
+      @property --num {
+        syntax: '<integer>';
+        initial-value: 0;
+        inherits: false;
       }
     </style>
     <title>FSUMI-LIB</title>
 </head>
 <body>
-<!-- loading -->
 
-    <div id="loading" class="loader-Content fixed inset-0 flex items-center justify-center bg-white z-50">
-      <div class="loader">
-        <div>
-          <ul>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-            <li>
-              <svg fill="currentColor" viewBox="0 0 90 120">
-                <path d="M90,0 L90,120 L11,120 C4.92486775,120 0,115.075132 0,109 L0,11 C0,4.92486775 4.92486775,0 11,0 L90,0 Z M71.5,81 L18.5,81 C17.1192881,81 16,82.1192881 16,83.5 C16,84.8254834 17.0315359,85.9100387 18.3356243,85.9946823 L18.5,86 L71.5,86 C72.8807119,86 74,84.8807119 74,83.5 C74,82.1745166 72.9684641,81.0899613 71.6643757,81.0053177 L71.5,81 Z M71.5,57 L18.5,57 C17.1192881,57 16,58.1192881 16,59.5 C16,60.8254834 17.0315359,61.9100387 18.3356243,61.9946823 L18.5,62 L71.5,62 C72.8807119,62 74,60.8807119 74,59.5 C74,58.1192881 72.8807119,57 71.5,57 Z M71.5,33 L18.5,33 C17.1192881,33 16,34.1192881 16,35.5 C16,36.8254834 17.0315359,37.9100387 18.3356243,37.9946823 L18.5,38 L71.5,38 C72.8807119,38 74,36.8807119 74,35.5 C74,34.1192881 72.8807119,33 71.5,33 Z"></path>
-              </svg>
-            </li>
-          </ul>
-        </div><span>Loading</span>
-      </div>
-    </div>
 <!-- main -->
   <main id="content">
       <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -277,29 +49,34 @@
               onclick="toggleNavbar('example-collapse-sidebar')">
               <i class="fas fa-bars"></i>
             </button>
-            <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" href="javascript:void(0)">FSUMI-LIB</a>
+            <a class="flex h-full items-center text-bold text-lg gap-2 hover:scale-105 transition-all duration-300" href="javascript:void(0)">
+              <img class="w-auto h-6 lg:h-8" src="{% static 'source/library.svg' %}" alt="" />
+              FSUMI-LIB
+            </a>
             <ul class="md:hidden items-center flex flex-wrap list-none">
               <li class="inline-block relative">
-                <a class="text-blueGray-500 block py-1 px-3" href="#pablo" onclick="openDropdown(event,'notification-dropdown')">
+                <a class="text-black-500 block py-1 px-3" href="#pablo" onclick="openDropdown(event,'notification-dropdown')">
                   <i class="fas fa-bell"></i>
                 </a>
                 <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="notification-dropdown">
-                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Action</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Another action</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Something else here</a>
                   <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Seprated link</a>
                 </div>
               </li>
               <li class="inline-block relative">
-                <a class="text-blueGray-500 block" href="#pablo" onclick="openDropdown(event,'user-responsive-dropdown')">
+                <a class="text-black-500 block" href="#pablo" onclick="openDropdown(event,'user-responsive-dropdown')">
                   <div class="items-center flex">
                     <span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
-                      <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{% static "/source/profile/fsm.jpg" %}" /></span>
+                      <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{% static '/source/profile/fsm.jpg' %}" /></span>
                   </div>
                 </a>
                 <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-responsive-dropdown">
-                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Another action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Something else here</a>
                   <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
+                  <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">Seprated link</a>
                 </div>
               </li>
             </ul>
@@ -307,7 +84,7 @@
               <div class="md:min-w-full md:hidden block pb-4 mb-4 border-b border-solid border-blueGray-200">
                 <div class="flex flex-wrap">
                   <div class="w-6/12">
-                    <a class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" href="{}">FSUMI-LIB</a>
+                    <a class="md:block text-left md:pb-2 text-orange-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0" href="{}">FSUMI-LIB</a>
                   </div>
                   <div class="w-6/12 flex justify-end">
                     <button type="button" class="cursor-pointer text-black opacity-50 md:hidden px-3 py-1 text-xl leading-none bg-transparent rounded border border-solid border-transparent" onclick="toggleNavbar('example-collapse-sidebar')" >
@@ -320,71 +97,78 @@
     <!--side bar -->
      <form class="mt-6 mb-4 md:hidden">
                 <div class="mb-3 pt-0">
-                  <input type="text" placeholder="Search" class="border-0 px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
+                  <input type="text" placeholder="Search" class="border-0 px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-orange-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal" />
                 </div>
               </form>
-              <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+              <hr>
+              <ul class="md:flex-col md:min-w-full flex flex-col list-none lg:mt-2">
                 <li class="items-center">
-                  <a class="text-pink-500 hover:text-pink-600 text-xs uppercase py-3 font-bold block" href="#/dashboard">
+                  <a class="{% if request.path == '/dashboard-reservations' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-reservations">
                     <i class="fas fa-tv opacity-75 mr-2 text-sm"></i>
-                    reservation
+                    Reservations
                   </a>
                 </li>
                 <li class="items-center">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" href="#/landing">
-                    <i class="fas fa-newspaper text-blueGray-400 mr-2 text-sm"></i>
-                    emprunt
+                  <a class="{% if request.path == '/dashboard-emprunts' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-emprunts">
+                    <i class="fas fa-newspaper text-black-400 mr-2 text-sm"></i>
+                    Emprunts
                   </a>
                 </li>
                 <li class="items-center">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" href="#/profile">
-                    <i class="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>
-                    historique
+                  <a class="{% if request.path == '/dashboard-historique' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-historique">
+                    <i class="fas fa-user-circle text-black-400 mr-2 text-sm"></i>
+                    Historique
                   </a>
                 </li>
                 <li class="items-center">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block" href="#/login">
-                    <i class="fas fa-fingerprint text-blueGray-400 mr-2 text-sm"></i>
+                  <a class="{% if request.path == '/dashboard-etudiants' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-etudiants">
+                    <i class="fas fa-fingerprint text-black-400 mr-2 text-sm"></i>
                     Etudiants
                   </a>
                 </li>
                 <li class="items-center">
-                  <a class="text-blueGray-300 text-xs uppercase py-3 font-bold block" href="#pablo">
-                    <i class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"></i>
-                    livre
+                  <a class="{% if request.path == '/dashboard-livres' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-livres">
+                    <i class="fas fa-clipboard-list text-black-400 mr-2 text-sm"></i>
+                    Livres
                   </a>
                 </li>
                 <li class="items-center">
-                  <a class="text-blueGray-300 text-xs uppercase py-3 font-bold block" href="#pablo">
-                    <i class="fas fa-tools text-blueGray-300 mr-2 text-sm"></i>
-                    Exemplaire
+                  <a class="{% if request.path == '/dashboard-exemplaires' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-exemplaires">
+                    <i class="fas fa-tools text-black-400 mr-2 text-sm"></i>
+                    Exemplaires
                   </a>
                 </li>
               </ul>
               <hr class="my-4 md:min-w-full" />
-              <h6 class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">Documentation</h6>
+              <h6 class="md:min-w-full text-black-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">Documentation</h6>
               <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="inline-flex">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold" href="{% url 'index' %}">
-                    <i class="fas fa-paint-brush mr-2 text-blueGray-400 text-base"></i>
+                  <a class="text-black-500 hover:text-blue-600 text-sm block mb-4 no-underline font-semibold" href="{% url 'index' %}">
+                    <i class="fas fa-paint-brush mr-2 text-black-400 text-base"></i>
                     Accueil
                   </a>
                 </li>
                 <li class="inline-flex">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold" href="{% url 'livre' %}">
-                    <i class="fab fa-css3-alt mr-2 text-blueGray-400 text-base"></i>
+                  <a class="text-black-500 hover:text-blue-600 text-sm block mb-4 no-underline font-semibold" href="{% url 'livre' %}">
+                    <i class="fab fa-css3-alt mr-2 text-black-400 text-base"></i>
                     Explorer
                   </a>
                 </li>
                 <li class="inline-flex">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold" href="{% url 'contact' %}">
-                    <i class="fab fa-vuejs mr-2 text-blueGray-400 text-base"></i>
+                  <a class="text-black-500 hover:text-blue-600 text-sm block mb-4 no-underline font-semibold" href="{% url 'contact' %}">
+                    <i class="fab fa-vuejs mr-2 text-black-400 text-base"></i>
                     Contact
                   </a>
                 </li>
                 <li class="inline-flex">
-                  <a class="text-blueGray-700 hover:text-blueGray-500 text-sm block mb-4 no-underline font-semibold" href="{% url 'profile' %}">
-                    <i class="fab fa-react mr-2 text-blueGray-400 text-base"></i>
+                  <a class="text-black-500 hover:text-blue-600 text-sm block mb-4 no-underline font-semibold" href="{% url 'profile' %}">
+                    <i class="fab fa-react mr-2 text-black-400 text-base"></i>
                     profile
                   </a>
                 </li>
@@ -396,9 +180,17 @@
         <div class="relative md:ml-64 bg-blueGray-50">
           <nav class="absolute top-0 left-0 w-full z-10 bg-transparent md:flex-row md:flex-nowrap md:justify-start flex items-center p-4">
             <div class="w-full mx-autp items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
-              <a class="text-white text-sm uppercase hidden lg:inline-block font-semibold" href="#">Dashboard</a>
+              <a class="items-center gap-2 text-white text-md uppercase border-white hover:bg-orange-500 border-[1.5px] shadow-lg rounded-lg hidden lg:flex font-semibold p-4 backdrop-blur-sm hover:scale-105 transition-all duration-400" href="/dashboard">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard">
+                  <rect width="7" height="9" x="3" y="3" rx="1"/>
+                  <rect width="7" height="5" x="14" y="3" rx="1"/>
+                  <rect width="7" height="9" x="14" y="12" rx="1"/>
+                  <rect width="7" height="5" x="3" y="16" rx="1"/>
+                </svg>
+                Dashboard
+              </a>
               <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-                <a class="text-blueGray-500 block" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
+                <a class="text-black-500 block" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
                   <div class="items-center flex">
                     <span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
                       <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{% static "/source/profile/fsm.jpg" %}" /></span>
@@ -406,7 +198,7 @@
                 </a>
                 <!--user-dropdown-->
                 <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-dropdown">
-                  <a href="{% url 'index' %}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">home</a>
+                  <a href="{% url 'index' %}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">home</a>
                   
                   <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
                   <form action="{% url 'logout' %}" method="post">
@@ -424,24 +216,25 @@
           </nav>
 
           <!-- Header -->
-          <div class="relative bg-blue-300 md:pt-32 pb-32 pt-12">
+          <div class="relative bg-cover md:pt-32 pb-4 pt-12">
             <div class="px-4 md:px-10 mx-auto w-full">
                  <!-- Card stats -->
                 <div class="flex flex-wrap">
-                  <!-- user counter-->
+                  <!-- user counter -->
                   <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
                     <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
                       <div class="flex-auto p-4">
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                            <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre d'utilisateurs</h5>
-                            <span class="font-semibold text-xl text-blueGray-700">
-                                {{ Etudiants.count}} 
+                            <h5 class="text-black-400 uppercase font-bold text-sm">nombre d'etudiants</h5>
+                            <span class="tabular-nums text-black-500 text-2xl font-semibold mb-2 transition-[_--num] duration-[3s] ease-out [counter-set:_num_var(--num)] supports-[counter-set]:before:content-[counter(num)]" x-data="{ shown: false }" x-intersect="shown = true" :class="shown && '[--num:{{ Etudiants.count}}]'">
+                                <span class="supports-[counter-set]:sr-only">{{ Etudiants.count}} </span>
+                                
                             </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
-                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
-                              <i class="far fa-chart-bar"></i>
+                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                             </div>
                           </div>
                         </div>
@@ -454,12 +247,14 @@
                       <div class="flex-auto p-4">
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                            <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre total de livre</h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{ Livres.count }} </span>
+                            <h5 class="text-black-400 uppercase font-bold text-sm">Total des livres</h5>
+                            <span class="tabular-nums text-black-500 text-2xl font-semibold mb-2 transition-[_--num] duration-[3s] ease-out [counter-set:_num_var(--num)] supports-[counter-set]:before:content-[counter(num)]" x-data="{ shown: false }" x-intersect="shown = true" :class="shown && '[--num:{{ Livres.count}}]'">
+                              <span class="supports-[counter-set]:sr-only">{{ Livres.count }}</span>
+                            </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
-                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-orange-500">
-                              <i class="fas fa-chart-pie"></i>
+                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-library"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
                             </div>
                           </div>
                         </div>
@@ -472,12 +267,14 @@
                       <div class="flex-auto p-4">
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                            <h5 class="text-blueGray-400 uppercase font-bold text-xs">nombre total des reservation</h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{ Reservations.count }}</span>
+                            <h5 class="text-black-400 uppercase font-bold text-sm">Reservations</h5>
+                            <span class="tabular-nums text-black-500 text-2xl font-semibold mb-2 transition-[_--num] duration-[3s] ease-out [counter-set:_num_var(--num)] supports-[counter-set]:before:content-[counter(num)]" x-data="{ shown: false }" x-intersect="shown = true" :class="shown && '[--num:{{Reservations.count}}]'">
+                              <span class="supports-[counter-set]:sr-only">{{ Reservations.count }}</span>
+                            </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
-                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
-                              <i class="fas fa-users"></i>
+                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-marked"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><polyline points="10 2 10 10 13 7 16 10 16 2"/></svg>
                             </div>
                           </div>
                         </div>
@@ -490,12 +287,14 @@
                       <div class="flex-auto p-4">
                         <div class="flex flex-wrap">
                           <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
-                            <h5 class="text-blueGray-400 uppercase font-bold text-xs">livre emprunter </h5>
-                            <span class="font-semibold text-xl text-blueGray-700">{{Emprunts.count}}</span>
+                            <h5 class="text-black-400 uppercase font-bold text-sm">Livres empruntes </h5>
+                            <span class="tabular-nums text-black-500 text-2xl font-semibold mb-2 transition-[_--num] duration-[3s] ease-out [counter-set:_num_var(--num)] supports-[counter-set]:before:content-[counter(num)]" x-data="{ shown: false }" x-intersect="shown = true" :class="shown && '[--num:{{Emprunts.count}}]'">
+                              <span class="supports-[counter-set]:sr-only">{{Emprunts.count}}</span>
+                            </span>
                           </div>
                           <div class="relative w-auto pl-4 flex-initial">
-                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-lightBlue-500">
-                              <i class="fas fa-percent"></i>
+                            <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-blue-500">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-user"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><circle cx="12" cy="8" r="2"/><path d="M15 13a3 3 0 1 0-6 0"/></svg>  
                             </div>
                           </div>
                         </div>
@@ -506,231 +305,30 @@
                 </div>
             </div>
           </div>
-
-          <!--reservation -->
-            <div class="flex flex-wrap -mx-3 mb-5">
-              <div class="w-full max-w-full px-3 mb-6  mx-auto">
-                <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white m-5">
-                  <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
-                    <h1 class="text-2xl mg-16">- Reservation</h1>
-                    <!-- card body  -->
-                    <div class="flex-auto block py-8 pt-6 px-9">
-                      <div class="overflow-x-auto">
-                        <table class="w-full my-0 align-middle text-dark border-neutral-200">
-                          <thead class="align-bottom">
-                            <tr class="font-semibold text-[0.95rem] text-secondary-dark">
-                              <th class=" text- ">Livre</th>
-                              <th class=" text-center ">Nom et prenom</th>
-                              <th class=" text-center ">Filliere</th>
-                              <th class="  text-center ">date de reservation</th>
-                              <th class="  text-center ">Valider emprunt</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for item in Reservations  %}
-                            <tr class="border-b border-dashed last:border-b-0">
-                                <!--livre-->
-                              <td class="p-3 pl-0">
-                                <div class="flex items-center">
-                                  <div class="relative inline-block shrink-0  me-3">
-                                    <img src="{{item.id_livre.image}}" class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl" alt="">
-                                  </div>
-                                  <div class="flex flex-col justify-start">
-                                    <a href="javascript:void(0)" class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">{{item.id_livre.titre}}</a>
-                                  </div>
-                                </div>
-                              </td>
-                              <!-- etudiant -->
-                              <td class="p-3 pr-0 text-center">
-                                <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant}}</span>
-                              </td>
-                              <!--Filliere -->
-                              <td class="p-3 pr-0 text-center">
-                                <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant.filiere}}</span>
-                              </td>
-                              <!-- date de reservation  -->
-                              <td class="p-3 pr-0 text-center">
-                                <span class="font-semibold text-light-inverse text-md/normal">{{item.date_reservation}}</span>
-                              </td>
-                              <!-- Valider emprunt -->
-                              <form action="{% url 'valider' %}" method="post">
-                                {% csrf_token %}
-                                <input type="hidden" name="reservation" value="{{item.id_reservation}}">
-                                <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-center whitespace-nowrap p-4 hover:text-green-500">
-                                  <button>Valider</button>
-                                </td>
-                              </form>
-                              </td>
-                            </tr>
-                            {%empty%}
-                                <p class="text-2xl text-red-"> Pas de reservation pour le moment</p>
-                                {% endfor %}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          <!-- emprunt -->
-            <div class="flex flex-wrap -mx-3 mb-5">
-              <div class="w-full max-w-full px-3 mb-6  mx-auto">
-                <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white-100 m-5">
-                  <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
-                    <h1 class="text-2xl mg-16">- Emprunt </h1>
-                    <!-- card body  -->
-                    <div class="flex-auto block py-8 pt-6 px-9">
-                      <div class="overflow-x-auto">
-                        <table class="w-full my-0 align-middle text-dark border-neutral-200">
-                          <thead class="align-bottom">
-                            <tr class="font-semibold text-[0.95rem] text-secondary-dark>
-                              <th class=" text- ">Nom et prenom</th>
-                              <th class=" text-center "> Livre </th>
-                              <th class=" text-center ">ID Exemplaire </th>
-                              <th class="  text-center ">Date d'Emprunts</th>
-                              <th class="  text-center ">Date prevu de retour</th>
-                              <th class="  text-center ">Retourne?</th>
-                              <th class="  text-center ">Valider le retour</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for item in Emprunts  %}
-                            <tr class="border-b border-dashed last:border-b-0">
-                             <!-- etudiant -->
-                                <td class="p-3 pr-0 text-center">
-                                  <span class="font-semibold text-light-inverse text-md/normal">{{item.id_etudiant}}</span>
-                                </td>
-                              <!-- Livre -->
-                                <td class="p-3 pr-0 text-center">
-                                  <span class="font-semibold text-light-inverse text-md/normal">{{item.id_exemplaire.id_livre.titre}}</span>
-                                </td>
-                              <!--ID Exemplaire -->
-                                <td class="p-3 pr-0 text-center">
-                                  <span class="font-semibold text-light-inverse text-md/normal">{{item.id_exemplaire.id_exemplaire}}</span>
-                                </td>
-                              <!-- Date prevu de retour  -->
-                                <td class="p-3 pr-0 text-center">
-                                  <span class="font-semibold text-light-inverse text-md/normal">{{item.date_retour_prevue}}</span>
-                                </td>
-                                <!-- Retourne?  -->
-                                <td class="p-3 pr-0 text-center">
-                                  <span class="font-semibold text-light-inverse text-md/normal">{{item.retourner}}</span>
-                                </td>
-                              <!-- Valider retour -->
-                              <td class="p-3 pr-0 text-center">
-                                <form action="{% url 'retourner' %}" method="post">
-                                  {% csrf_token %}
-                                  <input type="hidden" name="emprunts" value="{{item.id_emprunt}}">
-                                  <button>oui</button>
-                                </form>
-                              </td>
-                            </tr>
-                            {%empty%}
-                            <p class="text-2xl"> Pas d'historique pour le moment</p>
-                            {% endfor %}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          {% comment %} <div class="px-4 md:px-10 mx-auto w-full ">
-            <div class="flex flex-wrap">
-              <div class="block w-full overflow-x-auto">
-                <!-- Projects table -->
-                <p class="font-bold text-xl">Reservation</p>
-                <div class="flex-auto block py-8 pt-6 px-9">
-                <p class="font-bold text-xl">Emprunts</p>
-                <table class="items-center w-full bg-transparent border-collapse">
-                  <tbody>
-                    {% for item in Emprunts  %}
-                    <tr>
-                      
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_emprunt}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_retour_prevue}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.retourner}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <img src="{{item.id_livre.image}}" alt="">
-                        <!-- <i class="fas fa-arrow-up text-emerald-500 mr-4"></i> -->
-                      </td>
-
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          <form action="{% url 'retourner' %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="emprunts" value="{{item.id_emprunt}}">
-                            <button>oui</button>
-                          </form>
-                        </td>
-                    </tr>
-                    {%empty%}
-                    <p class="text-2xl text-center font-bold"> Pas d'Emprunts pour le moment</p>
-                    {% endfor %}
-                  </tbody>
-                </table>
-
-                <p class="font-bold text-xl">Historique</p>
-                <table class="items-center w-full bg-transparent border-collapse">
-                  <thead>
-                    <tr>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Nom et prenom</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Livre</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">ID Exemplaire</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date d'Emprunts</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date prevu de retour</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Retourne?</th>
-                      <th class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">Date retour effectif</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for item in historique %}
-                    <tr>
-                      <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                        {{item.id_etudiant}}</th>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{item.id_exemplaire.id_livre.titre}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{item.id_exemplaire.id_exemplaire}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.date_emprunt}}
-                      </td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        {{item.date_retour_prevue}}</td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">{{item.retourner}}
-                      </td>
-                      <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <img src="{{item.id_livre.image}}" alt="">
-                        <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                      </td>
-
-                        <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                          {{item.date_retour_effectif}}
-                        </td>
-
-                    </tr>
-                    {%empty%}
-                    <p class="text-2xl"> Pas d'historique pour le moment</p>
-                    {% endfor %}
-                  </tbody>
-                </table>
-
-              </div>
-
-            </div>{% endcomment %}
-
+            <!-- {% include 'dashboard/card.html' %} -->
             
-          </div> 
-
-
-
-        </div>
+          {% if request.path == '/dashboard-reservations' %}
+            {% include 'dashboard/reservations.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-emprunts' %}
+            {% include 'dashboard/emprunts.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-livres' %}
+            {% include 'dashboard/livres.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-etudiants' %}
+            {% include 'dashboard/etudiants.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-exemplaires' %}
+            {% include 'dashboard/exemplaires.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-historique' %}
+            {% include 'dashboard/historique.html' %}
+          {% endif  %}
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script>
       <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>
-      {% comment %} <script type="text/javascript">
+      <script type="text/javascript">
         /* Sidebar - Side navigation menu on mobile/responsive mode */
         function toggleNavbar(collapseID) {
           document.getElementById(collapseID).classList.toggle('hidden')
@@ -940,16 +538,11 @@
           ctx = document.getElementById('bar-chart').getContext('2d')
           window.myBar = new Chart(ctx, config)
         })()
-      </script> {% endcomment %}
+      </script>
+      <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </main>
   </body>
   <!-- scripts -->
-  <script>
-    //for loading
-    setTimeout(() => {
-      window.scrollTo(0, 0)
-      document.getElementById('loading').classList.add('hidden')
-      document.getElementById('content').classList.remove('hidden')
-    }, 1200)
-  </script>
+  
 </html>

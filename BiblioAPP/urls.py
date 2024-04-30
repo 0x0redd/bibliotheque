@@ -36,6 +36,14 @@ urlpatterns = [
     path('valider/',valider,name='valider'),
     path('exemplaire',createExemplaire,name="createExemplaire"),
     path('retourner/',retourner,name='retourner'),
+    
+    path('dashboard-reservations', dashboard, name='dashboard'),
+    path('dashboard-emprunts', dashboard, name='dashboard'),
+    path('dashboard-historique', dashboard, name='dashboard'),
+    path('dashboard-livres', dashboard, name='dashboard'),
+    path('dashboard-exemplaires', dashboard, name='dashboard'),
+    path('dashboard-sanctions', dashboard, name='dashboard'),
+    path('dashboard-etudiants', dashboard, name='dashboard'),
 ]
 
 # Add static files serving in development mode

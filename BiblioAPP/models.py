@@ -10,6 +10,7 @@ class Etudiant(AbstractUser):
     date_naissance = models.DateField()
     filiere = models.CharField(max_length=255)
     last_login = models.DateTimeField(default=timezone.now)
+    penalite = models.IntegerField(default=0)
 
 class Livre(models.Model):
     id_livre = models.AutoField(auto_created = True,primary_key=True)
@@ -41,17 +42,6 @@ class Emprunt(models.Model):
     date_retour_prevue = models.DateField() 
     date_retour_effectif = models.DateField(null=True)
     retourner = models.BooleanField(default=False)
-
-class Sanction(models.Model):
-    id_sanction = models.AutoField(auto_created = True,primary_key=True)
-    id_etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
-    sanction_choices = [
-        ('retard', 'Retard'),
-        ('perte', 'Perte')
-    ]
-    type_sanction = models.CharField(max_length=10, choices=sanction_choices)
-    date_sanction = models.DateField() 
-    montant = models.DecimalField(max_digits=10, decimal_places=2)
 
 class Reservation(models.Model):
     id_reservation = models.AutoField(primary_key=True)  
