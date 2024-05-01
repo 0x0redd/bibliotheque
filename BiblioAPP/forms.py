@@ -27,3 +27,11 @@ class BookSearchForm(forms.Form):
     query = forms.CharField(label='Search', max_length=100)
 class reservForm(forms.Form):
     IDlivre = forms.IntegerField(label="IDlivre")
+class BookForm(forms.Form):
+    titre = forms.CharField(label="titre", max_length=100)
+    description = forms.CharField(label="description")
+    auteur = forms.CharField(label="auteur", max_length=50)
+    genre = forms.CharField(label="genre", max_length=50)
+    langue = forms.CharField(label="langue", max_length=20)
+    quantite = forms.IntegerField(label="quantite")
+    image = forms.FileField(label="image",required=False)

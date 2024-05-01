@@ -36,6 +36,9 @@ urlpatterns = [
     path('valider/',valider,name='valider'),
     path('exemplaire',createExemplaire,name="createExemplaire"),
     path('retourner/',retourner,name='retourner'),
+    path('addlivre/',create_livre,name='addlivre'),
+    path('editlivre/',editbook,name='editlivre'),
+    path('updateExemplaire/',updateExemplaire,name='updateExemplaire'),
     
     path('dashboard-reservations', dashboard, name='dashboard'),
     path('dashboard-emprunts', dashboard, name='dashboard'),

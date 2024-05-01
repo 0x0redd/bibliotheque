@@ -77,8 +77,12 @@
 <section class=" pb-20">
     <div class="px-10 flex flex-wrap items-center justify-center">
     {% for book in books %}
-        <div data-book="{{book}}" class="book-card w-[250px] h-[370px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs hover:scale-105 transition-all duration-300">
-          <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
+    <div data-book="{{book}}" class="book-card w-[250px] h-[370px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs hover:scale-105 transition-all duration-300">
+      <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
+            <!-- if number of empxlaire <= 1 the live is no longer for reservation -->
+            {% if book.horspret %}
+              <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Sur place</span>
+            {% endif %}
             <div class="book-title transition-all duration-200 relative text-white px-4 pb-6 mt-6 w-fit">
             
               <div class="book-title transition-all duration-200 ">
@@ -89,7 +93,9 @@
             </div>
           </h3>
           <!-- Contenu pour utilisateurs connectés -->
-            <button id="myBtn"  data-book="{{book.id_livre}}" class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" onclick="openModal('{{book.id_livre}}')">Reserver</button>
+          {% if not book.horspret %}<!-- verifie if quantite > 1 -->
+          <button id="myBtn"  data-book="{{book.horspret}}" class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" onclick="openModal('{{book.id_livre}}')">Reserver</button>
+          {% endif %}
 
           <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0;">
             <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>

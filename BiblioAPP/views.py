@@ -3,7 +3,7 @@ from tkinter import Image
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
-from .forms import *# Assuming you have created a form for student registration
+from .forms import *
 from .models import *
 from django.contrib.auth import authenticate, login,logout
 #
@@ -22,12 +22,20 @@ def contact(request):
 def dashboard(request):
 
     if(request.user.is_staff):
+        for emp in Emprunt.objects.filter(date_retour_prevue=None): #this loop is to delete the lost exemple and apply pnality to etudiant
+            if(datetime.date.today - emp.date_retour_prevue> datetime.timedelta(days=365)):
+                emp.id_etudiant.penalite = emp.id_etudiant.penalite+1;
+                emp.id_exemplaire.id_livre.quantite = emp.id_exemplaire.id_livre.quantite-1;
+                emp.id_exemplaire.delete()
+        # for etu in Etudiant.objects.filter(is_staff=0,is_superuser=0):
+        #     retard = Emprunt.objects.filter(id_etudiant=etu,date_retour_prevue__lt=datetime.date.today,date_retour_effectif=None).count()
+        #     etu.penalite = etu.penalite+retard
         context = {
             'Etudiants':Etudiant.objects.filter(is_staff=0),
             'Reservations':Reservation.objects.all(),
             'Emprunts':Emprunt.objects.filter(retourner=False),
             'historique':Emprunt.objects.all(),
-            'Livres':Livre.objects.all(),
+            'Livres':Livre.objects.all().order_by("titre"),
             'Exemplaires':Exemplaire.objects.all(),
             'current_date': datetime.date.today(),
         }
@@ -79,8 +87,8 @@ def reservation(request):
         form=reservForm(request.POST)
         if form.is_valid():
             res= Reservation.objects
-            if((res.all().filter(id_etudiant= request.user).count() + Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count()) <=3):
-                book = Livre.objects.filter(id_livre= form.cleaned_data["IDlivre"]).first()
+            if((res.all().filter(id_etudiant= request.user).count() + Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count()) <3):
+                book = Livre.objects.get(pk= form.cleaned_data["IDlivre"])
                 res =Reservation.objects.create(id_etudiant=request.user ,id_livre= book, date_reservation= datetime.datetime.now()).save()
                 return redirect('profile')
             else:
@@ -167,13 +175,20 @@ def fakeBook(self, *args, **kwargs):
 
 def livre(request):
     form = BookSearchForm(request.GET)
-    books = Livre.objects.all() # Get all books initially
+    for b in Livre.objects.all():
+        if(Exemplaire.objects.filter(id_livre=b,etat="Disponible").count()<=1):
+            b.horspret=True
+            b.save()
+
+    books = Livre.objects.all().order_by("titre") # Get all books initially order by title
     if not request.user.is_anonymous:
         count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
         count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant, retourner=False).count()
         sum = count + count1
     else:
         count=0
+        count1=0
+        sum = 0
     if form.is_valid():
         query = form.cleaned_data['query']
         books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
@@ -186,29 +201,89 @@ def annule(request):
 def valider(request):
     id_reserve = request.POST.get('reservation')
     res = Reservation.objects.get(pk=id_reserve)
-    exemplaire=Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").first()
-    Emprunt.objects.create(id_etudiant=res.id_etudiant,id_exemplaire=exemplaire,date_emprunt=datetime.datetime.now(),date_retour_prevue=datetime.datetime.now()+datetime.timedelta(days=15)).save()
-    exemplaire.etat = "Hors-pret"
-    exemplaire.save()
-    Livre_Reservation.objects.create(id_livre=res.id_livre,id_reservation=res)
-    res.delete()
+    exemplaire=Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").count()
+    if(exemplaire >1):
+        exemplaire =Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").first()
+        Emprunt.objects.create(id_etudiant=res.id_etudiant,id_exemplaire=exemplaire,date_emprunt=datetime.datetime.now(),date_retour_prevue=datetime.datetime.now()+datetime.timedelta(days=15)).save()
+
+        exemplaire.etat = "Hors-pret"
+        exemplaire.save()
+        Livre_Reservation.objects.create(id_livre=res.id_livre,id_reservation=res)
+        res.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def createExemplaire(request):
     for book in Livre.objects.all():
+        book.quantite = random.randint(1,3)
         if book.quantite>1:
             etat = "Disponible"
+            book.horspret=False
         else:
             etat ="Hors-pret"
-        
+            book.horspret =True
+            
+        book.save()
         for i in range(book.quantite) :
             Exemplaire.objects.create(id_livre=book,etat=etat,date_achat=datetime.datetime.now())
-
+    return HttpResponse(Livre.objects.all())
 def retourner(request):
     id_emprunt = request.POST.get('emprunts')
     emprunt=Emprunt.objects.get(pk=id_emprunt)
     emprunt.date_retour_effectif=datetime.datetime.now()
     emprunt.retourner = 1
+    emprunt.id_exemplaire.etat = "Disponible"
     emprunt.save()
     #Emprunt.objects.filter(id_emprunt=id_emprunt).update(date_retour_effectif=datetime.datetime.now,retourner=True)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+def create_livre(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Save the form data to the Livre model
+            if(form.cleaned_data['quantite']>1): #detecter automatiquement si il doit etre hors pret ou non
+                horspret = False
+            else:
+                horspret = True
+
+            livre = Livre(
+                pk=Livre.objects.count()+1,
+                titre=form.cleaned_data['titre'],
+                description=form.cleaned_data['description'],
+                auteur=form.cleaned_data['auteur'],
+                langue=form.cleaned_data['langue'],
+                quantite=form.cleaned_data['quantite'],
+                genre=form.cleaned_data['genre'],
+                image=form.cleaned_data['image'],
+                horspret=horspret
+            )
+            livre.save()
+            form.clean()
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    else:
+        form = BookForm()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+def editbook(request):
+    if request.method == 'POST':
+        livre = Livre.objects.get(pk=request.POST.get('idlivre'))
+        if(request.POST.get('quantite') is not None): #edit quantite
+            livre.quantite = request.POST.get('quantite')
+            
+        if(request.POST.get('horspret') ==None): #edit statut if none mean false 
+            livre.horspret = False
+        else:
+            livre.horspret = request.POST.get('horspret') #else true 
+        livre.save()
+        i =int(livre.quantite)- Exemplaire.objects.filter(id_livre=livre.id_livre).count() #here is for creating a new exemple of a book 
+        for k in range(i):
+            Exemplaire.objects.create(id_livre=livre,etat="Disponible",date_achat=datetime.datetime.now())
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+#this is for updating etat of exempalire
+def updateExemplaire(request):
+    if request.method == 'POST':
+        exemplaire = Exemplaire.objects.get(pk=request.POST.get('idexemplaire'))
+        exemplaire.etat = request.POST.get('etat')
+        exemplaire.save()
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

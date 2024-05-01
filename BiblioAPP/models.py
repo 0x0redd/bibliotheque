@@ -20,8 +20,8 @@ class Livre(models.Model):
     langue = models.CharField(max_length=50)
     quantite = models.IntegerField()
     genre = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='./static/boock')  
-
+    image = models.ImageField(upload_to='staticfiles/books/')
+    horspret = models.BooleanField(default=0)
 class Exemplaire(models.Model):
     id_exemplaire = models.AutoField(auto_created = True,primary_key=True)
     id_livre = models.ForeignKey(Livre, on_delete=models.CASCADE)
