@@ -288,6 +288,8 @@ def create_livre(request):
             )
             livre.save()
             form.clean()
+            for k in range(livre.quantite):
+                Exemplaire.objects.create(id_livre=livre,etat="Disponible",date_achat=datetime.datetime.now())
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = BookForm()
