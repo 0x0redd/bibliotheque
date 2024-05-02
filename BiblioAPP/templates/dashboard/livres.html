@@ -8,42 +8,64 @@
           <h1 class="text-xl text-bold mg-16 text-orange-400 bg-gray-100 w-fit px-4 py-2 rounded-lg">Livres</h1>
           <!-- FORM TO ADD NEW LIVRES form est provisoire -->
           <!-- component -->
-          <div class="flex flex-col space-y-4">
+          <div class="flex flex-col space-y-4 border-dashed border-2 border-gray-500 rounded-lg px-2 mx-9 mt-2">
             <form action="{% url 'addlivre' %}" method="post">
               {% csrf_token %}
-              <div class="p-2">
-                <label for="titre" class="text-gray-600">Titre</label>
-                <input type="text" name="titre" class="w-full rounded-md border border-gray-300 shadow-sm">
+              <div class="flex items-center gap-4">
+                <div class="p-2 w-2/3">
+                  <label for="titre" class="text-gray-600 text-lg font-semibold">Titre</label>
+                  <input type="text" name="titre" class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1">
+                </div>
+                <div class="p-2 w-1/3">
+                  <label for="auteur" class="text-gray-600 text-lg font-semibold">Auteur</label>
+                  <input type="text" name="auteur" class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1">
+                </div>
+              </div>
+              
+              <div class="flex items-center gap-4">
+                <div class="p-2 w-1/3">
+                  <label for="genre" class="text-gray-600 text-lg font-semibold">Genre</label>
+                  <input type="text" name="genre" class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1">
+                </div>
+                <div class="p-2 w-1/3">
+                  <label for="langue" class="text-gray-600 text-lg font-semibold">Langue</label>
+                  <input type="text" name="langue" class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1">
+                </div>
+                <div class="p-2 w-1/3">
+                  <label for="quantite" class="text-gray-600 text-lg font-semibold">Quantité</label>
+                  <input type="number" name="quantite" class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1">
+                </div>
               </div>
               <div class="p-2">
-                <label for="description" class="text-gray-600">Description</label>
+                <label for="description" class="text-gray-600 text-lg font-semibold">Description</label>
                 <textarea name="description" cols="30" rows="4"
-                  class="w-full rounded-md border border-gray-300 shadow-sm"></textarea>
+                  class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1"></textarea>
               </div>
+              
+              
+              <!--IMAGE UPLOAD INPUT FLOWBITE-->
               <div class="p-2">
-                <label for="auteur" class="text-gray-600">Auteur</label>
-                <input type="text" name="auteur" class="w-full rounded-md border border-gray-300 shadow-sm">
+                <label for="image" class="text-gray-700 text-lg font-semibold">Image Couverture</label>
+                <div class="flex items-center justify-center w-full">
+                
+                  <label for="dropzone-file" class="flex flex-col text-gray-500 items-center justify-center w-full h-24 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-100 hover:bg-gray-100  hover:border-dashed  dark:hover:text-white dark:hover:bg-blue-400 transition-all duration-300">
+                      <div class="flex items-center justify-center pt-5 pb-6 gap-2">
+                          <svg class="w-8 h-8 mb-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                          </svg>
+                          <p class="mb-4 text-lg italic"><span class="font-semibold text-lg not-italic ">Cliquer pour importer une image</span> ou glisser</p>
+                          
+                      </div>
+                      <input name="image" id="dropzone-file" type="file" class="hidden" />
+                  </label>
+                </div>
               </div>
-              <div class="p-2">
-                <label for="genre" class="text-gray-600">Genre</label>
-                <input type="text" name="genre" class="w-full rounded-md border border-gray-300 shadow-sm">
-              </div>
-              <div class="p-2">
-                <label for="langue" class="text-gray-600">Langue</label>
-                <input type="text" name="langue" class="w-full rounded-md border border-gray-300 shadow-sm">
-              </div>
-              <div class="p-2">
-                <label for="quantite" class="text-gray-600">Quantité</label>
-                <input type="number" name="quantite" class="w-full rounded-md border border-gray-300 shadow-sm">
-              </div>
-              <div class="p-2">
-                <label for="image" class="text-gray-600">Image Couverture</label>
-                <input type="file" name="image" class="w-full rounded-md border border-gray-300 shadow-sm">
-              </div>
+              
+              <!--FORM SUBMIT-->
               <div class="p-2 ">
                 <button
                 type="submit"
-                class="p-2 bg-green-600 rounded-sm font-semibold"
+                class="py-2 px-4 text-lg bg-green-600 rounded-lg font-semibold text-white hover:bg-green-500 transition-all duration-300 shadow hover:shadow-lg"
                 >
                 Submit
               </button>
@@ -51,38 +73,45 @@
               
             </form>
           </div>
-
+          
           <!-- card body  -->
           <div class="flex-auto block py-8 pt-6 px-9">
             <div class="overflow-x-auto">
               <table class="w-full my-0 align-middle text-dark border-neutral-200 rounded-lg">
                     <thead class="align-bottom rounded-lg">
                       <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
-                        <th class="px-4 py-3 text-start ">titre</th>
-                        <th class="px-4 py-3 text-start ">quantite</th>
-                        <th class="px-4 py-3 text-start ">langue</th>
-                        <th class="px-4 py-3 text-start ">genre</th>
-                        <th class="px-4 py-3 text-start ">Etat</th>
-                        <th class="px-4 py-3 text-start ">Edit</th>
+                        <th class="px-4 py-3 text-start w-5/12">titre</th>
+                        <th class="px-4 py-3 text-start w-2/12">genre</th>
+                        <th class="px-4 py-3 text-start w-1/12">langue</th>
+                        <th class="px-4 py-3 text-start w-1/12">quantite</th>
+                        <th class="px-4 py-3 text-start w-1/12">Etat</th>
+                        <th class="px-4 py-3 text-start w-1/12">Edit</th>
                       </tr>
                     </thead>
                     <tbody>
                       {% for item in Livres %}
                         <tr class="border-b border-dashed last:border-b-0">
-                            <td class="px-4 py-3 border">{{item.titre}}</td>
-                            <td class="px-4 py-3 border">{{item.quantite}}</td>
-                            <td class="px-4 py-3 border">{{item.langue}}</td>
-                            <td class="px-4 py-3 border">{{item.genre}}</td>
-                            <td class="px-4 py-3 border">
+                            <td class="px-4 py-2 border">
+                              <img src="{{item.image}}" class="w-[45px] h-[45px] inline-block shrink-0 rounded-sm object-cover" alt="">&nbsp;
+                              <span class="font-semibold">{{item.titre}}</span>
+                            </td>
+                            <td class="px-4 py-3 border font-semibold">{{item.genre}}</td>
+                            <td class="px-4 py-3 border font-semibold">{{item.langue}}</td>
+                            <td class="px-4 py-3 border font-semibold">{{item.quantite}}</td>
+                            <td class="px-4 py-3 border font-semibold">
                                 {% if not item.horspret %}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#138808" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
                                 {% else %}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff1111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-x"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m14.5 7-5 5"/><path d="m9.5 7 5 5"/></svg>
                                 {% endif %}
                             </td>
-                            <td class="px-4 py-3 border"><button id="myBtn"
-                              class="book-emprunt"
-                              onclick="openModal('{{item.id_livre}}','{{item.quantite}}','{{item.horspret}}')">Edit</button>
+                            <td class="font-semibold text-md/normal p-0 text-left text-white border bg-yellow-500 hover:bg-yellow-400 transition-all duration-200">
+                              <button id="myBtn"
+                                class="book-emprunt flex items-center gap-2 py-4 px-4 h-full"
+                                onclick="openModal('{{item.id_livre}}','{{item.quantite}}','{{item.horspret}}')">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                                  Modifier
+                              </button>
                             </td>
                         </tr>
                       {% endfor %}

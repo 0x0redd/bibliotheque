@@ -85,26 +85,26 @@ WSGI_APPLICATION = 'Bibioproject.wsgi.application'
 #   }
 #}
 
-# DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.mysql',
-#          'NAME': 'biblio',
-#          'USER': 'root',
-#          'PASSWORD': 'admin',
-#          'HOST': 'localhost',
-#          'PORT': '3306',
-#      }
-#  }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'user123',
-        'HOST': 'localhost',
-        'PORT': '5434',
-    }
-}
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'biblio',
+         'USER': 'root',
+         'PASSWORD': 'admin',
+         'HOST': 'localhost',
+         'PORT': '3306',
+     }
+ }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres',
+#         'USER': 'postgres',
+#         'PASSWORD': 'user123',
+#         'HOST': 'localhost',
+#         'PORT': '5434',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

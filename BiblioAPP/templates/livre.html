@@ -80,7 +80,7 @@
     <div data-book="{{book}}" class="book-card w-[250px] h-[370px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs hover:scale-105 transition-all duration-300">
       <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
             <!-- if number of empxlaire <= 1 the live is no longer for reservation -->
-            {% if book.horspret %}
+            {% if book.horspret or user.penalite >= 3 %}
               <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">Sur place</span>
             {% endif %}
             <div class="book-title transition-all duration-200 relative text-white px-4 pb-6 mt-6 w-fit">
@@ -93,7 +93,7 @@
             </div>
           </h3>
           <!-- Contenu pour utilisateurs connectés -->
-          {% if not book.horspret %}<!-- verifie if quantite > 1 -->
+          {% if not book.horspret and user.penalite < 3 %}<!-- verifie if quantite > 1 -->
           <button id="myBtn"  data-book="{{book.horspret}}" class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" onclick="openModal('{{book.id_livre}}')">Reserver</button>
           {% endif %}
 

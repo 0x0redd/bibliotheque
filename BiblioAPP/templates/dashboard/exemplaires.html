@@ -5,14 +5,14 @@
     <div class="w-full max-w-full px-3 mb-6  mx-auto">
       <div class="relative flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white m-5">
         <div class="relative flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
-          <h1 class="text-xl text-bold mg-16 text-orange-400 bg-gray-100 w-fit px-4 py-2 rounded-lg">Exemplaires</h1>
+          <h1 class="text-xl text-bold mg-16 text-orange-400 bg-gray-100 w-fit px-4 py-2 rounded-lg mb-6">Exemplaires</h1>
           <!-- card body  -->
               {% for item in Livres %}
-              <p class="text-md font-semibold tracking-wide text-center text-gray-900 bg-gray-100 uppercase border-y border-gray-600">{{item.titre}}</p>
+              <p class="text-lg font-semibold tracking-wide text-center text-gray-900 bg-blue-100 uppercase border-y border-gray-600">{{item.titre}}</p>
                 <table  class="w-full my-0 align-middle text-dark border-neutral-200 rounded-lg">
                   
                   <thead>
-                    <tr class="text-md font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
+                    <tr class="text-sm font-semibold tracking-wide text-left text-gray-900 bg-gray-100 uppercase border-b border-gray-600">
                       <th class="px-4 py-3 text-start ">ID Exemplaire</th>
                       <th class="px-4 py-3 text-start ">Etat</th>
                       <th class="px-4 py-3 text-start ">Date D'achat</th>
@@ -27,15 +27,15 @@
                             <input type="hidden" name="idexemplaire" id="" value="{{exemple.id_exemplaire}}">
                             <td class="px-4 py-3 text-start ">{{exemple.id_exemplaire}}</td>
                             <td class="px-4 py-3 text-start ">
-                            <select name="etat" id="etat" {%if exemple.etat == "Hors-pret" %} disabled {%endif%}>
-                              <option value="Disponible" {%if exemple.etat == "Disponible"%} selected {%endif%}>Disponible</option>
-                              <option value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected {%endif%}>Hors-pret</option>
-                              <option value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%}>A enlever</option>
-                              <option value="perdu" {%if exemple.etat == "perdu" %} selected {%endif%}>perdu</option>
-                            </select>
-                          </td>
-                          <td class="px-4 py-3 text-start ">{{exemple.date_achat}}</td>
-                          <td class="px-4 py-3 text-start "><button type="submit">Update</button></td>
+                              <select name="etat" id="etat" class="hover:cursor-pointer">
+                                <option value="Disponible" {%if exemple.etat == "Disponible"%} selected {%endif%}>Disponible</option>
+                                <option value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected {%endif%}>Hors-pret</option>
+                                <option value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%}>A enlever</option>
+                                <option value="perdu" {%if exemple.etat == "perdu" %} selected {%endif%}>perdu</option>
+                              </select>
+                            </td>
+                            <td class="px-4 py-3 text-start ">{{exemple.date_achat}}</td>
+                            <td class="px-4 py-3 text-start "><button type="submit">Update</button></td>
                           <!-- <td>{{exemple.date_achat}}</td> -->
                           </form>
                       </tr>

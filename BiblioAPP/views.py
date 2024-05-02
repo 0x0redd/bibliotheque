@@ -21,12 +21,36 @@ def contact(request):
 
 def dashboard(request):
 
-    if(request.user.is_staff):
-        for emp in Emprunt.objects.filter(date_retour_prevue=None): #this loop is to delete the lost exemple and apply pnality to etudiant
-            if(datetime.date.today - emp.date_retour_prevue> datetime.timedelta(days=365)):
-                emp.id_etudiant.penalite = emp.id_etudiant.penalite+1;
-                emp.id_exemplaire.id_livre.quantite = emp.id_exemplaire.id_livre.quantite-1;
-                emp.id_exemplaire.delete()
+    if request.user.is_staff:
+        for emp in Emprunt.objects.filter(retourner=False):
+            if emp.date_retour_prevue + datetime.timedelta(days=365) < datetime.date.today():
+                exemplaire_id = emp.id_exemplaire_id  
+                emp.id_etudiant.penalite += 1
+                emp.id_etudiant.save()
+
+                try:
+                    exemplaire = Exemplaire.objects.get(pk=exemplaire_id)
+                    livre = exemplaire.id_livre
+                    quantite_avant = livre.quantite  # Quantité de livres avant la suppression
+                    exemplaire.delete()  
+
+                    # Vérification si un seul exemplaire disponible
+                    nb_exemplaires = Exemplaire.objects.filter(id_livre=livre, etat='disponible').count()
+                    if nb_exemplaires == 1:
+                        unique_exemplaire = Exemplaire.objects.get(id_livre=livre, etat='disponible')
+                        unique_exemplaire.etat = 'Hors-pret'
+                        unique_exemplaire.save()
+
+                    # Mise à jour de la quantité du livre si elle n'est pas déjà mise à jour
+                    if livre.quantite == quantite_avant:
+                        livre.horspret = True
+                        livre.quantite = Exemplaire.objects.filter(id_livre=livre).count()
+                        livre.save()
+
+                except Exemplaire.DoesNotExist:
+                    pass
+
+                emp.delete()
         # for etu in Etudiant.objects.filter(is_staff=0,is_superuser=0):
         #     retard = Emprunt.objects.filter(id_etudiant=etu,date_retour_prevue__lt=datetime.date.today,date_retour_effectif=None).count()
         #     etu.penalite = etu.penalite+retard
@@ -202,7 +226,7 @@ def valider(request):
     id_reserve = request.POST.get('reservation')
     res = Reservation.objects.get(pk=id_reserve)
     exemplaire=Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").count()
-    if(exemplaire >1):
+    if(exemplaire > 1):
         exemplaire =Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").first()
         Emprunt.objects.create(id_etudiant=res.id_etudiant,id_exemplaire=exemplaire,date_emprunt=datetime.datetime.now(),date_retour_prevue=datetime.datetime.now()+datetime.timedelta(days=15)).save()
 
@@ -214,7 +238,6 @@ def valider(request):
 
 def createExemplaire(request):
     for book in Livre.objects.all():
-        book.quantite = random.randint(1,3)
         if book.quantite>1:
             etat = "Disponible"
             book.horspret=False
@@ -223,15 +246,21 @@ def createExemplaire(request):
             book.horspret =True
             
         book.save()
+        i = Exemplaire.objects.filter(id_livre=book).count()
         for i in range(book.quantite) :
             Exemplaire.objects.create(id_livre=book,etat=etat,date_achat=datetime.datetime.now())
+
     return HttpResponse(Livre.objects.all())
+
 def retourner(request):
     id_emprunt = request.POST.get('emprunts')
     emprunt=Emprunt.objects.get(pk=id_emprunt)
     emprunt.date_retour_effectif=datetime.datetime.now()
     emprunt.retourner = 1
     emprunt.id_exemplaire.etat = "Disponible"
+    emprunt.id_exemplaire.id_livre.horspret=False
+    emprunt.id_exemplaire.save()
+    emprunt.id_exemplaire.id_livre.save()
     emprunt.save()
     #Emprunt.objects.filter(id_emprunt=id_emprunt).update(date_retour_effectif=datetime.datetime.now,retourner=True)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -287,3 +316,4 @@ def updateExemplaire(request):
         exemplaire.etat = request.POST.get('etat')
         exemplaire.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        
