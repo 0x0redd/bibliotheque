@@ -90,7 +90,7 @@ DATABASES = {
          'ENGINE': 'django.db.backends.mysql',
          'NAME': 'biblio',
          'USER': 'root',
-         'PASSWORD': 'admin',
+         'PASSWORD': '',
          'HOST': 'localhost',
          'PORT': '3306',
      }
@@ -157,6 +157,9 @@ COMPRESS_ENABLED = False
 STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AUTH_USER_MODEL="BiblioAPP.Etudiant"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/static/'
 
 
 

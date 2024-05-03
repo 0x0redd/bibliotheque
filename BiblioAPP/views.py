@@ -14,7 +14,8 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from faker import Faker
 import random
-import datetime
+import datetime 
+import os
 
 def contact(request):
     return render(request, 'contact.html')
@@ -270,31 +271,45 @@ def create_livre(request):
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             # Save the form data to the Livre model
-            if(form.cleaned_data['quantite']>1): #detecter automatiquement si il doit etre hors pret ou non
+            if form.cleaned_data['quantite'] > 1:
                 horspret = False
             else:
                 horspret = True
 
             livre = Livre(
-                pk=Livre.objects.count()+1,
+                pk=Livre.objects.count() + 1,
                 titre=form.cleaned_data['titre'],
                 description=form.cleaned_data['description'],
                 auteur=form.cleaned_data['auteur'],
                 langue=form.cleaned_data['langue'],
                 quantite=form.cleaned_data['quantite'],
                 genre=form.cleaned_data['genre'],
-                image=form.cleaned_data['image'],
                 horspret=horspret
             )
+            # Save the image file to the specified directory
+            if request.FILES.get('image'):
+                image = request.FILES['image']
+                image_name = image.name
+                image_path = os.path.join(settings.MEDIA_ROOT, 'book', image_name)
+                # Ensure the directory exists
+                os.makedirs(os.path.dirname(image_path), exist_ok=True)
+                # Save the image file
+                with open(image_path, 'wb') as destination:
+                    for chunk in image.chunks():
+                        destination.write(chunk)
+                # Save the image path to the Livre model
+                livre.image = os.path.join('book', image_name)
+
             livre.save()
-            form.clean()
+            # Create exemplaires for the livre
             for k in range(livre.quantite):
-                Exemplaire.objects.create(id_livre=livre,etat="Disponible",date_achat=datetime.datetime.now())
+                Exemplaire.objects.create(id_livre=livre, etat="Disponible", date_achat=datetime.datetime.now())
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     else:
         form = BookForm()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 def editbook(request):
     if request.method == 'POST':
         livre = Livre.objects.get(pk=request.POST.get('idlivre'))
@@ -318,4 +333,4 @@ def updateExemplaire(request):
         exemplaire.etat = request.POST.get('etat')
         exemplaire.save()
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        
+

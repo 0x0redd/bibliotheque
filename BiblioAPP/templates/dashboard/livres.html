@@ -1,5 +1,6 @@
 {% load compress %}
 {% load static %}
+
 <!--reservation -->
 <div class="flex flex-wrap -mx-3 mb-5">
     <div class="w-full max-w-full px-3 mb-6  mx-auto">
@@ -9,7 +10,7 @@
           <!-- FORM TO ADD NEW LIVRES form est provisoire -->
           <!-- component -->
           <div class="flex flex-col space-y-4 border-dashed border-2 border-gray-500 rounded-lg px-2 mx-9 mt-2">
-            <form action="{% url 'addlivre' %}" method="post">
+            <form action="{% url 'addlivre' %}" method="post" enctype="multipart/form-data" >
               {% csrf_token %}
               <div class="flex items-center gap-4">
                 <div class="p-2 w-2/3">
@@ -41,26 +42,47 @@
                 <textarea name="description" cols="30" rows="4"
                   class="w-full rounded-md border border-gray-300 shadow-sm text-lg font-semibold p-1"></textarea>
               </div>
-              
-              
+
               <!--IMAGE UPLOAD INPUT FLOWBITE-->
-              <div class="p-2">
-                <label for="image" class="text-gray-700 text-lg font-semibold">Image Couverture</label>
-                <div class="flex items-center justify-center w-full">
-                
-                  <label for="dropzone-file" class="flex flex-col text-gray-500 items-center justify-center w-full h-24 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-100 hover:bg-gray-100  hover:border-dashed  dark:hover:text-white dark:hover:bg-blue-400 transition-all duration-300">
-                      <div class="flex items-center justify-center pt-5 pb-6 gap-2">
-                          <svg class="w-8 h-8 mb-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                          </svg>
-                          <p class="mb-4 text-lg italic"><span class="font-semibold text-lg not-italic ">Cliquer pour importer une image</span> ou glisser</p>
-                          
-                      </div>
-                      <input name="image" id="dropzone-file" type="file" class="hidden" />
-                  </label>
-                </div>
-              </div>
-              
+<div class="p-2">
+  <label for="image" class="text-gray-700 text-lg font-semibold">Image Couverture</label>
+  <div class="flex items-center justify-center w-full">
+  
+      <label for="dropzone-file" class="flex flex-col text-gray-500 items-center justify-center w-full h-24 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-100 hover:bg-gray-100  hover:border-dashed  dark:hover:text-white dark:hover:bg-blue-400 transition-all duration-300">
+          <div class="flex items-center justify-center pt-5 pb-6 gap-2">
+              <svg class="w-8 h-8 mb-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+              </svg>
+              <p class="mb-4 text-lg italic"><span class="font-semibold text-lg not-italic ">Cliquer pour importer une image</span> ou glisser</p>
+          </div>
+          <input name="image" id="dropzone-file" type="file" class="hidden" onchange="previewImage(this)" />
+      </label>
+  </div>
+  <!-- Preview image -->
+  <img id="image-preview" class="hidden w-32 h-32 mt-2" alt="Preview Image">
+</div>
+
+<script>
+  // Function to preview the selected image
+  function previewImage(input) {
+      var preview = document.getElementById('image-preview');
+      var file = input.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+          preview.src = reader.result;
+          preview.classList.remove('hidden');
+      }
+
+      if (file) {
+          reader.readAsDataURL(file);
+      } else {
+          preview.src = '';
+          preview.classList.add('hidden');
+      }
+  }
+</script>
+
               <!--FORM SUBMIT-->
               <div class="p-2 ">
                 <button
@@ -92,7 +114,7 @@
                       {% for item in Livres %}
                         <tr class="border-b border-dashed last:border-b-0">
                             <td class="px-4 py-2 border">
-                              <img src="{{item.image}}" class="w-[45px] h-[45px] inline-block shrink-0 rounded-sm object-cover" alt="">&nbsp;
+                              <img src="{% if item.image|slice:'b' == 'b' %} {% static item.image %}{% endif %} {{ item.image }}" class="w-[45px] h-[45px] inline-block shrink-0 rounded-sm object-cover" alt="">&nbsp;
                               <span class="font-semibold">{{item.titre}}</span>
                             </td>
                             <td class="px-4 py-3 border font-semibold">{{item.genre}}</td>
@@ -173,41 +195,40 @@
     </div>
 </div>
 <script>
-  // Get the modal
-  var modal = document.getElementById("myModal");
-  var btn = document.getElementById("myBtn");
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
 
 
-  var span = document.getElementsByClassName("close")[0];
+    var span = document.getElementsByClassName("close")[0];
 
 
-  function openModal(id,quantite,horspret) {
-    modal.classList.remove("hidden");
+    function openModal(id,quantite,horspret) {
+      modal.classList.remove("hidden");
 
-    document.getElementById("ID").value = parseInt(id);
-    document.getElementById("Equantite").value = parseInt(quantite)
-    document.getElementById("Equantite").min= parseInt(quantite)
-    if(horspret=="True")
-    {
-      document.getElementById("Ehorspret").checked = true
-    }
-    else
-    {
-      document.getElementById("Ehorspret").checked = false
-    }
-  };
+      document.getElementById("ID").value = parseInt(id);
+      document.getElementById("Equantite").value = parseInt(quantite)
+      document.getElementById("Equantite").min= parseInt(quantite)
+      if(horspret=="True")
+      {
+        document.getElementById("Ehorspret").checked = true
+      }
+      else
+      {
+        document.getElementById("Ehorspret").checked = false
+      }
+    };
 
-  // Function to close the modal (add 'hidden', remove 'block')
-  span.onclick = function () {
-    modal.classList.remove("block");
-    modal.classList.add("hidden");
-  };
-
-  // Function to close modal if clicking outside of it
-  window.onclick = function (event) {
-    if (event.target === modal) {
+    // Function to close the modal (add 'hidden', remove 'block')
+    span.onclick = function () {
       modal.classList.remove("block");
       modal.classList.add("hidden");
-    }
-  };
+    };
+
+    // Function to close modal if clicking outside of it
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        modal.classList.remove("block");
+        modal.classList.add("hidden");
+      }
+    };
 </script>
