@@ -189,29 +189,25 @@
                 </svg>
                 Dashboard
               </a>
+            <div class="flex items-center gap-2">
+              <form action="{% url 'logout' %}" method="post" class="m-0">
+                {% csrf_token %}
+                <button
+                  class="flex items-center gap-2 bg-red-500 uppercase text-white font-bold hover:scale-105 shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2"
+                  type="submit" style="transition: all 0.15s ease 0s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                  Se Deconnecter
+                </button>
+              </form>
               <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-                <a class="text-black-500 block" href="#pablo" onclick="openDropdown(event,'user-dropdown')">
+                <a class="text-black-500 block">
                   <div class="items-center flex">
                     <span class="w-12 h-12 text-sm text-white bg-blueGray-200 inline-flex items-center justify-center rounded-full">
                       <img alt="..." class="w-full rounded-full align-middle border-none shadow-lg" src="{% static "/source/profile/fsm.jpg" %}" /></span>
                   </div>
                 </a>
-                <!--user-dropdown-->
-                <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1" style="min-width: 12rem;" id="user-dropdown">
-                  <a href="{% url 'index' %}" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-black-500">home</a>
-                  
-                  <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                  <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button
-                      class="flex items-center gap-1 bg-red-500 uppercase text-white font-bold hover:shadow-lg shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
-                      type="submit" style="transition: all 0.15s ease 0s;">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
-                      Disconnect
-                    </button>
-                  </form> 
-                </div>
               </ul>
+            </div>
             </div>
           </nav>
 
