@@ -16,7 +16,7 @@
                       <th class="px-4 py-3 text-start ">ID Exemplaire</th>
                       <th class="px-4 py-3 text-start ">Etat</th>
                       <th class="px-4 py-3 text-start ">Date D'achat</th>
-                      <th class="px-4 py-3 text-start ">edit</th>
+                      <th class="px-4 py-3 text-start ">Modifier</th>
                     </tr>
                   </thead>
                   {% for exemple in Exemplaires %}
@@ -35,7 +35,12 @@
                               </select>
                             </td>
                             <td class="px-4 py-3 text-start ">{{exemple.date_achat}}</td>
-                            <td class="px-4 py-3 text-start "><button type="submit">Update</button></td>
+                            <td class="px-0 py-3 text-start ">
+                              <button type="submit" class="bg-yellow-500 hover:bg-yellow-400 text-white font-semibold rounded px-4 py-2 flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen-line"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                                Modifier
+                              </button>
+                            </td>
                           <!-- <td>{{exemple.date_achat}}</td> -->
                           </form>
                       </tr>

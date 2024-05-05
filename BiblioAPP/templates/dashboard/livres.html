@@ -107,7 +107,7 @@
                         <th class="px-4 py-3 text-start w-1/12">langue</th>
                         <th class="px-4 py-3 text-start w-1/12">quantite</th>
                         <th class="px-4 py-3 text-start w-1/12">Etat</th>
-                        <th class="px-4 py-3 text-start w-1/12">Edit</th>
+                        <th class="px-4 py-3 text-start w-1/12">Modifier</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -116,7 +116,6 @@
                             <td class="px-4 py-2 border">
                               {% comment %}  this is the problem   {% if item.image|slice:'https' == 'https' %} doesn't work {% endcomment %}
                               <img src=" {% if item.image|slice:'https' == 'https' %}  {% else %} {% static item.image %} {% endif %} " class="w-[45px] h-[45px] inline-block shrink-0 rounded-sm object-cover" alt="">&nbsp;
-                              <img src=" {% if item.image|slice:'https' == 'https' %} {% static item.image %} {% else %} {{ item.image }} {% endif %} " class="w-[45px] h-[45px] inline-block shrink-0 rounded-sm object-cover" alt="">&nbsp;
                               <span class="font-semibold">{{item.titre}}</span>
                             </td>
                             <td class="px-4 py-3 border font-semibold">{{item.genre}}</td>
