@@ -27,11 +27,12 @@
                             <input type="hidden" name="idexemplaire" id="" value="{{exemple.id_exemplaire}}">
                             <td class="px-4 py-3 text-start ">{{exemple.id_exemplaire}}</td>
                             <td class="px-4 py-3 text-start ">
-                              <select name="etat" id="etat" class="hover:cursor-pointer">
-                                <option value="Disponible" {%if exemple.etat == "Disponible"%} selected {%endif%}>Disponible</option>
-                                <option value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected {%endif%}>Hors-pret</option>
-                                <option value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%}>A enlever</option>
+                              <select name="etat" id="etat" class="hover:cursor-pointer" >
+                                <option value="Disponible" {%if exemple.etat == "Disponible"%} selected{%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>Disponible</option>
+                                <option value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected disabled{%endif%} {%if exemple.etat == "Disponible"%}disabled{%endif%}>Hors-pret</option>
+                                <option value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>A enlever</option>
                                 <option value="perdu" {%if exemple.etat == "perdu" %} selected {%endif%}>perdu</option>
+                                <option value="delete">Supprimer</option>
                               </select>
                             </td>
                             <td class="px-4 py-3 text-start ">{{exemple.date_achat}}</td>

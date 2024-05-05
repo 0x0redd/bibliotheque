@@ -21,7 +21,6 @@ def contact(request):
     return render(request, 'contact.html')
 
 def dashboard(request):
-
     if request.user.is_staff:
         for emp in Emprunt.objects.filter(retourner=False):
             if emp.date_retour_prevue + datetime.timedelta(days=365) < datetime.date.today():
@@ -324,13 +323,22 @@ def editbook(request):
         i =int(livre.quantite)- Exemplaire.objects.filter(id_livre=livre.id_livre).count() #here is for creating a new exemple of a book 
         for k in range(i):
             Exemplaire.objects.create(id_livre=livre,etat="Disponible",date_achat=datetime.datetime.now())
-
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 #this is for updating etat of exempalire
 def updateExemplaire(request):
     if request.method == 'POST':
-        exemplaire = Exemplaire.objects.get(pk=request.POST.get('idexemplaire'))
-        exemplaire.etat = request.POST.get('etat')
-        exemplaire.save()
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        if(request.POST.get('etat')=="delete"):
+                exemplaire = Exemplaire.objects.get(pk=request.POST.get('idexemplaire'))
+                if exemplaire is not None:
+                    emprunt = Emprunt.objects.filter(id_exemplaire=exemplaire)
+                    emprunt.delete()
+                    exemplaire.id_livre.quantite = exemplaire.id_livre.quantite-1
+                    exemplaire.id_livre.save()
+                    exemplaire.delete()
+        else:
+            exemplaire = Exemplaire.objects.get(pk=request.POST.get('idexemplaire'))
+            exemplaire.etat = request.POST.get('etat')
+            exemplaire.save()
+
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
