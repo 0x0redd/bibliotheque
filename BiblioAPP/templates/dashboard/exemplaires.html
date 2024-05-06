@@ -27,12 +27,13 @@
                             <input type="hidden" name="idexemplaire" id="" value="{{exemple.id_exemplaire}}">
                             <td class="px-4 py-3 text-start ">{{exemple.id_exemplaire}}</td>
                             <td class="px-4 py-3 text-start ">
-                              <select name="etat" id="etat" class="hover:cursor-pointer" >
-                                <option value="Disponible" {%if exemple.etat == "Disponible"%} selected{%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>Disponible</option>
-                                <option value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected disabled{%endif%} {%if exemple.etat == "Disponible"%}disabled{%endif%}>Hors-pret</option>
-                                <option value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>A enlever</option>
-                                <option value="perdu" {%if exemple.etat == "perdu" %} selected {%endif%}>perdu</option>
-                                <option value="delete">Supprimer</option>
+                              <select name="etat" id="etat" class="hover:cursor-pointer font-semibold
+                              {% if exemple.etat == "Hors-pret" %} text-orange-300 {%endif%} {% if exemple.etat == "Disponible" %} text-green-600 {%endif%} {% if exemple.etat == "A enlever" %} text-orange-500 {%endif%} {% if exemple.etat == "perdu" %} text-red-500 {%endif%} bg-transparent border-none">
+                                <option class="text-green-500 p-2 font-semibold hover:cursor-pointer" value="Disponible" {%if exemple.etat == "Disponible"%} selected{%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>Disponible</option>
+                                <option class="text-orange-300 p-2 font-semibold hover:cursor-pointer" value="Hors-pret" {%if exemple.etat == "Hors-pret"%} selected disabled{%endif%} {%if exemple.etat == "Disponible"%}disabled{%endif%}>Hors-pret</option>
+                                <option class="text-orange-500 font-semibold hover:cursor-pointer" value="A enlever" {%if exemple.etat == "A enlever"%} selected {%endif%} {%if exemple.etat == "Hors-pret"%}disabled{%endif%}>A enlever</option>
+                                <option class="text-red-500 p-2 font-semibold hover:cursor-pointer" value="perdu" {%if exemple.etat == "perdu" %} selected {%endif%}>perdu</option>
+                                <option class="text-red-500 p-2 font-semibold hover:cursor-pointer" value="delete">Supprimer</option>
                               </select>
                             </td>
                             <td class="px-4 py-3 text-start ">{{exemple.date_achat}}</td>
