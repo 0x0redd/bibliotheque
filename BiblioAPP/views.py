@@ -85,7 +85,7 @@ def profile(request):
             #data to sent if is not admin
             context = {
                 'reservation':Reservation.objects.filter(id_etudiant=request.user),
-                'emprunt':Emprunt.objects.filter(id_etudiant=request.user),
+                'Emprunt':Emprunt.objects.filter(id_etudiant=request.user),
                 'count':Reservation.objects.filter(id_etudiant=request.user).count(),
                 'emprunt_count':Emprunt.objects.filter(id_etudiant=request.user,retourner=False).count(),
                 'current_date': datetime.date.today(),
