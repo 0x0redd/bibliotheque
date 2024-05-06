@@ -93,7 +93,7 @@
             </div>
           </h3>
           <!-- Contenu pour utilisateurs connectés -->
-          {% if not book.horspret and user.penalite < 3 %}<!-- verifie if quantite > 1 -->
+          {% if not book.horspret and user.penalite < 3 %} <!-- verifie if quantite > 1 -->
           <button id="myBtn"  data-book="{{book.horspret}}" class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" onclick="openModal('{{book.id_livre}}')">Reserver</button>
           {% endif %}
 

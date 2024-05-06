@@ -1,0 +1,501 @@
+id_livre,titre,description,auteur,langue,quantite,genre,image,horspret
+1,The Hunger Games,description,Suzanne Collins,eng,8,genre,book\The Hunger Games.png,0
+2,Harry Potter and the Philosopher's Stone,description,"J.K. Rowling, Mary GrandPré",eng,10,genre,book\Harry Potter and the Philosophers Stone.png,0
+3,Twilight,description,Stephenie Meyer,en-US,1,genre,book\Twilight.png,0
+4,To Kill a Mockingbird,description,Harper Lee,eng,10,genre,book\To Kill a Mockingbird.png,0
+5,The Great Gatsby,description,F. Scott Fitzgerald,eng,1,genre,book\The Great Gatsby.png,0
+6,The Fault in Our Stars,description,John Green,eng,7,genre,book\The Fault in Our Stars.png,0
+7,The Hobbit or There and Back Again,description,J.R.R. Tolkien,en-US,9,genre,book\The Hobbit or There and Back Again.png,0
+8,The Catcher in the Rye,description,J.D. Salinger,eng,8,genre,book\The Catcher in the Rye.png,0
+9,Angels & Demons,description,Dan Brown,en-CA,5,genre,book\Angels  Demons.png,0
+10,Pride and Prejudice,description,Jane Austen,eng,2,genre,book\Pride and Prejudice.png,0
+11,The Kite Runner,description,Khaled Hosseini,eng,1,genre,book\The Kite Runner.png,0
+12,Divergent,description,Veronica Roth,eng,4,genre,book\Divergent.png,0
+13,Nineteen Eighty-Four,description,"George Orwell, Erich Fromm, Celâl Üster",eng,6,genre,book\Nineteen EightyFour.png,0
+14,Animal Farm: A Fairy Story,description,George Orwell,eng,3,genre,book\Animal Farm A Fairy Story.png,0
+15,Het Achterhuis: Dagboekbrieven 14 juni 1942 - 1 augustus 1944,description,"Anne Frank, Eleanor Roosevelt, B.M. Mooyaart-Doubleday",eng,9,genre,book\Het Achterhuis Dagboekbrieven 14 juni 1942  1 augustus 1944.png,0
+16,Män som hatar kvinnor,description,"Stieg Larsson, Reg Keeland",eng,5,genre,book\Män som hatar kvinnor.png,0
+17,Catching Fire,description,Suzanne Collins,eng,3,genre,book\Catching Fire.png,0
+18,Harry Potter and the Prisoner of Azkaban,description,"J.K. Rowling, Mary GrandPré, Rufus Beck",eng,8,genre,book\Harry Potter and the Prisoner of Azkaban.png,0
+19,The Fellowship of the Ring,description,J.R.R. Tolkien,eng,10,genre,book\The Fellowship of the Ring.png,0
+20,Mockingjay,description,Suzanne Collins,eng,1,genre,book\Mockingjay.png,0
+21,Harry Potter and the Order of the Phoenix,description,"J.K. Rowling, Mary GrandPré",eng,1,genre,book\Harry Potter and the Order of the Phoenix.png,0
+22,The Lovely Bones,description,Alice Sebold,eng,4,genre,book\The Lovely Bones.png,0
+23,Harry Potter and the Chamber of Secrets,description,"J.K. Rowling, Mary GrandPré",eng,10,genre,book\Harry Potter and the Chamber of Secrets.png,0
+24,Harry Potter and the Goblet of Fire,description,"J.K. Rowling, Mary GrandPré",eng,4,genre,book\Harry Potter and the Goblet of Fire.png,0
+25,Harry Potter and the Deathly Hallows,description,"J.K. Rowling, Mary GrandPré",eng,10,genre,book\Harry Potter and the Deathly Hallows.png,0
+26,The Da Vinci Code,description,Dan Brown,eng,4,genre,book\The Da Vinci Code.png,0
+27,Harry Potter and the Half-Blood Prince,description,"J.K. Rowling, Mary GrandPré",eng,1,genre,book\Harry Potter and the HalfBlood Prince.png,0
+28,Lord of the Flies,description,William Golding,eng,7,genre,book\Lord of the Flies.png,0
+29,An Excellent conceited Tragedie of Romeo and Juliet,description,"William Shakespeare, Robert Jackson",eng,9,genre,book\An Excellent conceited Tragedie of Romeo and Juliet.png,0
+30,Gone Girl,description,Gillian Flynn,eng,7,genre,book\Gone Girl.png,0
+31,The Help,description,Kathryn Stockett,eng,10,genre,book\The Help.png,0
+32,Of Mice and Men,description,John Steinbeck,eng,7,genre,book\Of Mice and Men.png,0
+33,Memoirs of a Geisha,description,Arthur Golden,eng,9,genre,book\Memoirs of a Geisha.png,0
+34,Fifty Shades of Grey,description,E.L. James,eng,2,genre,book\Fifty Shades of Grey.png,0
+35,O Alquimista,description,"Paulo Coelho, Alan R. Clarke",eng,1,genre,book\O Alquimista.png,0
+36,The Giver,description,Lois Lowry,eng,5,genre,book\The Giver.png,0
+37,"The Lion, the Witch and the Wardrobe",description,C.S. Lewis,eng,3,genre,book\The Lion the Witch and the Wardrobe.png,0
+38,The Time Traveler's Wife,description,Audrey Niffenegger,eng,4,genre,book\The Time Travelers Wife.png,0
+39,A Game of Thrones,description,George R.R. Martin,eng,9,genre,book\A Game of Thrones.png,0
+40,"Eat, pray, love: one woman's search for everything across Italy, India and Indonesia",description,Elizabeth Gilbert,eng,3,genre,book\Eat pray love one womans search for everything across Italy India and Indonesia.png,0
+41,The Lightning Thief,description,Rick Riordan,eng,6,genre,book\The Lightning Thief.png,0
+42,Little Women,description,Louisa May Alcott,en-US,2,genre,book\Little Women.png,0
+43,Jane Eyre,description,"Charlotte Brontë, Michael Mason",eng,10,genre,book\Jane Eyre.png,0
+44,The Notebook,description,Nicholas Sparks,eng,8,genre,book\The Notebook.png,0
+45,Life of Pi,description,Yann Martel,,9,genre,book\Life of Pi.png,0
+46,Water for Elephants,description,Sara Gruen,eng,4,genre,book\Water for Elephants.png,0
+47,The Book Thief,description,Markus Zusak,eng,6,genre,book\The Book Thief.png,0
+48,Fahrenheit 451,description,Ray Bradbury,spa,4,genre,book\Fahrenheit 451.png,0
+49,"New Moon (Twilight, #2)",description,Stephenie Meyer,eng,1,genre,book\New Moon Twilight 2.png,0
+50,Where the Sidewalk Ends: The Poems and Drawings of Shel Silverstein,description,Shel Silverstein,eng,10,genre,book\Where the Sidewalk Ends The Poems and Drawings of Shel Silverstein.png,0
+51,City of Bones,description,Cassandra Clare,eng,1,genre,book\City of Bones.png,0
+52,Eclipse,description,Stephenie Meyer,en-US,4,genre,book\Eclipse.png,0
+53,Eragon,description,Christopher Paolini,en-US,5,genre,book\Eragon.png,0
+54,The Hitchhiker's Guide to the Galaxy,description,Douglas Adams,en-US,5,genre,book\The Hitchhikers Guide to the Galaxy.png,0
+55,Brave New World,description,Aldous Huxley,eng,2,genre,book\Brave New World.png,0
+56,Breaking Dawn,description,Stephenie Meyer,en-US,9,genre,book\Breaking Dawn.png,0
+57,The Secret Life of Bees,description,Sue Monk Kidd,en-US,1,genre,book\The Secret Life of Bees.png,0
+58,The Adventures of Huckleberry Finn,description,"Mark Twain, John Seelye, Guy Cardwell",eng,4,genre,book\The Adventures of Huckleberry Finn.png,0
+59,Charlotte's Web,description,"E.B. White, Garth Williams, Rosemary Wells",eng,10,genre,book\Charlottes Web.png,0
+60,The Curious Incident of the Dog in the Night-Time,description,Mark Haddon,eng,5,genre,book\The Curious Incident of the Dog in the NightTime.png,0
+61,The Girl on the Train,description,Paula Hawkins,eng,3,genre,book\The Girl on the Train.png,0
+62,Northern Lights,description,Philip Pullman,eng,3,genre,book\Northern Lights.png,0
+63,Wuthering Heights,description,"Emily Brontë, Richard J. Dunn",eng,6,genre,book\Wuthering Heights.png,0
+64,My Sister's Keeper,description,Jodi Picoult,eng,6,genre,book\My Sisters Keeper.png,0
+65,"Slaughterhouse-Five, or The Children's Crusade: A Duty-Dance with Death",description,Kurt Vonnegut Jr.,eng,4,genre,book\SlaughterhouseFive or The Childrens Crusade A DutyDance with Death.png,0
+66,Gone with the Wind,description,Margaret Mitchell,eng,3,genre,book\Gone with the Wind.png,0
+67,A Thousand Splendid Suns,description,Khaled Hosseini,eng,7,genre,book\A Thousand Splendid Suns.png,0
+68,The Perks of Being a Wallflower,description,Stephen Chbosky,eng,3,genre,book\The Perks of Being a Wallflower.png,0
+69,Insurgent,description,Veronica Roth,eng,3,genre,book\Insurgent.png,0
+70,Ender's Game,description,Orson Scott Card,eng,10,genre,book\Enders Game.png,0
+71,"Frankenstein; or, The Modern Prometheus",description,"Mary Wollstonecraft Shelley, Percy Bysshe Shelley, Maurice Hindle",eng,3,genre,book\Frankenstein or The Modern Prometheus.png,0
+72,The Shining,description,Stephen King,eng,2,genre,book\The Shining.png,0
+73,The Host,description,Stephenie Meyer,en-US,7,genre,book\The Host.png,0
+74,Looking for Alaska,description,John Green,eng,6,genre,book\Looking for Alaska.png,0
+75,Sense and Sensibility,description,"Jane Austen, Tony Tanner, Ros Ballaster",eng,10,genre,book\Sense and Sensibility.png,0
+76,Holes,description,"Louis Sachar, Louis Sachar",eng,6,genre,book\Holes.png,0
+77,The Devil Wears Prada,description,Lauren Weisberger,eng,10,genre,book\The Devil Wears Prada.png,0
+78,Ὀδύσσεια,description,"Homer, Robert Fagles, E.V. Rieu, Frédéric Mugler, Bernard Knox",eng,5,genre,book\Ὀδύσσεια.png,0
+79,Le Petit Prince,description,"Antoine de Saint-Exupéry, Richard Howard, Dom Marcos Barbosa, Melina Karakosta",eng,6,genre,book\Le Petit Prince.png,0
+80,The Glass Castle,description,Jeannette Walls,eng,3,genre,book\The Glass Castle.png,0
+81,Into the Wild,description,Jon Krakauer,eng,8,genre,book\Into the Wild.png,0
+82,A Tale of Two Cities,description,"Charles Dickens, Richard Maxwell, Hablot Knight Browne",eng,7,genre,book\A Tale of Two Cities.png,0
+83,Jurassic Park,description,Michael Crichton,spa,7,genre,book\Jurassic Park.png,0
+84,The Giving Tree,description,Shel Silverstein,eng,3,genre,book\The Giving Tree.png,0
+85,A Time to Kill,description,John Grisham,eng,2,genre,book\A Time to Kill.png,0
+86,Un di Velt Hot Geshvign,description,"Elie Wiesel, Marion Wiesel",eng,10,genre,book\Un di Velt Hot Geshvign.png,0
+87,Paper Towns,description,John Green,en-US,10,genre,book\Paper Towns.png,0
+88,The Princess Bride,description,William Goldman,en-US,2,genre,book\The Princess Bride.png,0
+89,The Outsiders,description,S.E. Hinton,en-US,9,genre,book\The Outsiders.png,0
+90,The Maze Runner,description,James Dashner,eng,8,genre,book\The Maze Runner.png,0
+91,Freakonomics: A Rogue Economist Explores the Hidden Side of Everything,description,"Steven D. Levitt, Stephen J. Dubner",en-US,1,genre,book\Freakonomics A Rogue Economist Explores the Hidden Side of Everything.png,0
+92,The Secret Garden,description,Frances Hodgson Burnett,eng,9,genre,book\The Secret Garden.png,0
+93,Cien años de soledad,description,"Gabriel García Márquez, Gregory Rabassa",eng,4,genre,book\Cien años de soledad.png,0
+94,The Picture of Dorian Gray,description,"Oscar Wilde, Jeffrey Eugenides",eng,7,genre,book\The Picture of Dorian Gray.png,0
+95,Fifty Shades Freed,description,E.L. James,eng,2,genre,book\Fifty Shades Freed.png,0
+96,Dracula,description,"Bram Stoker, Nina Auerbach, David J. Skal",eng,9,genre,book\Dracula.png,0
+97,Flickan som lekte med elden,description,"Stieg Larsson, Reg Keeland",eng,6,genre,book\Flickan som lekte med elden.png,0
+98,Fifty Shades Darker,description,E.L. James,eng,5,genre,book\Fifty Shades Darker.png,0
+99,The Poisonwood Bible,description,Barbara Kingsolver,eng,9,genre,book\The Poisonwood Bible.png,0
+100,Me Talk Pretty One Day,description,David Sedaris,eng,10,genre,book\Me Talk Pretty One Day.png,0
+101,Where the Wild Things Are,description,Maurice Sendak,eng,8,genre,book\Where the Wild Things Are.png,0
+102,Le Comte de Monte-Cristo,description,"Alexandre Dumas, Robin Buss",eng,8,genre,book\Le Comte de MonteCristo.png,0
+103,The Road,description,Cormac McCarthy,eng,3,genre,book\The Road.png,0
+104,Allegiant,description,Veronica Roth,eng,5,genre,book\Allegiant.png,0
+105,Bossypants,description,Tina Fey,eng,8,genre,book\Bossypants.png,0
+106,A Walk to Remember,description,Nicholas Sparks,en-US,8,genre,book\A Walk to Remember.png,0
+107,Confessions of a Shopaholic,description,Sophie Kinsella,eng,8,genre,book\Confessions of a Shopaholic.png,0
+108,Les Misérables,description,"Victor Hugo, Lee Fahnestock, Norman MacAfee",eng,8,genre,book\Les Misérables.png,0
+109,A Clash of Kings,description,George R.R. Martin,eng,7,genre,book\A Clash of Kings.png,0
+110,The Memory Keeper's Daughter,description,Kim Edwards,eng,5,genre,book\The Memory Keepers Daughter.png,0
+111,Me Before You,description,Jojo Moyes,eng,9,genre,book\Me Before You.png,0
+112,Catch-22,description,Joseph Heller,en-US,2,genre,book\Catch22.png,0
+113,Tuesdays with Morrie,description,"Mitch Albom, Saulius Dagys",eng,5,genre,book\Tuesdays with Morrie.png,0
+114,Middlesex,description,Jeffrey Eugenides,en-US,1,genre,book\Middlesex.png,0
+115,The Adventures of Tom Sawyer,description,"Mark Twain, Guy Cardwell, John Seelye",eng,10,genre,book\The Adventures of Tom Sawyer.png,0
+116,A Wrinkle in Time,description,Madeleine L'Engle,en-US,3,genre,book\A Wrinkle in Time.png,0
+117,The Joy Luck Club,description,Amy Tan,eng,3,genre,book\The Joy Luck Club.png,0
+118,The Handmaid's Tale,description,Margaret Atwood,eng,6,genre,book\The Handmaids Tale.png,0
+119,The Sisterhood of the Traveling Pants,description,Ann Brashares,eng,7,genre,book\The Sisterhood of the Traveling Pants.png,0
+120,Lolita,description,"Vladimir Nabokov, Craig Raine",eng,2,genre,book\Lolita.png,0
+121,Wicked: The Life and Times of the Wicked Witch of the West,description,"Gregory Maguire, Douglas Smith",eng,9,genre,book\Wicked The Life and Times of the Wicked Witch of the West.png,0
+122,The Firm,description,John Grisham,eng,4,genre,book\The Firm.png,0
+123,Room,description,Emma Donoghue,eng,6,genre,book\Room.png,0
+124,"The Tragicall Historie of Hamlet, Prince of Denmark",description,"William Shakespeare, Richard Andrews, Rex Gibson",eng,7,genre,book\The Tragicall Historie of Hamlet Prince of Denmark.png,0
+125,Dune,description,Frank Herbert,eng,1,genre,book\Dune.png,0
+126,The Tipping Point: How Little Things Can Make a Big Difference,description,Malcolm Gladwell,eng,7,genre,book\The Tipping Point How Little Things Can Make a Big Difference.png,0
+127,Steve Jobs,description,Walter Isaacson,eng,3,genre,book\Steve Jobs.png,0
+128,One Flew Over the Cuckoo's Nest,description,Ken Kesey,eng,1,genre,book\One Flew Over the Cuckoos Nest.png,0
+129,The Old Man and the Sea,description,Ernest Hemingway,eng,5,genre,book\The Old Man and the Sea.png,0
+130,The Grapes of Wrath,description,John Steinbeck,eng,3,genre,book\The Grapes of Wrath.png,0
+131,The Five People You Meet in Heaven,description,Mitch Albom,,1,genre,book\The Five People You Meet in Heaven.png,0
+132,Anne of Green Gables,description,L.M. Montgomery,eng,6,genre,book\Anne of Green Gables.png,0
+133,City of Glass,description,Cassandra Clare,en-US,10,genre,book\City of Glass.png,0
+134,A Storm of Swords,description,George R.R. Martin,eng,10,genre,book\A Storm of Swords.png,0
+135,Divine Secrets of the Ya-Ya Sisterhood,description,Rebecca Wells,en-US,5,genre,book\Divine Secrets of the YaYa Sisterhood.png,0
+136,Outlander,description,Diana Gabaldon,eng,10,genre,book\Outlander.png,0
+137,The Scarlet Letter,description,"Nathaniel Hawthorne, Thomas E. Connolly, Nina Baym",eng,2,genre,book\The Scarlet Letter.png,0
+138,Miss Peregrine’s Home for Peculiar Children,description,Ransom Riggs,en-US,7,genre,book\Miss Peregrines Home for Peculiar Children.png,0
+139,Luftslottet som sprängdes,description,"Stieg Larsson, Reg Keeland",en-US,5,genre,book\Luftslottet som sprängdes.png,0
+140,The Martian,description,Andy Weir,eng,5,genre,book\The Martian.png,0
+141,The Pillars of the Earth,description,Ken Follett,eng,4,genre,book\The Pillars of the Earth.png,0
+142,"Unbroken: A World War II Story of Survival, Resilience, and Redemption",description,Laura Hillenbrand,eng,5,genre,book\Unbroken A World War II Story of Survival Resilience and Redemption.png,0
+143,Deception Point,description,Dan Brown,eng,4,genre,book\Deception Point.png,0
+144,The Goldfinch,description,Donna Tartt,eng,10,genre,book\The Goldfinch.png,0
+145,Thirteen Reasons Why,description,Jay Asher,eng,5,genre,book\Thirteen Reasons Why.png,0
+146,Girl with a Pearl Earring,description,Tracy Chevalier,eng,8,genre,book\Girl with a Pearl Earring.png,0
+147,If I Stay,description,Gayle Forman,en-US,2,genre,book\If I Stay.png,0
+148,The Red Tent,description,Anita Diamant,en-US,4,genre,book\The Red Tent.png,0
+149,The Sea of Monsters,description,Rick Riordan,eng,2,genre,book\The Sea of Monsters.png,0
+150,Dear John,description,Nicholas Sparks,en-US,5,genre,book\Dear John.png,0
+151,City of Ashes,description,Cassandra Clare,eng,10,genre,book\City of Ashes.png,0
+152,The Tragedy of Macbeth,description,William Shakespeare,eng,10,genre,book\The Tragedy of Macbeth.png,0
+153,The Two Towers,description,J.R.R. Tolkien,en-US,5,genre,book\The Two Towers.png,0
+154,Something Borrowed,description,Emily Giffin,eng,3,genre,book\Something Borrowed.png,0
+155,Green Eggs and Ham,description,"Dr. Seuss, לאה נאור",en-US,9,genre,book\Green Eggs and Ham.png,0
+156,Charlie and the Chocolate Factory,description,"Roald Dahl, Quentin Blake",eng,5,genre,book\Charlie and the Chocolate Factory.png,0
+157,The Battle of the Labyrinth,description,Rick Riordan,eng,10,genre,book\The Battle of the Labyrinth.png,0
+158,Great Expectations,description,Charles Dickens,eng,7,genre,book\Great Expectations.png,0
+159,The Return of the King,description,J.R.R. Tolkien,en-US,8,genre,book\The Return of the King.png,0
+160,L’Étranger,description,"Albert Camus, Matthew Ward",eng,5,genre,book\LÉtranger.png,0
+161,The Lost Hero,description,Rick Riordan,eng,10,genre,book\The Lost Hero.png,0
+162,Eleanor & Park,description,Rainbow Rowell,eng,10,genre,book\Eleanor  Park.png,0
+163,A Feast for Crows,description,George R.R. Martin,en-US,2,genre,book\A Feast for Crows.png,0
+164,Matched,description,Ally Condie,eng,7,genre,book\Matched.png,0
+165,American Gods,description,Neil Gaiman,eng,6,genre,book\American Gods.png,0
+166,The Stand,description,"Stephen King, Bernie Wrightson",en-US,3,genre,book\The Stand.png,0
+167,The Last Song,description,Nicholas Sparks,en-GB,8,genre,book\The Last Song.png,0
+168,Digital Fortress,description,Dan Brown,en-GB,10,genre,book\Digital Fortress.png,0
+169,Emma,description,"Jane Austen, Fiona Stafford",eng,6,genre,book\Emma.png,0
+170,Анна Каренина,description,"Leo Tolstoy, Louise Maude, Leo Tolstoj, Aylmer Maude",eng,2,genre,book\Анна Каренина.png,0
+171,A Clockwork Orange,description,Anthony Burgess,eng,7,genre,book\A Clockwork Orange.png,0
+172,The Shack: Where Tragedy Confronts Eternity,description,William Paul Young,eng,1,genre,book\The Shack Where Tragedy Confronts Eternity.png,0
+173,The Last Olympian,description,Rick Riordan,eng,4,genre,book\The Last Olympian.png,0
+174,It,description,Stephen King,en-US,4,genre,book\It.png,0
+175,Преступление и наказание,description,"Fyodor Dostoyevsky, David McDuff",eng,2,genre,book\Преступление и наказание.png,0
+176,The Bell Jar,description,Sylvia Plath,en-US,4,genre,book\The Bell Jar.png,0
+177,Angela's Ashes: A Memoir,description,Frank McCourt,eng,9,genre,book\Angelas Ashes A Memoir.png,0
+178,Siddhartha,description,"Hermann Hesse, Hilda Rosner",eng,7,genre,book\Siddhartha.png,0
+179,In Cold Blood,description,Truman Capote,eng,3,genre,book\In Cold Blood.png,0
+180,Beautiful Creatures,description,"Kami Garcia, Margaret Stohl",eng,5,genre,book\Beautiful Creatures.png,0
+181,Clockwork Angel,description,Cassandra Clare,eng,5,genre,book\Clockwork Angel.png,0
+182,Matilda,description,"Roald Dahl, Quentin Blake",eng,1,genre,book\Matilda.png,0
+183,The Night Circus,description,Erin Morgenstern,eng,9,genre,book\The Night Circus.png,0
+184,The Other Boleyn Girl,description,Philippa Gregory,eng,10,genre,book\The Other Boleyn Girl.png,0
+185,Uglies,description,Scott Westerfeld,eng,10,genre,book\Uglies.png,0
+186,A Dance with Dragons,description,George R.R. Martin,eng,10,genre,book\A Dance with Dragons.png,0
+187,The Lord of the Rings,description,J.R.R. Tolkien,eng,2,genre,book\The Lord of the Rings.png,0
+188,Wild: From Lost to Found on the Pacific Crest Trail,description,Cheryl Strayed,eng,10,genre,book\Wild From Lost to Found on the Pacific Crest Trail.png,0
+189,Watchmen,description,"Alan Moore, Dave Gibbons, John Higgins",en-US,10,genre,book\Watchmen.png,0
+190,The Name of the Wind,description,Patrick Rothfuss,eng,2,genre,book\The Name of the Wind.png,0
+191,Outliers: The Story of Success,description,Malcolm Gladwell,en-US,1,genre,book\Outliers The Story of Success.png,0
+192,"Moby Dick; or, The Whale",description,"Herman Melville, Andrew Delbanco, Tom Quirk",eng,6,genre,book\Moby Dick or The Whale.png,0
+193,The Guernsey Literary and Potato Peel Pie Society,description,"Mary Ann Shaffer, Annie Barrows",eng,2,genre,book\The Guernsey Literary and Potato Peel Pie Society.png,0
+194,Fight Club,description,Chuck Palahniuk,eng,4,genre,book\Fight Club.png,0
+195,Dead Until Dark,description,Charlaine Harris,en-US,6,genre,book\Dead Until Dark.png,0
+196,The Color Purple,description,Alice Walker,eng,8,genre,book\The Color Purple.png,0
+197,Marley & Me: Life and Love with the World's Worst Dog,description,John Grogan,eng,9,genre,book\Marley  Me Life and Love with the Worlds Worst Dog.png,0
+198,Ten Little Niggers,description,Agatha Christie,eng,10,genre,book\Ten Little Niggers.png,0
+199,The Lost Symbol,description,Dan Brown,eng,8,genre,book\The Lost Symbol.png,0
+200,"Hush, Hush",description,Becca Fitzpatrick,en-US,9,genre,book\Hush Hush.png,0
+201,Beautiful Disaster,description,Jamie McGuire,eng,10,genre,book\Beautiful Disaster.png,0
+202,A Christmas Carol,description,Charles Dickens,,3,genre,book\A Christmas Carol.png,0
+203,Interview with the Vampire,description,Anne Rice,eng,3,genre,book\Interview with the Vampire.png,0
+204,The Selection,description,Kiera Cass,en-US,9,genre,book\The Selection.png,0
+205,One for the Money,description,Janet Evanovich,en-US,1,genre,book\One for the Money.png,0
+206,The Immortal Life of Henrietta Lacks,description,Rebecca Skloot,eng,10,genre,book\The Immortal Life of Henrietta Lacks.png,0
+207,The Silence of the Lambs,description,Thomas Harris,eng,5,genre,book\The Silence of the Lambs.png,0
+208,Blink: The Power of Thinking Without Thinking,description,Malcolm Gladwell,en-US,1,genre,book\Blink The Power of Thinking Without Thinking.png,0
+209,Atonement,description,Ian McEwan,eng,9,genre,book\Atonement.png,0
+210,Die Verwandlung,description,"Franz Kafka, Stanley Corngold",eng,4,genre,book\Die Verwandlung.png,0
+211,The Titan's Curse,description,Rick Riordan,eng,2,genre,book\The Titans Curse.png,0
+212,The Art of Racing in the Rain,description,Garth Stein,eng,3,genre,book\The Art of Racing in the Rain.png,0
+213,"The Devil in the White City: Murder, Magic, and Madness at the Fair that Changed America",description,"Erik Larson, Tony Goldwyn",eng,3,genre,book\The Devil in the White City Murder Magic and Madness at the Fair that Changed America.png,0
+214,Bared to You,description,Sylvia Day,eng,4,genre,book\Bared to You.png,0
+215,The Chronicles of Narnia,description,"C.S. Lewis, Pauline Baynes",eng,8,genre,book\The Chronicles of Narnia.png,0
+216,Twilight: The Complete Illustrated Movie Companion,description,Mark Cotta Vaz,en-US,4,genre,book\Twilight The Complete Illustrated Movie Companion.png,0
+217,"A Child Called ""It"": One Child's Courage to Survive",description,Dave Pelzer,eng,3,genre,book\A Child Called It One Childs Courage to Survive.png,0
+218,The Bourne Identity,description,Robert Ludlum,eng,8,genre,book\The Bourne Identity.png,0
+219,Artemis Fowl,description,Eoin Colfer,eng,2,genre,book\Artemis Fowl.png,0
+220,Fallen,description,Lauren Kate,en-US,7,genre,book\Fallen.png,0
+221,East of Eden,description,John Steinbeck,eng,7,genre,book\East of Eden.png,0
+222,Dark Places,description,Gillian Flynn,eng,10,genre,book\Dark Places.png,0
+223,The Client,description,John Grisham,eng,10,genre,book\The Client.png,0
+224,The Nanny Diaries,description,"Emma McLaughlin, Nicola Kraus",eng,8,genre,book\The Nanny Diaries.png,0
+225,Alice's Adventures in Wonderland,description,"Lewis Carroll, John Tenniel, Martin Gardner",eng,4,genre,book\Alices Adventures in Wonderland.png,0
+226,Persuasion,description,"Jane Austen, James Kinsley, Deidre Shauna Lynch",eng,6,genre,book\Persuasion.png,0
+227,Elle s'appelait Sarah,description,Tatiana de Rosnay,eng,8,genre,book\Elle sappelait Sarah.png,0
+228,The Gunslinger,description,Stephen King,en-US,2,genre,book\The Gunslinger.png,0
+229,El amor en los tiempos del cólera,description,"Gabriel García Márquez, Edith Grossman",eng,6,genre,book\El amor en los tiempos del cólera.png,0
+230,Speak,description,Laurie Halse Anderson,eng,8,genre,book\Speak.png,0
+231,The Husband's Secret,description,Liane Moriarty,eng,2,genre,book\The Husbands Secret.png,0
+232,Into Thin Air: A Personal Account of the Mt. Everest Disaster,description,Jon Krakauer,en-US,9,genre,book\Into Thin Air A Personal Account of the Mt Everest Disaster.png,0
+233,Carrie,description,Stephen King,,1,genre,book\Carrie.png,0
+234,Running with Scissors,description,Augusten Burroughs,en-US,6,genre,book\Running with Scissors.png,0
+235,World War Z: An Oral History of the Zombie War,description,Max Brooks,en-US,6,genre,book\World War Z An Oral History of the Zombie War.png,0
+236,Inferno,description,Dan Brown,eng,8,genre,book\Inferno.png,0
+237,Number the Stars,description,Lois Lowry,eng,7,genre,book\Number the Stars.png,0
+238,Along Came a Spider,description,James Patterson,eng,1,genre,book\Along Came a Spider.png,0
+239,Misery,description,Stephen King,en-GB,1,genre,book\Misery.png,0
+240,Sharp Objects,description,Gillian Flynn,en-US,1,genre,book\Sharp Objects.png,0
+241,Bridge to Terabithia,description,Katherine Paterson,eng,9,genre,book\Bridge to Terabithia.png,0
+242,Marked,description,"P.C. Cast, Kristin Cast",en-US,6,genre,book\Marked.png,0
+243,The 7 Habits of Highly Effective People,description,Stephen R. Covey,en-US,5,genre,book\The 7 Habits of Highly Effective People.png,0
+244,A Midsummer Night's Dream,description,"William Shakespeare, Barbara A. Mowat, Paul Werstine, Catherine Belsey",eng,8,genre,book\A Midsummer Nights Dream.png,0
+245,Extremely Loud and Incredibly Close,description,Jonathan Safran Foer,en-US,5,genre,book\Extremely Loud and Incredibly Close.png,0
+246,Wonder,description,R.J. Palacio,eng,9,genre,book\Wonder.png,0
+247,The Cat in the Hat,description,Dr. Seuss,eng,7,genre,book\The Cat in the Hat.png,0
+248,Cinder,description,Marissa Meyer,eng,7,genre,book\Cinder.png,0
+249,The Cuckoo's Calling,description,"Robert Galbraith, J.K. Rowling",en-US,4,genre,book\The Cuckoos Calling.png,0
+250,Shiver,description,Maggie Stiefvater,eng,1,genre,book\Shiver.png,0
+251,Atlas Shrugged,description,"Ayn Rand, Leonard Peikoff",eng,10,genre,book\Atlas Shrugged.png,0
+252,Three Cups of Tea,description,"Greg Mortenson, David Oliver Relin",en-US,6,genre,book\Three Cups of Tea.png,0
+253,La sombra del viento,description,"Carlos Ruiz Zafón, Lucia Graves",eng,10,genre,book\La sombra del viento.png,0
+254,The Scorch Trials,description,James Dashner,eng,4,genre,book\The Scorch Trials.png,0
+255,How to Win Friends and Influence People,description,Dale Carnegie,eng,4,genre,book\How to Win Friends and Influence People.png,0
+256,Under the Tuscan Sun,description,Frances Mayes,eng,7,genre,book\Under the Tuscan Sun.png,0
+257,Big Little Lies,description,Liane Moriarty,eng,8,genre,book\Big Little Lies.png,0
+258,Ella Enchanted,description,Gail Carson Levine,eng,1,genre,book\Ella Enchanted.png,0
+259,The Sun Also Rises,description,Ernest Hemingway,en-US,7,genre,book\The Sun Also Rises.png,0
+260,A Tree Grows In Brooklyn,description,Betty Smith,eng,1,genre,book\A Tree Grows In Brooklyn.png,0
+261,Kiss the Girls,description,James Patterson,eng,9,genre,book\Kiss the Girls.png,0
+262,The Nightingale,description,Kristin Hannah,eng,1,genre,book\The Nightingale.png,0
+263,Never Let Me Go,description,Kazuo Ishiguro,eng,8,genre,book\Never Let Me Go.png,0
+264,"PS, I Love You",description,Cecelia Ahern,en-US,8,genre,book\PS I Love You.png,0
+265,Rebecca,description,"Daphne du Maurier, Sally Beauman",en-US,3,genre,book\Rebecca.png,0
+266,Flowers for Algernon,description,Daniel Keyes,en-US,10,genre,book\Flowers for Algernon.png,0
+267,Como agua para chocolate,description,"Laura Esquivel, Thomas Christensen, Carol Christensen",en-US,4,genre,book\Como agua para chocolate.png,0
+268,Snow Flower and the Secret Fan,description,Lisa See,eng,1,genre,book\Snow Flower and the Secret Fan.png,0
+269,The Godfather,description,"Mario Puzo, Robert Thompson, Peter Bart",eng,1,genre,book\The Godfather.png,0
+270,An Abundance of Katherines,description,John Green,eng,10,genre,book\An Abundance of Katherines.png,0
+271,Foundation,description,Isaac Asimov,eng,8,genre,book\Foundation.png,0
+272,The Ocean at the End of the Lane,description,Neil Gaiman,eng,2,genre,book\The Ocean at the End of the Lane.png,0
+273,A Light in the Attic,description,Shel Silverstein,eng,9,genre,book\A Light in the Attic.png,0
+274,"Harry Potter and the Cursed Child, Parts One and Two",description,"John Tiffany, Jack Thorne, J.K. Rowling",eng,4,genre,book\Harry Potter and the Cursed Child Parts One and Two.png,0
+275,Delirium,description,Lauren Oliver,eng,1,genre,book\Delirium.png,0
+276,The Pelican Brief,description,John Grisham,eng,9,genre,book\The Pelican Brief.png,0
+277,Coraline,description,Neil Gaiman,eng,4,genre,book\Coraline.png,0
+278,"Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",description,"Terry Pratchett, Neil Gaiman",en-US,8,genre,book\Good Omens The Nice and Accurate Prophecies of Agnes Nutter Witch.png,0
+279,On the Road,description,Jack Kerouac,eng,9,genre,book\On the Road.png,0
+280,The Rosie Project,description,Graeme Simsion,eng,10,genre,book\The Rosie Project.png,0
+281,The Lucky One,description,Nicholas Sparks,en-US,5,genre,book\The Lucky One.png,0
+282,The Fountainhead,description,"Ayn Rand, Leonard Peikoff",eng,4,genre,book\The Fountainhead.png,0
+283,The Hunt for Red October,description,Tom Clancy,,7,genre,book\The Hunt for Red October.png,0
+284,Watership Down,description,Richard Adams,eng,9,genre,book\Watership Down.png,0
+285,Is Everyone Hanging Out Without Me? (And Other Concerns),description,Mindy Kaling,eng,10,genre,book\Is Everyone Hanging Out Without Me And Other Concerns.png,0
+286,Cutting for Stone,description,Abraham Verghese,eng,9,genre,book\Cutting for Stone.png,0
+287,The Voyage of the Dawn Treader,description,"C.S. Lewis, Pauline Baynes",eng,8,genre,book\The Voyage of the Dawn Treader.png,0
+288,Treasure Island,description,Robert Louis Stevenson,eng,8,genre,book\Treasure Island.png,0
+289,The Son of Neptune,description,Rick Riordan,eng,8,genre,book\The Son of Neptune.png,0
+290,11/22/1963,description,Stephen King,eng,8,genre,book\11221963.png,0
+291,The Very Hungry Caterpillar,description,Eric Carle,eng,8,genre,book\The Very Hungry Caterpillar.png,0
+292,Cat's Cradle,description,Kurt Vonnegut Jr.,eng,4,genre,book\Cats Cradle.png,0
+293,The Time Machine,description,"H.G. Wells, Greg Bear, Carlo Pagetti",eng,7,genre,book\The Time Machine.png,0
+294,The Boy in the Striped Pyjamas,description,John Boyne,eng,1,genre,book\The Boy in the Striped Pyjamas.png,0
+295,Heart of Darkness,description,Joseph Conrad,eng,6,genre,book\Heart of Darkness.png,0
+296,Safe Haven,description,Nicholas Sparks,eng,9,genre,book\Safe Haven.png,0
+297,The Secret,description,Rhonda Byrne,eng,3,genre,book\The Secret.png,0
+298,I Know This Much Is True,description,Wally Lamb,eng,9,genre,book\I Know This Much Is True.png,0
+299,Pet Sematary,description,Stephen King,eng,1,genre,book\Pet Sematary.png,0
+300,She's Come Undone,description,Wally Lamb,en-US,1,genre,book\Shes Come Undone.png,0
+301,The Wise Man's Fear,description,Patrick Rothfuss,eng,1,genre,book\The Wise Mans Fear.png,0
+302,Can You Keep a Secret?,description,Sophie Kinsella,en-US,1,genre,book\Can You Keep a Secret.png,0
+303,City of Fallen Angels,description,Cassandra Clare,en-US,9,genre,book\City of Fallen Angels.png,0
+304,Good in Bed,description,Jennifer Weiner,en-US,8,genre,book\Good in Bed.png,0
+305,The Thorn Birds,description,Colleen McCullough,eng,10,genre,book\The Thorn Birds.png,0
+306,The Graveyard Book,description,"Neil Gaiman, Dave McKean",en-US,1,genre,book\The Graveyard Book.png,0
+307,The Light Between Oceans,description,M.L. Stedman,eng,8,genre,book\The Light Between Oceans.png,0
+308,Tintenherz,description,"Cornelia Funke, Anthea Bell",en-US,3,genre,book\Tintenherz.png,0
+309,Who Moved My Cheese?,description,"Spencer Johnson, Kenneth H. Blanchard",eng,8,genre,book\Who Moved My Cheese.png,0
+310,A Walk in the Woods,description,Bill Bryson,eng,8,genre,book\A Walk in the Woods.png,0
+311,I Know Why the Caged Bird Sings,description,Maya Angelou,en-US,10,genre,book\I Know Why the Caged Bird Sings.png,0
+312,Orphan Train,description,Christina Baker Kline,eng,5,genre,book\Orphan Train.png,0
+313,City of Lost Souls,description,Cassandra Clare,eng,7,genre,book\City of Lost Souls.png,0
+314,"Where'd You Go, Bernadette",description,Maria Semple,eng,2,genre,book\Whered You Go Bernadette.png,0
+315,Where the Red Fern Grows,description,Wilson Rawls,,1,genre,book\Where the Red Fern Grows.png,0
+316,Neverwhere,description,Neil Gaiman,eng,7,genre,book\Neverwhere.png,0
+317,Nesnesitelná lehkost bytí,description,"Milan Kundera, Michael Henry Heim",eng,3,genre,book\Nesnesitelná lehkost bytí.png,0
+318,A Prayer for Owen Meany,description,John Irving,eng,9,genre,book\A Prayer for Owen Meany.png,0
+319,White Oleander,description,Janet Fitch,eng,7,genre,book\White Oleander.png,0
+320,Legend,description,Marie Lu,eng,10,genre,book\Legend.png,0
+321,Nineteen Minutes,description,Jodi Picoult,eng,4,genre,book\Nineteen Minutes.png,0
+322,The Last Lecture,description,"Randy Pausch, Jeffrey Zaslow",eng,10,genre,book\The Last Lecture.png,0
+323,The Eye of the World,description,Robert Jordan,eng,7,genre,book\The Eye of the World.png,0
+324,The Pact,description,Jodi Picoult,en-US,1,genre,book\The Pact.png,0
+325,The magician's nephew,description,C.S. Lewis,eng,4,genre,book\The magicians nephew.png,0
+326,Still Alice,description,Lisa Genova,eng,4,genre,book\Still Alice.png,0
+327,Reflected in You,description,Sylvia Day,eng,9,genre,book\Reflected in You.png,0
+328,James and the Giant Peach,description,"Roald Dahl, Quentin Blake",eng,6,genre,book\James and the Giant Peach.png,0
+329,1st To Die,description,James Patterson,en-US,7,genre,book\1st To Die.png,0
+330,The Ultimate Hitchhiker's Guide: Five Complete Novels and One Story,description,Douglas Adams,eng,6,genre,book\The Ultimate Hitchhikers Guide Five Complete Novels and One Story.png,0
+331,One Day,description,David Nicholls,eng,2,genre,book\One Day.png,0
+332,I Am Number Four,description,Pittacus Lore,en-US,1,genre,book\I Am Number Four.png,0
+333,Ἰλιάς,description,"Homer, Robert Fagles, Frédéric Mugler, Bernard Knox",eng,2,genre,book\Ἰλιάς.png,0
+334,The Casual Vacancy,description,J.K. Rowling,eng,2,genre,book\The Casual Vacancy.png,0
+335,The Runaway Jury,description,John Grisham,eng,7,genre,book\The Runaway Jury.png,0
+336,Naked,description,David Sedaris,en-US,7,genre,book\Naked.png,0
+337,Eldest,description,Christopher Paolini,en-US,1,genre,book\Eldest.png,0
+338,The Wonderful Wizard of Oz,description,"L. Frank Baum, W.W. Denslow",eng,5,genre,book\The Wonderful Wizard of Oz.png,0
+339,Prince Caspian: The Return to Narnia,description,C.S. Lewis,eng,2,genre,book\Prince Caspian The Return to Narnia.png,0
+340,We Were Liars,description,E. Lockhart,eng,8,genre,book\We Were Liars.png,0
+341,Salem's Lot,description,Stephen King,en-GB,5,genre,book\Salems Lot.png,0
+342,Fear and Loathing in Las Vegas: A Savage Journey to the Heart of the American Dream,description,"Hunter S. Thompson, Ralph Steadman",eng,10,genre,book\Fear and Loathing in Las Vegas A Savage Journey to the Heart of the American Dream.png,0
+343,Clockwork Prince,description,Cassandra Clare,eng,1,genre,book\Clockwork Prince.png,0
+344,Yes Please,description,Amy Poehler,eng,6,genre,book\Yes Please.png,0
+345,"The Tragedy of Othello, The Moor of Venice",description,William Shakespeare,eng,7,genre,book\The Tragedy of Othello The Moor of Venice.png,0
+346,Beloved,description,Toni Morrison,eng,10,genre,book\Beloved.png,0
+347,Graceling,description,Kristin Cashore,en-CA,6,genre,book\Graceling.png,0
+348,The Bad Beginning,description,"Lemony Snicket, Brett Helquist",eng,6,genre,book\The Bad Beginning.png,0
+349,Im Westen nichts Neues,description,"Erich Maria Remarque, A.W. Wheen",en-US,6,genre,book\Im Westen nichts Neues.png,0
+350,"Oh, the Places You'll Go!",description,Dr. Seuss,en-US,7,genre,book\Oh the Places Youll Go.png,0
+351,And The Mountains Echoed,description,Khaled Hosseini,eng,7,genre,book\And The Mountains Echoed.png,0
+352,Do Androids Dream of Electric Sheep?,description,"Philip K. Dick, Roger Zelazny",eng,9,genre,book\Do Androids Dream of Electric Sheep.png,0
+353,Oliver Twist,description,"Charles Dickens, George Cruikshank, Philip Horne",eng,2,genre,book\Oliver Twist.png,0
+354,A Grief Observed,description,C.S. Lewis,eng,4,genre,book\A Grief Observed.png,0
+355,Anna and the French Kiss,description,Stephanie Perkins,en-US,10,genre,book\Anna and the French Kiss.png,0
+356,How the Grinch Stole Christmas!,description,Dr. Seuss,eng,3,genre,book\How the Grinch Stole Christmas.png,0
+357,V for Vendetta,description,"Alan Moore, David Lloyd",eng,7,genre,book\V for Vendetta.png,0
+358,John Adams,description,David McCullough,eng,1,genre,book\John Adams.png,0
+359,Odd Thomas,description,Dean Koontz,eng,6,genre,book\Odd Thomas.png,0
+360,The Subtle Knife,description,Philip Pullman,eng,3,genre,book\The Subtle Knife.png,0
+361,Stargirl,description,Jerry Spinelli,eng,3,genre,book\Stargirl.png,0
+362,The Red Pyramid,description,Rick Riordan,eng,5,genre,book\The Red Pyramid.png,0
+363,Stranger in a Strange Land,description,Robert A. Heinlein,eng,1,genre,book\Stranger in a Strange Land.png,0
+364,Dress Your Family in Corduroy and Denim,description,David Sedaris,eng,4,genre,book\Dress Your Family in Corduroy and Denim.png,0
+365,The BFG,description,"Roald Dahl, Quentin Blake",eng,5,genre,book\The BFG.png,0
+366,A Short History of Nearly Everything,description,Bill Bryson,en-US,2,genre,book\A Short History of Nearly Everything.png,0
+367,The Call of the Wild,description,Jack London,eng,5,genre,book\The Call of the Wild.png,0
+368,The Death Cure,description,James Dashner,eng,4,genre,book\The Death Cure.png,0
+369,Stardust,description,Neil Gaiman,eng,5,genre,book\Stardust.png,0
+370,The Namesake,description,Jhumpa Lahiri,en-US,3,genre,book\The Namesake.png,0
+371,A Discovery of Witches,description,Deborah Harkness,eng,2,genre,book\A Discovery of Witches.png,0
+372,ノルウェイの森 [Noruwei no Mori],description,"Haruki Murakami, Jay Rubin",eng,2,genre,book\ノルウェイの森 Noruwei no Mori.png,0
+373,Where the Heart Is,description,Billie Letts,en-US,9,genre,book\Where the Heart Is.png,0
+374,"Will Grayson, Will Grayson",description,"John Green, David Levithan",eng,8,genre,book\Will Grayson Will Grayson.png,0
+375,A Million Little Pieces,description,James Frey,en-CA,8,genre,book\A Million Little Pieces.png,0
+376,Frostbite,description,Richelle Mead,eng,4,genre,book\Frostbite.png,0
+377,Quiet: The Power of Introverts in a World that Can't Stop Talking,description,Susan Cain,eng,9,genre,book\Quiet The Power of Introverts in a World that Cant Stop Talking.png,0
+378,Island of the Blue Dolphins,description,Scott O'Dell,en-CA,3,genre,book\Island of the Blue Dolphins.png,0
+379,The Crucible,description,"Arthur Miller, Christopher Bigsby",eng,7,genre,book\The Crucible.png,0
+380,Hatchet,description,Gary Paulsen,en-US,3,genre,book\Hatchet.png,0
+381,Mistborn : The Final Empire,description,Brandon Sanderson,eng,8,genre,book\Mistborn  The Final Empire.png,0
+382,The Strange Case of Dr Jekyll and Mr Hyde,description,"Robert Louis Stevenson, Vladimir Nabokov, Mervyn Peake, Dan Chaon",eng,3,genre,book\The Strange Case of Dr Jekyll and Mr Hyde.png,0
+383,The Lorax,description,Dr. Seuss,eng,5,genre,book\The Lorax.png,0
+384,Greg Heffley's Journal,description,Jeff Kinney,en-US,8,genre,book\Greg Heffleys Journal.png,0
+385,Throne of Glass,description,Sarah J. Maas,eng,8,genre,book\Throne of Glass.png,0
+386,Shadow Kiss,description,Richelle Mead,en-US,9,genre,book\Shadow Kiss.png,0
+387,For Whom the Bell Tolls,description,Ernest Hemingway,eng,4,genre,book\For Whom the Bell Tolls.png,0
+388,Hotel on the Corner of Bitter and Sweet,description,Jamie Ford,eng,10,genre,book\Hotel on the Corner of Bitter and Sweet.png,0
+389,Das Parfum. Die Geschichte eines Mörders,description,"Patrick Süskind, John E. Woods",eng,7,genre,book\Das Parfum Die Geschichte eines Mörders.png,0
+390,Fast Food Nation : The Dark Side of the All-American Meal,description,Eric Schlosser,eng,3,genre,book\Fast Food Nation  The Dark Side of the AllAmerican Meal.png,0
+391,The Tales of Beedle the Bard,description,J.K. Rowling,en-US,6,genre,book\The Tales of Beedle the Bard.png,0
+392,Neuromancer,description,William Gibson,eng,4,genre,book\Neuromancer.png,0
+393,A Farewell to Arms,description,Ernest Hemingway,en-US,10,genre,book\A Farewell to Arms.png,0
+394,The Tell-Tale Heart,description,Edgar Allan Poe,en-GB,8,genre,book\The TellTale Heart.png,0
+395,孫子兵法 [Sūnzi bīngfǎ],description,"Sun Tzu, Thomas Cleary",eng,4,genre,book\孫子兵法 Sūnzi bīngfǎ.png,0
+396,Defending Jacob,description,William Landay,eng,8,genre,book\Defending Jacob.png,0
+397,Breakfast of Champions,description,Kurt Vonnegut Jr.,eng,2,genre,book\Breakfast of Champions.png,0
+398,Drawing on the Right Side of the Brain,description,Betty Edwards,en-US,2,genre,book\Drawing on the Right Side of the Brain.png,0
+399,Bel Canto,description,Ann Patchett,eng,1,genre,book\Bel Canto.png,0
+400,"Guns, Germs, and Steel: The Fates of Human Societies",description,Jared Diamond,eng,4,genre,book\Guns Germs and Steel The Fates of Human Societies.png,0
+401,Fried Green Tomatoes at the Whistle Stop Cafe,description,Fannie Flagg,,1,genre,book\Fried Green Tomatoes at the Whistle Stop Cafe.png,0
+402,Things Fall Apart,description,Chinua Achebe,en-US,10,genre,book\Things Fall Apart.png,0
+403,The Undomestic Goddess,description,Sophie Kinsella,eng,5,genre,book\The Undomestic Goddess.png,0
+404,The Five Love Languages: How to Express Heartfelt Commitment to Your Mate,description,Gary Chapman,en-US,1,genre,book\The Five Love Languages How to Express Heartfelt Commitment to Your Mate.png,0
+405,Les Trois Mousquetaires,description,Alexandre Dumas,,9,genre,book\Les Trois Mousquetaires.png,0
+406,The Other Hand,description,Chris Cleave,en-US,3,genre,book\The Other Hand.png,0
+407,Evermore,description,Alyson Noel,en-US,6,genre,book\Evermore.png,0
+408,The Witches,description,"Roald Dahl, Quentin Blake",en-US,6,genre,book\The Witches.png,0
+409,The Thirteenth Tale,description,Diane Setterfield,eng,2,genre,book\The Thirteenth Tale.png,0
+410,Spirit Bound,description,Richelle Mead,eng,7,genre,book\Spirit Bound.png,0
+411,Blood Promise,description,Richelle Mead,en-US,4,genre,book\Blood Promise.png,0
+412,Message in a Bottle,description,Nicholas Sparks,en-US,1,genre,book\Message in a Bottle.png,0
+413,The Paris Wife,description,Paula McLain,eng,8,genre,book\The Paris Wife.png,0
+414,Complete Harry Potter Boxed Set,description,J.K. Rowling,eng,6,genre,book\Complete Harry Potter Boxed Set.png,0
+415,The Elite,description,Kiera Cass,eng,8,genre,book\The Elite.png,0
+416,Il nome della rosa,description,"Umberto Eco, William Weaver, Seán Barrett",en-US,3,genre,book\Il nome della rosa.png,0
+417,Go Ask Alice,description,"Beatrice Sparks, Anonymous",eng,3,genre,book\Go Ask Alice.png,0
+418,A Confederacy of Dunces,description,"John Kennedy Toole, Walker Percy",eng,3,genre,book\A Confederacy of Dunces.png,0
+419,The Importance of Being Earnest,description,Oscar Wilde,eng,5,genre,book\The Importance of Being Earnest.png,0
+420,The Mark of Athena,description,Rick Riordan,eng,7,genre,book\The Mark of Athena.png,0
+421,The Colour of Magic,description,Terry Pratchett,eng,9,genre,book\The Colour of Magic.png,0
+422,海辺のカフカ [Umibe no Kafuka],description,"Haruki Murakami, Philip Gabriel",en-US,1,genre,book\海辺のカフカ Umibe no Kafuka.png,0
+423,Red Dragon,description,Thomas Harris,eng,10,genre,book\Red Dragon.png,0
+424,"I, Robot",description,Isaac Asimov,eng,1,genre,book\I Robot.png,0
+425,Dark Lover,description,J.R. Ward,eng,5,genre,book\Dark Lover.png,0
+426,Crescendo,description,Becca Fitzpatrick,en-US,3,genre,book\Crescendo.png,0
+427,Before I Fall,description,Lauren Oliver,eng,9,genre,book\Before I Fall.png,0
+428,The God of Small Things,description,Arundhati Roy,eng,3,genre,book\The God of Small Things.png,0
+429,The Invention of Wings,description,Sue Monk Kidd,en-US,6,genre,book\The Invention of Wings.png,0
+430,What Alice Forgot,description,Liane Moriarty,eng,1,genre,book\What Alice Forgot.png,0
+431,A Brief History of Time: From the Big Bang to Black Holes,description,"Stephen Hawking, Cao Chi, Phạm Văn Thiều",eng,8,genre,book\A Brief History of Time From the Big Bang to Black Holes.png,0
+432,Fall of Giants,description,Ken Follett,eng,5,genre,book\Fall of Giants.png,0
+433,Under the Dome,description,Stephen King,eng,4,genre,book\Under the Dome.png,0
+434,Snow Crash,description,Neal Stephenson,eng,3,genre,book\Snow Crash.png,0
+435,Just Listen,description,Sarah Dessen,en-US,5,genre,book\Just Listen.png,0
+436,Winnie-the-Pooh,description,"A.A. Milne, Ernest H. Shepard",eng,9,genre,book\WinniethePooh.png,0
+437,Before I Go to Sleep,description,S.J. Watson,en-CA,9,genre,book\Before I Go to Sleep.png,0
+438,A Study in Scarlet,description,Arthur Conan Doyle,eng,6,genre,book\A Study in Scarlet.png,0
+439,Brisingr,description,Christopher Paolini,eng,2,genre,book\Brisingr.png,0
+440,The Purpose Driven Life: What on Earth am I Here For?,description,Rick Warren,en-US,9,genre,book\The Purpose Driven Life What on Earth am I Here For.png,0
+441,Betrayed: a House of Night Novel,description,"P.C. Cast, Kristin Cast",en-US,4,genre,book\Betrayed a House of Night Novel.png,0
+442,Storm Front,description,Jim Butcher,en-US,10,genre,book\Storm Front.png,0
+443,Northanger Abbey,description,"Jane Austen, Alfred MacAdam",eng,5,genre,book\Northanger Abbey.png,0
+444,The 5th Wave,description,Rick Yancey,eng,3,genre,book\The 5th Wave.png,0
+445,Cold Mountain,description,Charles Frazier,en-US,9,genre,book\Cold Mountain.png,0
+446,If You Give a Mouse a Cookie,description,"Laura Joffe Numeroff, Felicia Bond",en-US,7,genre,book\If You Give a Mouse a Cookie.png,0
+447,Something Blue,description,Emily Giffin,en-US,4,genre,book\Something Blue.png,0
+448,A Streetcar Named Desire,description,Tennessee Williams,eng,7,genre,book\A Streetcar Named Desire.png,0
+449,The Historian,description,Elizabeth Kostova,eng,4,genre,book\The Historian.png,0
+450,Station Eleven,description,Emily St. John Mandel,eng,8,genre,book\Station Eleven.png,0
+451,En man som heter Ove,description,"Fredrik Backman, Henning Koch",eng,6,genre,book\En man som heter Ove.png,0
+452,Clockwork Princess,description,Cassandra Clare,eng,5,genre,book\Clockwork Princess.png,0
+453,The Good Earth,description,Pearl S. Buck,eng,8,genre,book\The Good Earth.png,0
+454,Ways of Seeing,description,John Berger,eng,2,genre,book\Ways of Seeing.png,0
+455,Dragonfly in Amber,description,Diana Gabaldon,eng,10,genre,book\Dragonfly in Amber.png,0
+456,In Her Shoes,description,Jennifer Weiner,,9,genre,book\In Her Shoes.png,0
+457,The Hobbit,description,"Chuck Dixon, J.R.R. Tolkien, David Wenzel, Sean Deming",eng,9,genre,book\The Hobbit.png,0
+458,The Brief Wondrous Life of Oscar Wao,description,Junot Díaz,eng,9,genre,book\The Brief Wondrous Life of Oscar Wao.png,0
+459,Their Eyes Were Watching God,description,Zora Neale Hurston,eng,2,genre,book\Their Eyes Were Watching God.png,0
+460,Fantastic Beasts and Where to Find Them,description,"Newt Scamander, J.K. Rowling, Albus Dumbledore",eng,9,genre,book\Fantastic Beasts and Where to Find Them.png,0
+461,I Am Malala: The Girl Who Stood Up for Education and Was Shot by the Taliban,description,"Malala Yousafzai, Christina Lamb",eng,9,genre,book\I Am Malala The Girl Who Stood Up for Education and Was Shot by the Taliban.png,0
+462,Mansfield Park,description,"Jane Austen, Kathryn Sutherland, Tony Tanner, Claire Lamont",eng,7,genre,book\Mansfield Park.png,0
+463,…trotzdem Ja zum Leben sagen: Ein Psychologe erlebt das Konzentrationslager,description,Viktor E. Frankl,eng,4,genre,book\trotzdem Ja zum Leben sagen Ein Psychologe erlebt das Konzentrationslager.png,0
+464,In the Woods,description,Tana French,eng,2,genre,book\In the Woods.png,0
+465,The God Delusion,description,Richard Dawkins,eng,2,genre,book\The God Delusion.png,0
+466,Where She Went,description,Gayle Forman,en-US,5,genre,book\Where She Went.png,0
+467,The World According to Garp,description,John Irving,eng,1,genre,book\The World According to Garp.png,0
+468,Killing Floor,description,Lee Child,eng,3,genre,book\Killing Floor.png,0
+469,"The Life and Strange Surprising Adventures of Robinson Crusoe of York, Mariner",description,"Daniel Defoe, Gerald McCann, Virginia Woolf",eng,2,genre,book\The Life and Strange Surprising Adventures of Robinson Crusoe of York Mariner.png,0
+470,Il Principe,description,"Niccolò Machiavelli, Adolph Caso, Rufus Goodwin, Benjamin Martinez",eng,8,genre,book\Il Principe.png,0
+471,The Amber Spyglass,description,Philip Pullman,eng,8,genre,book\The Amber Spyglass.png,0
+472,Wizard's First Rule,description,Terry Goodkind,eng,8,genre,book\Wizards First Rule.png,0
+473,The Kitchen House,description,Kathleen Grissom,en-CA,5,genre,book\The Kitchen House.png,0
+474,Franny and Zooey,description,J.D. Salinger,en-US,3,genre,book\Franny and Zooey.png,0
+475,Choke,description,Chuck Palahniuk,eng,5,genre,book\Choke.png,0
+476,Братья Карамазовы,description,"Fyodor Dostoyevsky, Richard Pevear, Larissa Volokhonsky",eng,3,genre,book\Братья Карамазовы.png,0
+477,The City of Ember,description,Jeanne DuPrau,eng,10,genre,book\The City of Ember.png,0
+478,The Andromeda Strain,description,Michael Crichton,,2,genre,book\The Andromeda Strain.png,0
+479,The Green Mile,description,Stephen King,eng,9,genre,book\The Green Mile.png,0
+480,The Prophet,description,Kahlil Gibran,eng,9,genre,book\The Prophet.png,0
+481,Maus: A Survivor's Tale : My Father Bleeds History,description,Art Spiegelman,eng,10,genre,book\Maus A Survivors Tale  My Father Bleeds History.png,0
+482,Untamed: A House of Night Novel,description,"P.C. Cast, Kristin Cast",en-US,3,genre,book\Untamed A House of Night Novel.png,0
+483,Speaker for the Dead,description,Orson Scott Card,en-US,9,genre,book\Speaker for the Dead.png,0
+484,Mere Christianity,description,C.S. Lewis,eng,7,genre,book\Mere Christianity.png,0
+485,The Secret History,description,Donna Tartt,eng,2,genre,book\The Secret History.png,0
+486,A Heartbreaking Work of Staggering Genius,description,Dave Eggers,eng,3,genre,book\A Heartbreaking Work of Staggering Genius.png,0
+487,The Clan of the Cave Bear,description,Jean M. Auel,eng,6,genre,book\The Clan of the Cave Bear.png,0
+488,Black Beauty,description,Anna Sewell,eng,9,genre,book\Black Beauty.png,0
+489,Война и миръ,description,"Leo Tolstoy, Henry Gifford, Aylmer Maude, Louise Maude",eng,1,genre,book\Война и миръ.png,0
+490,American Psycho,description,Bret Easton Ellis,eng,6,genre,book\American Psycho.png,0
+491,The Princess Diaries,description,Meg Cabot,eng,3,genre,book\The Princess Diaries.png,0
+492,The No. 1 Ladies' Detective Agency,description,Alexander McCall Smith,eng,8,genre,book\The No 1 Ladies Detective Agency.png,0
+493,"The Walking Dead, Vol. 1: Days Gone Bye",description,"Robert Kirkman, Tony Moore",en-GB,10,genre,book\The Walking Dead Vol 1 Days Gone Bye.png,0
+494,2001: A Space Odyssey,description,Arthur C. Clarke,eng,7,genre,book\2001 A Space Odyssey.png,0
+495,Left Behind: A Novel of the Earth's Last Days,description,"Tim LaHaye, Jerry B. Jenkins",eng,8,genre,book\Left Behind A Novel of the Earths Last Days.png,0
+496,The One,description,Kiera Cass,eng,9,genre,book\The One.png,0
+497,The Hunger Games Box Set,description,Suzanne Collins,eng,5,genre,book\The Hunger Games Box Set.png,0
+498,Nickel and Dimed: On (Not) Getting By in America,description,Barbara Ehrenreich,eng,3,genre,book\Nickel and Dimed On Not Getting By in America.png,0
+499,Remember Me?,description,Sophie Kinsella,eng,6,genre,book\Remember Me.png,0
+500,The Great Hunt,description,Robert Jordan,en-US,10,genre,book\The Great Hunt.png,0

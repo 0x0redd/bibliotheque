@@ -14,7 +14,7 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from faker import Faker
 import random
-import datetime 
+import datetime
 import os
 
 def contact(request):
@@ -76,6 +76,7 @@ def index(request):
     if request.method == 'GET':
         form = loginForm()
         return render(request, 'index.html',books)
+    
 def profile(request):
     if not request.user.is_authenticated:
         return redirect('index')
@@ -169,6 +170,7 @@ def user_login(request):
     else:
         form = loginForm()
         return render(request, 'singup.html',{'error_message': ""})
+    
 def user_logout(request):
     logout(request)
     # Redirect to the homepage or some other view after logout
@@ -222,6 +224,8 @@ def annule(request):
     res = request.POST.get('reservation')
     Reservation.objects.filter(id_reservation=res).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 def valider(request):
     id_reserve = request.POST.get('reservation')
     res = Reservation.objects.get(pk=id_reserve)
@@ -269,7 +273,7 @@ def create_livre(request):
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
-            # Save the form data to the Livre model
+            # Enregistrez les données du formulaire dans le modèle Livre
             if form.cleaned_data['quantite'] > 1:
                 horspret = False
             else:
@@ -285,22 +289,22 @@ def create_livre(request):
                 genre=form.cleaned_data['genre'],
                 horspret=horspret
             )
-            # Save the image file to the specified directory
+            # Enregistrez le fichier image dans le répertoire spécifié
             if request.FILES.get('image'):
                 image = request.FILES['image']
                 image_name = image.name
                 image_path = os.path.join(settings.MEDIA_ROOT, 'book', image_name)
-                # Ensure the directory exists
+                # Assurez-vous que le répertoire existe
                 os.makedirs(os.path.dirname(image_path), exist_ok=True)
-                # Save the image file
+                # Enregistrez le fichier image
                 with open(image_path, 'wb') as destination:
                     for chunk in image.chunks():
                         destination.write(chunk)
-                # Save the image path to the Livre model
+                # Enregistrez le chemin de l'image vers le modèle Livre
                 livre.image = os.path.join('book', image_name)
 
             livre.save()
-            # Create exemplaires for the livre
+            # Créer des exemplaires pour le livre
             for k in range(livre.quantite):
                 Exemplaire.objects.create(id_livre=livre, etat="Disponible", date_achat=datetime.datetime.now())
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -308,6 +312,8 @@ def create_livre(request):
         form = BookForm()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 
 def editbook(request):
     if request.method == 'POST':
@@ -324,7 +330,10 @@ def editbook(request):
         for k in range(i):
             Exemplaire.objects.create(id_livre=livre,etat="Disponible",date_achat=datetime.datetime.now())
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
 #this is for updating etat of exempalire
+
 def updateExemplaire(request):
     if request.method == 'POST':
         if(request.POST.get('etat')=="delete"):
