@@ -121,6 +121,13 @@
                     Exemplaires
                   </a>
                 </li>
+                <li class="items-center">
+                  <a class="{% if request.path == '/dashboard-contact' %}  text-orange-500{%else %}text-blue-700 {% endif %} hover:text-orange-600 text-md uppercase py-3 font-semibold block transition-all duration-200" 
+                  href="/dashboard-contact">
+                    <i class="fas fa-tools text-black-400 mr-2 text-sm"></i>
+                    Contact
+                  </a>
+                </li>
               </ul>
               <hr class="my-4 md:min-w-full" />
               <h6 class="md:min-w-full text-black-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">Documentation</h6>
@@ -297,6 +304,9 @@
           {% endif  %}
           {% if request.path == '/dashboard-historique' %}
             {% include 'dashboard/historique.html' %}
+          {% endif  %}
+          {% if request.path == '/dashboard-contact' %}
+            {% include 'dashboard/contact.html' %}
           {% endif  %}
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" charset="utf-8"></script>

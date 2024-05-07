@@ -54,3 +54,13 @@ class Livre_Reservation(models.Model):
     id_reservation = models.ForeignKey(Reservation, on_delete=models.CASCADE)
     class Meta:
         unique_together = (("id_livre", "id_reservation"),)
+
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=100)
+    email_address = models.EmailField(max_length=254)
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.full_name

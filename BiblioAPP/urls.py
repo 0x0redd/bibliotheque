@@ -47,6 +47,7 @@ urlpatterns = [
     path('dashboard-exemplaires', dashboard, name='dashboard'),
     path('dashboard-sanctions', dashboard, name='dashboard'),
     path('dashboard-etudiants', dashboard, name='dashboard'),
+    path('dashboard-contact', dashboard, name='dashboard'),
 ]
 
 # Add static files serving in development mode

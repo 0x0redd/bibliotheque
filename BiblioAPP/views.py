@@ -18,6 +18,24 @@ import datetime
 import os
 
 def contact(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('name')
+        email_address = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        if full_name and email_address and subject and message:  # Check if all fields are filled
+            # Create a new Contact object and save it to the database
+            contact = Contact.objects.create(
+                full_name=full_name,
+                email_address=email_address,
+                subject=subject,
+                message=message
+            )
+            return render(request, 'contact.html', {'submitted': True})  # Pass submitted=True to show success message
+        else:
+            return HttpResponse("Please fill in all the fields.")  # Return a response indicating missing fields
+    
     return render(request, 'contact.html')
 
 def dashboard(request):
@@ -62,6 +80,7 @@ def dashboard(request):
             'Livres':Livre.objects.all().order_by("titre"),
             'Exemplaires':Exemplaire.objects.all(),
             'current_date': datetime.date.today(),
+            'Contact':Contact.objects.all(),
         }
         return render(request, 'dashboard.html', context)
     
