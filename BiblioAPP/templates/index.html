@@ -555,7 +555,7 @@
         </div> -->
         
         
-        {% for book in books %}
+        {% for book in books|slice:":6" %}
         <div data-book="{{book.id}}" class="book-card w-[250px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-300">
           <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
             {{ book.description }}
@@ -581,6 +581,7 @@
           </div>
         </div>
         {% endfor %}
+        
       </div>
       <div id="myModal" class="modal  {% if error_message %} visible {%else%} hidden {% endif %} fixed inset-0 z-20 overflow-auto bg-white/5 backdrop-blur-sm" >
       
