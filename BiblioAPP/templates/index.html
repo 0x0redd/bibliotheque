@@ -38,12 +38,13 @@
     }
     .book-card:hover .book-img{
       opacity: .2 !important;
+      filter: blur(3px) !important;
     }
     .book-card:hover{
       background-color: rgb(0, 0, 0) !important;
     }
     .book-card:hover .book-title{
-      opacity: .4 !important;
+      opacity: 1 !important;
     }
     .book-card:hover .book-emprunt{
       opacity: 1 !important;
@@ -332,12 +333,12 @@
       <div class="container relative mx-auto ">
         <div class="items-center flex flex-wrap">
           <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center ">
-            <div class="pr-12 ">
+            <div class="p-12 backdrop-blur-md shadow-lg ring-1 ring-white rounded-lg bg-opacity-20 bg-black">
               <h1 class="text-white font-semibold text-5xl">
                 Gestion de Bibliothèque
               </h1>
-              <p class="mt-4 text-2xl text-white">
-                Bienvenue sur notre plateforme de gestion de bibliothèque simplifiée,conçue pour répondre aux besoins
+              <p class="mt-4 text-2xl text-white font-medium">
+                Bienvenue sur notre plateforme de gestion de bibliothèque simplifiée, conçue pour répondre aux besoins
                 des bibliothèques universitaires et scolaires.
                 Notre solution informatique offre une approche moderne pour cataloguer les livres, gérer les prêts, et
                 améliorer l'expérience des utilisateurs.
@@ -534,51 +535,29 @@
     <section class="pt-20 pb-20">
       <!-- component -->
       <div class="p-10 flex flex-wrap items-center justify-center">
-          
-        <!-- loop over these components for books -->
-        <!-- <div class="flex-shrink-0 m-6 relative overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-200">
-          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
-            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
-            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
-          </svg>
-          <div class="relative p-0 flex items-center justify-center">
-            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
-            <img class="book-hovered transition-all duration-200 relative w-[250px] h-[400px] object-cover object-top" src="https://editions.covecollective.org/sites/default/files/chronology-uploads/Les%20Mis%20Poster.jpg" alt="">
-          </div>
-          <div class="relative text-white px-6 pb-6 mt-6">
-            <span class="block opacity-75 -mb-1">Outdoor</span>
-            <div class="flex justify-between">
-              <span class="block font-semibold text-xl">Monstera</span>
-              <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">$45.00</span>
-            </div>
-          </div>
-        </div> -->
-        
-        
-        {% for book in books|slice:":6" %}
-        <div data-book="{{book.id}}" class="book-card w-[250px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs shadow-lg hover:scale-105 transition-all duration-300">
-          <h3 class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
-            {{ book.description }}
-          </h3>
-          <!-- Contenu pour utilisateurs connectés -->
-          <button id="myBtn"  class="book-emprunt transition-all duration-500 absolute opacity-0 bottom-0 z-20 right-0 block bg-white w-1/2 rounded-md text-blue-500 text-md text-center font-bold px-5 py-2 leading-none" {% if user.is_authenticated %}onclick="" {%else%} onclick="openModal()" {%endif%}>Reserver</button>
-          <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
-            <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
-            <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
-          </svg>
-          <div class="relative w-[250px] p-0 flex items-center justify-center">
-            <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 " style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
-            <img class="book-img transition-all duration-200 relative w-[250px] h-[300px] object-cover object-top" src="{% static book.image %}" alt="">
-          </div>
-          <div class="book-title transition-all duration-200 relative text-white px-4 pb-6 mt-6 w-fit">
-            
-            <div class="book-title transition-all duration-200 ">
-              <p class="block opacity-75 -mb-1">{{ book.genre}}:</p>
-              <span class="block font-semibold text-xl">{{ book.titre }}</span>
-              <p class="block opacity-75 -mb-1">auteur:{{ book.auteur}}</p>
+        {% for book in books|slice:":9" %}
+        <div data-book="{{book}}" class="book-card w-[250px] h-[370px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs hover:scale-105 transition-all duration-300">
+          <div class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
+                <!-- if number of empxlaire <= 1 the live is no longer for reservation -->
+                <div class="book-title transition-all duration-200 relative text-white px-4 pb-6 mt-6 w-fit">
+                
+                  <div class="book-title transition-all duration-200 ">
+                    <span class="block font-semibold text-xl text-clip">{{ book.titre }}</span>
+                    <p class="block opacity-75 -mb-1">{{ book.auteur}}</p>
+                    
+                  </div>
+                </div>
+              </div>
+    
+              <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0;">
+                <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+                <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+              </svg>
+              <div class="relative w-[250px] p-0 flex items-center justify-center">
+                <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3 " style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+                <img class="book-img transition-all duration-200 relative w-[250px] h-[370px] object-cover object-top" src="{% static book.image %}" alt="">
+              </div>
               
-            </div>
-          </div>
         </div>
         {% endfor %}
         
@@ -586,70 +565,114 @@
       <div id="myModal" class="modal  {% if error_message %} visible {%else%} hidden {% endif %} fixed inset-0 z-20 overflow-auto bg-white/5 backdrop-blur-sm" >
       
         <!-- Modal content -->
-        <div class="modal-content bg-white mx-auto my-6 p-6 border border-gray-400 w-4/5 md:w-1/2 lg:w-1/3 rounded-lg">
-          <span class="close" class="text-gray-400 float-right text-2xl font-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
-            <path d="M18 6 6 18" />
-            <path d="m6 6 12 12" />
-          </svg></span>
-            <div class="flex  flex-col justify-center px-6 py-6 lg:px-8">
-              <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <img class="mx-auto h-20 w-auto" src="/BiblioAPP/static/source/library.svg"
-                  alt="Your Company">
-                <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+        <!-- Modal content if guest-->
+        {% if user.is_authenticated %}
+        <div class="modal-content bg-white mx-auto my-6 border border-gray-400 w-4/5 lg:w-1/2 rounded-lg">
+          <div class="bg-white p-4  rounded-lg relative">
+            <div class="flex items-center justify-between">
+              <div
+                class="mx-auto flex h-12 flex-shrink-0 gap-2 px-3 items-center justify-center rounded-full bg-blue-100 sm:mx-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-check"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/><path d="m9 9.5 2 2 4-4"/></svg>
+                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Confirmer la reservation</h3>
               </div>
-            
-              <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-                <form class="space-y-4" action="" method="POST">
-                  {% csrf_token %}
-                  <div>
-                    <label for="cni" class="block text-sm font-medium leading-6 text-gray-900">your CNI</label>
-                    <div class="mt-2">
-                      <input id="cni" name="cni" type="text" placeholder="  X000000" required
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                  </div>
-                  <div>
-                    <label for="massar" class="block text-sm font-medium leading-6 text-gray-900">your massar code:</label>
-                    <div class="mt-2">
-                      <input id="massar" name="massar" type="text" placeholder="  M123456789" required
-                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                  </div>
-            
-                  <div>
-                    <div class="flex items-center justify-between">
-                      <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
-                    </div>
-                    <div class="mt-2">
-                      <input id="password" name="password" type="password" placeholder="  •••••••••••" autocomplete="current-password" required
-                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                    </div>
-                    <div class="text-sm">
-                      <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
-                    </div>
-                  </div>
-            
-                  <div>
-                    <input type="submit"
-                      value="Sign in"
-                      class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                      
-                  </div>
-                </form>
-                {% if error_message %}
-                <div class="border-red-700 text-red-800">
-                  {{ error_message }}
+              <button type="button"
+                class=" close mt-3 inline-flex w-full justify-center rounded-md bg-white p-2 text-sm font-semibold text-gray-900 hover:text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-red-500 hover:bg-red-500 sm:mt-0 sm:w-auto transition-all duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+              </button>
+            </div>
+            <hr class="mt-3">
+            <div class="flex items-start gap-4 mt-4 px-4">
+              <img id="book_image" src="" class="w-[230px] object-cover rounded-lg"/>
+              <div class="flex flex-col">
+                <h1 id="book_titre" class="text-3xl font-semibold text-gray-900"></h1>
+                <h2 id="book_auteur" class="text-xl text-gray-600 italic font-semibold"></h2>
+                <div class="inline-flex gap-2">
+                  <h2 id="book_genre" class="text-lg text-gray-900  font-normal"></h2>
+                  <span class="text-xl text-gray-600  font-semibold">-&nbsp;</span>
+                  <h2 id="book_langue" class="text-lg text-gray-900 italic font-normal"></h2>
                 </div>
-                {% endif %}
-                <p class="mt-5 text-center text-sm text-gray-500">
-                  Not a member?
-                  <a href="Sing-in/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
-                </p>
+                <hr class="my-2">
+                <h2 class="text-lg w-3/4 leading-[1.2] font-medium text-gray-600">«<span id="book_description"></span>»</h2>
               </div>
             </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3  sm:px-6 rounded-lg">
+            <form action="{% url 'reserver' %}" method="post" class="flex flex-row-reverse">
+              {% csrf_token %}
+              <input type="hidden" id="ID" name="IDlivre">
+              {% if sum < 3 %}
+              <button type="submit" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">Confirmer</button>
+              {% else %}
+              <div class="flex justify-center w-full"> 
+                <h1  class="text-red-700 font-semibold">vous ne pouvez plus empruntez de livre (livre reserver: {{Res_count}}/livre emprunter: {{Emp_count}})</h1>
+              </div>
+              {% endif %}
+            </form>
+          </div>
         </div>
-      
+        {%else%}
+        <div class="modal-content bg-white mx-auto my-6 p-6 border border-gray-400 w-4/5 md:w-1/2 lg:w-1/3 rounded-lg">
+          <span class="close" class="text-gray-400 float-right text-2xl font-bold"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg></span>
+          <div class="flex  flex-col justify-center px-6 py-6 lg:px-8">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+              <img class="mx-auto h-20 w-auto" src="/BiblioAPP/static/source/library.svg" alt="Your Company">
+              <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account
+              </h2>
+            </div>
+        
+            <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+              <form class="space-y-4" action="{% url 'inscription' %}" method="POST">
+                {% csrf_token %}
+                <div>
+                  <label for="cni" class="block text-sm font-medium leading-6 text-gray-900">your CNI</label>
+                  <div class="mt-2">
+                    <input id="cni" name="cni" type="text" placeholder="  X000000" required
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+                <div>
+                  <label for="massar" class="block text-sm font-medium leading-6 text-gray-900">your massar code:</label>
+                  <div class="mt-2">
+                    <input id="massar" name="massar" type="text" placeholder="  M123456789" required
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+        
+                <div>
+                  <div class="flex items-center justify-between">
+                    <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                  </div>
+                  <div class="mt-2">
+                    <input id="password" name="password" type="password" placeholder="  •••••••••••"
+                      autocomplete="current-password" required
+                      class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+        
+                <div>
+                  <input type="submit" value="Sign in"
+                    class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+        
+                </div>
+              </form>
+              {% if error_message %}
+              <div class="border-red-700 text-red-800">
+                {{ error_message }}
+              </div>
+              {% endif %}
+              <p class="mt-5 text-center text-sm text-gray-500">
+                Not a member?
+                <a href="Sign-in/" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        {%endif%}
       </div>
       <!-- component -->
       <!-- This is an example component -->
@@ -685,19 +708,19 @@
               <ul class="list-unstyled">
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://www.creative-tim.com/presentation">About Us</a>
+                    href="/">Accueil</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://blog.creative-tim.com">Blog</a>
+                    href="/livre">Explorer</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://www.github.com/creativetimofficial">Github</a>
+                    href="/Contact">Contact</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://www.creative-tim.com/bootstrap-themes/free">Free Products</a>
+                    href="https://github.com/0x0redd/bibliotheque">Github</a>
                 </li>
               </ul>
             </div>
@@ -706,20 +729,20 @@
               <ul class="list-unstyled">
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">MIT
+                    href="#">MIT
                     License</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/terms">Terms &amp; Conditions</a>
+                    href="#">Terms &amp; Conditions</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/privacy">Privacy Policy</a>
+                    href="#">Privacy Policy</a>
                 </li>
                 <li>
                   <a class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                    href="https://creative-tim.com/contact-us">Contact Us</a>
+                    href="#">Contact Us</a>
                 </li>
               </ul>
             </div>
@@ -738,16 +761,39 @@
 </footer>
 <script>
   // Get the modal
-    var modal = document.getElementById("myModal");
-    var btn = document.getElementById("myBtn");
+  var modal = document.getElementById("myModal");
+  var btn = document.getElementById("myBtn");
+  var span = document.getElementsByClassName("close")[0];
+  var modalNum = document.getElementById("ID");
+  var book_image = document.getElementById("book_image");
+  var book_titre = document.getElementById("book_titre");
+  var book_auteur = document.getElementById("book_auteur");
+  var book_genre = document.getElementById("book_genre");
+  var book_langue = document.getElementById("book_langue");
+  var book_description = document.getElementById("book_description");
 
     
     var span = document.getElementsByClassName("close")[0];
 
     
-    function openModal() {
-        modal.classList.remove("hidden");
+    function openBook(me, image, titre, auteur, genre, langue, description) {
+        console.log(me);
+        console.log("clicked");
+        modalNum.value = me;
         modal.classList.add("block");
+        modal.classList.remove("hidden");
+        
+        langue.toUpperCase();
+        langue == "FR" ? langue = "Français" : langue == "EN" ? langue = "Anglais" : langue == "AR" ? langue = "Arabe" : langue = "Autre";
+        
+        book_image.src = "/BiblioAPP/static/"+image;
+        book_titre.innerHTML = titre;
+        book_auteur.innerHTML = auteur;
+        book_genre.innerHTML = genre;
+        book_langue.innerHTML = langue;
+        book_description.innerHTML = description;
+        
+        
       };
 
       // Function to close the modal (add 'hidden', remove 'block')

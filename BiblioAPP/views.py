@@ -34,7 +34,7 @@ def contact(request):
             )
             return render(request, 'contact.html', {'submitted': True})  # Pass submitted=True to show success message
         else:
-            return HttpResponse("Please fill in all the fields.")  # Return a response indicating missing fields
+            return HttpResponse("Veuillez bien remplir le formulaire.")  # Return a response indicating missing fields
     
     return render(request, 'contact.html')
 
