@@ -44,13 +44,13 @@
           <div class="flex items-center gap-4 w-full">
             <div class="block w-full">
               <label class="block text-sm font-medium text-gray-700">First Name</label>
-              <input type="text" name="nom" placeholder="John"
+              <input required type="text" name="nom" placeholder="John" value="{{oldform.nom}}"
                 class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
             
             <div class="block w-full">
-              <label class="block text-sm font-medium text-gray-700">Last name</label>
-              <input type="text" name="prenom" placeholder="Snow"
+              <label  class="block text-sm font-medium text-gray-700">Last name</label>
+              <input required type="text" name="prenom" placeholder="Snow" value="{{oldform.prenom}}"
                 class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
           </div>
@@ -58,13 +58,13 @@
           <div class="flex items-center gap-4">
             <div class="block w-full">
               <label class="block text-sm font-medium text-gray-700">CNI</label>
-              <input type="text" name="cni" placeholder="X123123"
+              <input required type="text" name="cni" placeholder="X123123" value="{{oldform.cni}}"
                 class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
             
             <div class="block w-full">
               <label class="block text-sm font-medium text-gray-700">Massar</label>
-              <input type="text" name="massar" placeholder="D123456789"
+              <input required type="text" name="massar" placeholder="D123456789" value="{{oldform.massar}}"
                 class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
           </div>
@@ -72,7 +72,7 @@
           <div class="flex items-center gap-4">
             <div class="w-full">
               <label class="block text-sm font-medium text-gray-700">Filiere</label>
-              <select name="filiere"
+              <select required name="filiere"
                 class="mt-1 w-full p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300">
                 <option selected value="SMI">SMI</option>
                 <option value="MIP">MIP</option>
@@ -83,25 +83,25 @@
             </div>
             <div class="block">
               <label for="date_naissance" class="block text-sm font-medium text-gray-700">Date de naissance</label>
-              <input type="date" name="date_naissance" min="1960-01-01" max="2008-12-31"
+              <input required type="date" name="date_naissance" min="1960-01-01" max="2008-12-31" value="{{oldform.date_naissance}}"
                 class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
           </div>
           <div class="block w-full">
             <label class="block text-sm font-medium text-gray-700">Email address</label>
-            <input type="email" name="email" placeholder="johnsnow@edu.umi.ac.ma"
+            <input required type="email" name="email" placeholder="johnsnow@edu.umi.ac.ma"
               class="mt-1 w-full p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
           </div>
           <div class="flex items-center gap-4">
             <div class="block">
               <label class="block text-sm font-medium text-gray-700">Password</label>
-              <input type="password" name="password" placeholder="Enter your password"
+              <input required type="password" name="password" placeholder="Enter your password"
                 class="mt-1 p-2 border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
             
             <div class="block">
               <label class="block text-sm font-medium text-gray-700">Confirm password</label>
-              <input type="password" name="confirmpassword" placeholder="Enter your password"
+              <input required type="password" name="confirmpassword" placeholder="Enter your password"
                 class="mt-1 p-2  border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300" />
             </div>
           </div>
@@ -115,13 +115,13 @@
           </div>
         </form>
         {% if error_message %}
-        <div class="border-red-700 text-red-800">
+        <div class=" text-red-800 text-center">
           {{ error_message }}
         </div>
         {% endif %}
         <div class="mt-4 text-sm text-gray-600 text-center font-semibold">
           <p>
-            Vous etes deja inscrit?
+            Vous êtes deja inscrit?
             <a href="{% url 'inscription' %}" class="text-green-500 font-bold text-md hover:underline">Connectez-vouz</a>!
           </p>
         </div>

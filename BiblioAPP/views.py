@@ -15,6 +15,7 @@ from django.conf import settings
 from faker import Faker
 import random
 import datetime
+import time
 import os
 
 def contact(request):
@@ -24,17 +25,17 @@ def contact(request):
         subject = request.POST.get('subject')
         message = request.POST.get('message')
         
-        if full_name and email_address and subject and message:  # Check if all fields are filled
-            # Create a new Contact object and save it to the database
+        if full_name and email_address and subject and message:  # verifier si le formulaire est remplie
+            # Enregistre le message dans la base donne
             contact = Contact.objects.create(
                 full_name=full_name,
                 email_address=email_address,
                 subject=subject,
                 message=message
             )
-            return render(request, 'contact.html', {'submitted': True})  # Pass submitted=True to show success message
+            return render(request, 'contact.html', {'submitted': True})  # envoyer un message de validation
         else:
-            return HttpResponse("Veuillez bien remplir le formulaire.")  # Return a response indicating missing fields
+            return render(request, 'contact.html', {'error_msg': "Veuillez remplir tous le formulaire"})  # retourn un message d erreur 
     
     return render(request, 'contact.html')
 
@@ -82,6 +83,7 @@ def dashboard(request):
             'current_date': datetime.date.today(),
             'Contact':Contact.objects.all(),
         }
+        
         return render(request, 'dashboard.html', context)
     
     return redirect('index')
@@ -146,9 +148,18 @@ def inscription(request):
     if request.method == 'POST':
         form = studentForm(request.POST)
         if form.is_valid():
+            # cette fonction pour verifier si le compte n'est pas deja enregiste
+            etudiant = Etudiant.objects.filter(cni=form.cleaned_data["cni"]).count() + Etudiant.objects.filter(massar=form.cleaned_data["massar"]).count() + Etudiant.objects.filter(email=form.cleaned_data["email"]).count()
+            if(etudiant>0):# si etudiant ==1 ca signifie qu'il y a quelqu un qui utilise ce code massar ou cni ou email
+                context = {
+                    'error_message': "Il semble que ce compte est déjà enregistré",
+                    "oldform":form.cleaned_data,# cette variable permet de retourner les donner dans la page template
+                }
+                return render(request, 'singin.html', context) #renvoir un message d'erreur
             if form.cleaned_data["password"] != form.cleaned_data["confirmpassword"]:
                 context = {
-                    'error_message': "le mot de passe n'est pas le même"
+                    'error_message': "le mot de passe n'est pas le même",
+                    "oldform":form.cleaned_data
                 }
                 return render(request, 'singin.html', context)
             else:
@@ -185,7 +196,7 @@ def user_login(request):
                 return redirect('profile')
             else:
                 # Return an invalid login message or render the login page again
-                return render(request, 'singup.html', {'error_message': 'Invalid username or password'})
+                return render(request, 'singup.html', {'error_message': 'Les information que vous avez sont incorrect', 'oldform':form.cleaned_data})
     else:
         form = loginForm()
         return render(request, 'singup.html',{'error_message': ""})
@@ -225,7 +236,7 @@ def livre(request):
             b.horspret=True
             b.save()
 
-    books = Livre.objects.all().order_by("titre") # Get all books initially order by title
+    books = Livre.objects.all().order_by("titre") # avoir tous les livre par ordre alphabetique
     if not request.user.is_anonymous:
         count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
         count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant, retourner=False).count()
@@ -239,13 +250,13 @@ def livre(request):
         books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
     return render(request, 'livre.html', {'form': form, 'books': books,'Res_count':count,'Emp_count':count1, 'sum':sum})
 
-def annule(request):
+def annule(request):# annuler la reservation
     res = request.POST.get('reservation')
     Reservation.objects.filter(id_reservation=res).delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def valider(request):
+def valider(request):#valider la reservation et devient emprunt
     id_reserve = request.POST.get('reservation')
     res = Reservation.objects.get(pk=id_reserve)
     exemplaire=Exemplaire.objects.filter(id_livre=res.id_livre,etat="Disponible").count()
@@ -257,6 +268,12 @@ def valider(request):
         exemplaire.save()
         Livre_Reservation.objects.create(id_livre=res.id_livre,id_reservation=res)
         res.delete()
+        message = "votre reservation etait bien valider"
+        return HttpResponseRedirect(f"/dashboard-reservations?message={message}")
+    else:
+        message = "Aucun_exemplaire n'est disponible pour le moment"
+        return HttpResponseRedirect(f"/dashboard-reservations?message={message}")
+
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def createExemplaire(request):
@@ -286,7 +303,9 @@ def retourner(request):
     emprunt.id_exemplaire.id_livre.save()
     emprunt.save()
     #Emprunt.objects.filter(id_emprunt=id_emprunt).update(date_retour_effectif=datetime.datetime.now,retourner=True)
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    #return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+    message = "L'exemplaire a etait bien retourner"
+    return HttpResponseRedirect(f"/dashboard-emprunts?message={message}")
 
 def create_livre(request):
     if request.method == 'POST':

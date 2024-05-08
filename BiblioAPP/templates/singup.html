@@ -54,32 +54,39 @@
               >CNI</label
             >
             <input
+              required
               type="text"
               id="cni"
               name="cni"
+              value="{{oldform.cni}}"
               class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300"
             />
           </div>
           <div>
             <label
+              required
               for="massar" 
               class="block text-md font-medium text-gray-700"
               >Massar</label
             >
             <input
+              required
               type="text"
               id="massar"
               name="massar"
+              value="{{oldform.massar}}"
               class="mt-1 p-2 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-300"
             />
           </div>
           <div>
             <label
+              required
               for="password"
               class="block text-md font-medium text-gray-700"
               >Password</label
             >
             <input
+              required
               type="password"
               id="password"
               name="password"
@@ -96,7 +103,7 @@
           </div>
         </form>
         {% if error_message %}
-        <div class="border-red-700 text-red-800">
+        <div class="p-1 text-center border-red-700 text-red-800">
           {{ error_message }}
         </div>
         {% endif %}

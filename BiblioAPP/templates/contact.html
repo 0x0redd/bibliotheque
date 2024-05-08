@@ -138,6 +138,11 @@
           Merci pour votre message. Nous vous répondrons bientôt.
       </div>
       {% endif %}
+      {% if error_msg %}
+      <div class="mx-auto w-full max-w-[550px] mt-5 bg-green-100 text-green-800 p-3 rounded">
+        {{error_msg}}
+      </div>
+      {% endif %}
 </section>
 
 </body>

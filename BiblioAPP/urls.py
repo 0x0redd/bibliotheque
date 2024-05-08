@@ -40,7 +40,7 @@ urlpatterns = [
     path('editlivre/',editbook,name='editlivre'),
     path('updateExemplaire/',updateExemplaire,name='updateExemplaire'),
     
-    path('dashboard-reservations', dashboard, name='dashboard'),
+    path('dashboard-reservations', dashboard, name='dashboard-reservations'),
     path('dashboard-emprunts', dashboard, name='dashboard'),
     path('dashboard-historique', dashboard, name='dashboard'),
     path('dashboard-livres', dashboard, name='dashboard'),
