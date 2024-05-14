@@ -22,11 +22,15 @@ class loginForm(forms.Form):
     massar = forms.CharField(label="massar", max_length=255)
     password = forms.CharField(label="password", max_length=255)
 
-
 class BookSearchForm(forms.Form):
-    query = forms.CharField(label='Search', max_length=100)
+    title = forms.CharField(label='Title', max_length=100, required=False)
+    author = forms.CharField(label='Author', max_length=100, required=False)
+    language = forms.CharField(label='Language', max_length=50, required=False)
+    genre = forms.CharField(label='Genre', max_length=50, required=False)
+
 class reservForm(forms.Form):
     IDlivre = forms.IntegerField(label="IDlivre")
+
 class BookForm(forms.Form):
     titre = forms.CharField(label="titre", max_length=100)
     description = forms.CharField(label="description")

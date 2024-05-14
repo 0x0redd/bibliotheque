@@ -356,6 +356,8 @@
       </div>
     </div>
     <!-- video and title -->
+
+    <!-- S1  -->
     
     <section class="relative py-20">
       <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
@@ -406,6 +408,114 @@
         </div>
       </div>
     </section>
+
+     <!-- video and title 2  -->
+     <div class="relative pt-15 pb-50 flex content-center items-center justify-center " style="min-height: 80vh;">
+
+      <!-- video 2 -->
+
+      <div class="absolute top-0 w-full h-full bg-center bg-cover">
+        <video autoplay muted loop id="video-background" class="w-full h-full object-cover">
+          <source src="{% static '/source/vid5.webm' %}" type="video/webm">
+        </video>
+      </div>
+
+      <!-- video 2 -->
+
+      <div class="container relative mx-auto ">
+        <div class="items-center flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center ">
+            <div class="p-12 backdrop-blur-md shadow-lg ring-1 ring-white rounded-lg bg-opacity-20 bg-black">
+              <h1 class="text-white font-semibold text-5xl">
+                Gestion Simplifiée des Emprunts et Retours de Livres
+              </h1>
+              <p class="mt-4 text text-white ">
+                Notre plateforme de gestion des emprunts et retours de livres est une solution intuitive conçue pour les bibliothèques universitaires et scolaires. 
+                Notre système informatique moderne simplifie le suivi des emprunts, rationalise le retour des ouvrages et améliore l'expérience des usagers. Grâce à notre outil, la gestion des prêts devient plus fluide, offrant un accès rapide aux informations sur la disponibilité des livres et facilitant le respect des délais de restitution. 
+                En cas de dépassement du délai de retour, une sanction automatique sera appliquée à l'étudiant, garantissant une meilleure gestion des ressources et une circulation optimale des ouvrages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden"
+        style="height: 71px;">
+        <svg class="absolute bottom-1overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+          version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+          <polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </div>
+    <!-- video and title 2 -->
+
+    <!-- S2 -->
+
+    <div class="max-w-screen-xl mx-auto py-8 px-4 lg:py-16 lg:px-6">
+      <div class="text-center mb-10">
+          <h2 class="text-6xl tracking-tight font-bold text-primary-800">Highlighted Features</h2>
+      </div>
+  
+      <div class="flex flex-col md:flex-row">
+          <!-- can help image -->
+          <div class="mr-0 md:mr-8 mb-6 md:mb-0">
+              <img class="w-1/2 md:w-full mx-auto" src="https://placeholder.pics/svg/400" alt="can_help_banner">
+          </div>
+          <!-- end can help image -->
+  
+          <div class="flex-1 flex flex-col sm:flex-row flex-wrap -mb-4 -mx-2">
+          <!--first one -->
+            <div class="w-full sm:w-1/2 mb-4 px-2">
+              <div class="h-full py-4 px-6 border border-green-500 border-t-0 border-l-0 rounded-br-xl">
+                  <h3 class="text-2xl text-green-500 font-bold text-md mb-6">Points Forts des Fonctionnalités</h3>
+                  <ul class="list-disc list-inside text-sm">
+                      <li>
+                          <strong>Recherche Rapide:</strong>
+                          Fonctionnalité de recherche efficace pour trouver des livres par titre, auteur ou sujet.
+                      </li>
+                      <li>
+                          <strong>Pénalités Automatisées:</strong>
+                          Sanctions automatiques pour les retours en retard afin d'assurer l'équité.
+                      </li>
+                      <li>
+                          <strong>Historique des Emprunts:</strong>
+                          Accès à un historique personnel des emprunts pour une meilleure gestion des dossiers.
+                      </li>
+                      <li>
+                          <strong>Notifications de Disponibilité:</strong>
+                          Les utilisateurs reçoivent des alertes lorsque les livres réservés sont disponibles.
+                      </li>
+                      <li>
+                          <strong>Support Multi-Utilisateurs:</strong>
+                          Convient aussi bien aux étudiants qu'au personnel avec un accès basé sur les rôles.
+                      </li>
+                  </ul>
+              </div>
+            </div>
+          <!--second one-->
+            <div class="w-full sm:w-1/2 mb-4 px-2">
+              <div class="h-full py-4 px-6 border border-orange-500 border-t-0 border-l-0 rounded-br-xl">
+                  <h3 class="text-2xl text-orange-500 font-bold text-md mb-6">Avantages pour les Utilisateurs (Centré sur les Étudiants)</h3>
+                  <ul class="list-disc list-inside text-sm">
+                      <li>
+                          <strong>Gestion Facile des Livres:</strong>
+                          Processus d'emprunt et de retour simplifié.
+                      </li>
+                      <li>
+                          <strong>Expérience Personnalisée {soon }:</strong>
+                          Recommandations adaptées basées sur l'historique des emprunts.
+                      </li>
+                      <li>
+                          <strong>Suivi des Pénalités:</strong>
+                          Mises à jour en temps réel sur les pénalités et les articles en retard.
+                      </li>
+                  </ul>
+              </div>
+            </div>
+        
+          </div>
+      </div>
+  </div>
+
     <!-- team  section -->
     <section class="pt-20 pb-20">
       <div class="container mx-auto px-5">
@@ -430,7 +540,7 @@
               <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">OTHMANE<br> FERRAH</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  forntend and backend
+                  FRONT-END <br> (Team Member)
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -450,8 +560,8 @@
                 class="shadow-lg rounded-full max-w-full mx-auto" style="max-width: 120px;" />
               <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">KHALIL<br> EL AMRAOUI</h5>
-                <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  backend and frontend
+                <p class=" text-sm text-gray-500 uppercase font-semibold">
+                  FRONT-END <br>(SCRUM Master)
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -472,7 +582,7 @@
               <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">EL HABIB<br> CHAMA</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  backend
+                  BACK-END <br> (Team Member)
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -493,7 +603,7 @@
               <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">BADR BOUYMEJJANE </h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  backend
+                  BACK-END <br> (Team Member)
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -514,7 +624,7 @@
               <div class="pt-6 text-center flex flex-col align-between">
                 <h5 class="text-xl font-bold">ANAS<br/>TOURARI</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
-                  backend
+                  FRONT-END <br> (Team Member)
                 </p>
                 <div class="mt-4 flex justify-center">
                   <button class="bg-black text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
@@ -534,8 +644,18 @@
     
     <section class="pt-20 pb-20">
       <!-- component -->
+      
+      <a href="{%url 'livre' %}">   
+        <div class=" flex flex-wrap justify-center "> 
+          <img class="w-auto h-8  " src="{% static 'source/library.svg' %}" alt="" />
+          <h2 class="text-4xl font-semibold ">livres disponibles</h2>
+        </div>
+      </a>    
+      
+     
       <div class="p-10 flex flex-wrap items-center justify-center">
-        {% for book in books|slice:":9" %}
+       
+        {% for book in books|slice:":6" %}
         <div data-book="{{book}}" class="book-card w-[250px] h-[370px] relative flex-shrink-0 m-6 overflow-hidden bg-blue-500 rounded-lg max-w-xs hover:scale-105 transition-all duration-300">
           <div class="book-desc w-[250px] absolute text-bold text-lg transition-all duration-500 opacity-0 top-[-10px] z-10 text-white h-full px-4">
                 <!-- if number of empxlaire <= 1 the live is no longer for reservation -->
@@ -682,7 +802,7 @@
 </main>
 
 
-<footer class="relative bg-gray-300 pt-8 pb-6">
+<footer class="relative bg-gray-300 pt-1 pb-1">
     <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
       style="height: 80px;">
       <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"

@@ -52,7 +52,7 @@
 
 <!-- search bar  -->
 
-<div class="relative justify-center m-8">
+{% comment %} <div class="relative justify-center m-8">
   <form class="max-w-md mx-auto" method="GET" action="{% url 'livre' %}">
     <label for="default-search" class="mb-2 text-sm font-medium text-white-900 sr-only light:text-gray">Search</label>
     <div class="relative">
@@ -66,12 +66,51 @@
     </div>
 </form>
 
+</div> {% endcomment %}
 
+<form class="max-w-lg mx-auto m-10" method="GET" action="{% url 'livre' %}">
+  <div class="flex flex-grow h-full w-full ">
+    <div class="h-auto">
+        <!-- Recherche par Titre -->
+        <div>
+            <label for="title" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Titre</label>
+            <input type="text" id="title" name="title" class="block w-full p-4 text-md text-black border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Titre du livre...">
+        </div>
 
+        <!-- Recherche par Auteur -->
+        <div>
+            <label for="author" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Auteur</label>
+            <input type="text" id="author" name="author" class="block w-full p-4 text-md text-black border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nom de l'auteur...">
+        </div>
+
+        <!-- Recherche par Langue -->
+        <div>
+            <label for="language" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Langue</label>
+            <select id="language" name="language" class="block w-full p-4 text-md border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                <option value="">Toutes les langues</option>
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <!-- Ajoutez d'autres langues selon vos besoins -->
+            </select>
+        </div>
+
+        <!-- Recherche par Genre -->
+        <div>
+            <label for="genre" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Genre</label>
+            <select id="genre" name="genre" class="block w-full p-4 text-md border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                <option value="">Tous les genres</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="romance">Romance</option>
+                <!-- Ajoutez d'autres genres ici -->
+            </select>
+        </div>
+
+    </div>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Rechercher</button>
+  </div>
+</form>
 <!-- search bar  -->
-
-</div>
-
 
     
 <section class=" pb-20">

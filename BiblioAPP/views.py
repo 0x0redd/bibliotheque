@@ -231,24 +231,49 @@ def fakeBook(self, *args, **kwargs):
 
 def livre(request):
     form = BookSearchForm(request.GET)
-    for b in Livre.objects.all():
-        if(Exemplaire.objects.filter(id_livre=b,etat="Disponible").count()<=1):
-            b.horspret=True
-            b.save()
 
-    books = Livre.objects.all().order_by("titre") # avoir tous les livre par ordre alphabetique
+    # Mettre à jour l'état des livres en fonction de la disponibilité des exemplaires
+    for b in Livre.objects.all():
+        if Exemplaire.objects.filter(id_livre=b, etat="Disponible").count() <= 1:
+            b.horspret = True
+            b.save()
+    
+    # Initialiser la requête de base pour récupérer tous les livres
+    books = Livre.objects.all().order_by('titre')
+    
+    # Gérer le comptage des réservations et emprunts si l'utilisateur est connecté
     if not request.user.is_anonymous:
         count = Reservation.objects.filter(id_etudiant=request.user.id_etudiant).count()
         count1 = Emprunt.objects.filter(id_etudiant=request.user.id_etudiant, retourner=False).count()
         sum = count + count1
     else:
-        count=0
-        count1=0
+        count = 0
+        count1 = 0
         sum = 0
+    
+    # Filtrer les livres en fonction du formulaire de recherche
     if form.is_valid():
-        query = form.cleaned_data['query']
-        books = Livre.objects.filter(titre__icontains=query)  # Filter books by title containing the query
-    return render(request, 'livre.html', {'form': form, 'books': books,'Res_count':count,'Emp_count':count1, 'sum':sum})
+        title = form.cleaned_data.get('title')
+        author = form.cleaned_data.get('author')
+        language = form.cleaned_data.get('language')
+        genre = form.cleaned_data.get('genre')
+        
+        if title:
+            books = books.filter(titre__icontains=title)
+        if author:
+            books = books.filter(auteur__icontains=author)
+        if language:
+            books = books.filter(langue__icontains=language)
+        if genre:
+            books = books.filter(genre__icontains=genre)
+    
+    return render(request, 'livre.html', {
+        'form': form,
+        'books': books,
+        'Res_count': count,
+        'Emp_count': count1,
+        'sum': sum
+    })
 
 def annule(request):# annuler la reservation
     res = request.POST.get('reservation')
