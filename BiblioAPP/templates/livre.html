@@ -69,35 +69,38 @@
 </div> {% endcomment %}
 
 <form class="max-w-lg mx-auto m-10" method="GET" action="{% url 'livre' %}">
-  <div class="flex flex-grow h-full w-full ">
-    <div class="h-auto">
+  <div class="h-full w-full ">
+    <h2 class="text-lg font-semibold italic ms-2 text-[#333333]">Filtrer votre recherche par :</h2>
+    <div class="h-auto mx-auto text-center">
+      <div class="flex items-center gap-2">
         <!-- Recherche par Titre -->
-        <div>
-            <label for="title" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Titre</label>
-            <input type="text" id="title" name="title" class="block w-full p-4 text-md text-black border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Titre du livre...">
+        <div class="w-full">
+          <label for="title" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Titre</label>
+          <input type="text" id="title" name="title" class="block w-full py-2 text-[#333333] px-4 text-md border border-white-300 rounded-lg bg-gray-50 focus-visible:ring-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:focus-visible:ring-blue-500 " placeholder="Titre du livre...">
         </div>
-
-        <!-- Recherche par Auteur -->
-        <div>
-            <label for="author" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Auteur</label>
-            <input type="text" id="author" name="author" class="block w-full p-4 text-md text-black border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nom de l'auteur...">
-        </div>
-
         <!-- Recherche par Langue -->
-        <div>
-            <label for="language" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Langue</label>
-            <select id="language" name="language" class="block w-full p-4 text-md border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                <option value="">Toutes les langues</option>
-                <option value="fr">Français</option>
-                <option value="en">Anglais</option>
-                <!-- Ajoutez d'autres langues selon vos besoins -->
-            </select>
+        <div class="w-full">
+          <label for="language" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Langue</label>
+          <select id="language" name="language" class="block w-full py-2 text-[#333333] px-4 text-md border border-white-300 rounded-lg bg-gray-50 focus-visible:ring-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:focus-visible:ring-blue-500 ">
+              <option value="">Toutes les langues</option>
+              <option value="fr">Français</option>
+              <option value="en">Anglais</option>
+              <!-- Ajoutez d'autres langues selon vos besoins -->
+          </select>
         </div>
+        
+      </div>
 
+      <div class="flex items-center gap-2 mt-2">
+        <!-- Recherche par Auteur -->
+        <div class="w-full">
+          <label for="author" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Auteur</label>
+          <input type="text" id="author" name="author" class="block w-full py-2 text-[#333333] px-4 text-md border border-white-300 rounded-lg bg-gray-50 focus-visible:ring-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:focus-visible:ring-blue-500 " placeholder="Nom de l'auteur...">
+        </div>
         <!-- Recherche par Genre -->
-        <div>
+        <div class="w-full">
             <label for="genre" class="mb-2 text-sm font-medium text-white-900 sr-only dark:text-gray">Genre</label>
-            <select id="genre" name="genre" class="block w-full p-4 text-md border border-white-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:text-black dark:focus:ring-primary-500 dark:focus:border-primary-500">
+            <select id="genre" name="genre" class="block w-full py-2 text-[#333333] px-4 text-md border border-white-300 rounded-lg bg-gray-50 focus-visible:ring-blue-500 focus:ring-blue-500 focus:border-blue-500 dark:bg-white-700 dark:border-white-900 dark:placeholder-white-900 dark:focus-visible:ring-blue-500">
                 <option value="">Tous les genres</option>
                 <option value="fiction">Fiction</option>
                 <option value="non-fiction">Non-Fiction</option>
@@ -105,9 +108,10 @@
                 <!-- Ajoutez d'autres genres ici -->
             </select>
         </div>
-
+      </div>
+      <button type="submit" class="h-full mt-2 mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Rechercher</button>
+      
     </div>
-    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Rechercher</button>
   </div>
 </form>
 <!-- search bar  -->
