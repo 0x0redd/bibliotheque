@@ -17,6 +17,7 @@ import random
 import datetime
 import time
 import os
+from django.db.models import Count, Q
 
 def contact(request):
     if request.method == 'POST':
@@ -41,47 +42,53 @@ def contact(request):
 
 def dashboard(request):
     if request.user.is_staff:
+        # Boucle à travers tous les emprunts non retournés
         for emp in Emprunt.objects.filter(retourner=False):
+            # Vérifie si la date de retour prévue est dépassée d'un an
             if emp.date_retour_prevue + datetime.timedelta(days=365) < datetime.date.today():
-                exemplaire_id = emp.id_exemplaire_id  
-                emp.id_etudiant.penalite += 1
-                emp.id_etudiant.save()
+                exemplaire_id = emp.id_exemplaire_id  # Identifiant de l'exemplaire emprunté
+                emp.id_etudiant.penalite += 1  # Augmente la pénalité de l'étudiant
+                emp.id_etudiant.save()  # Sauvegarde les changements de l'étudiant
 
                 try:
-                    exemplaire = Exemplaire.objects.get(pk=exemplaire_id)
-                    livre = exemplaire.id_livre
+                    exemplaire = Exemplaire.objects.get(pk=exemplaire_id)  # Récupère l'exemplaire
+                    livre = exemplaire.id_livre  # Récupère le livre correspondant
                     quantite_avant = livre.quantite  # Quantité de livres avant la suppression
-                    exemplaire.delete()  
+                    exemplaire.delete()  # Supprime l'exemplaire
 
-                    # Vérification si un seul exemplaire disponible
+                    # Vérification s'il ne reste qu'un seul exemplaire disponible
                     nb_exemplaires = Exemplaire.objects.filter(id_livre=livre, etat='disponible').count()
                     if nb_exemplaires == 1:
                         unique_exemplaire = Exemplaire.objects.get(id_livre=livre, etat='disponible')
-                        unique_exemplaire.etat = 'Hors-pret'
+                        unique_exemplaire.etat = 'Hors-pret'  # Change l'état du dernier exemplaire disponible
                         unique_exemplaire.save()
 
                     # Mise à jour de la quantité du livre si elle n'est pas déjà mise à jour
                     if livre.quantite == quantite_avant:
-                        livre.horspret = True
-                        livre.quantite = Exemplaire.objects.filter(id_livre=livre).count()
+                        livre.horspret = True  # Marque le livre comme hors prêt
+                        livre.quantite = Exemplaire.objects.filter(id_livre=livre).count()  # Met à jour la quantité
                         livre.save()
 
                 except Exemplaire.DoesNotExist:
-                    pass
+                    pass  # Si l'exemplaire n'existe pas, on passe
 
-                emp.delete()
-        # for etu in Etudiant.objects.filter(is_staff=0,is_superuser=0):
-        #     retard = Emprunt.objects.filter(id_etudiant=etu,date_retour_prevue__lt=datetime.date.today,date_retour_effectif=None).count()
-        #     etu.penalite = etu.penalite+retard
+                emp.delete()  # Supprime l'emprunt
+
+        # Annoter les étudiants avec les comptes de réservations et d'emprunts
+        students = Etudiant.objects.filter(is_staff=0).annotate(
+            reservation_count=Count('reservation'),
+            emprunt_count=Count('emprunt', filter=Q(emprunt__retourner=False))
+        )
+
         context = {
-            'Etudiants':Etudiant.objects.filter(is_staff=0),
-            'Reservations':Reservation.objects.all(),
-            'Emprunts':Emprunt.objects.filter(retourner=False),
-            'historique':Emprunt.objects.all(),
-            'Livres':Livre.objects.all().order_by("titre"),
-            'Exemplaires':Exemplaire.objects.all(),
+            'Etudiants': students,  # Passe les étudiants annotés au contexte
+            'Reservations': Reservation.objects.all(),
+            'Emprunts': Emprunt.objects.filter(retourner=False),
+            'historique': Emprunt.objects.all(),
+            'Livres': Livre.objects.all().order_by("titre"),
+            'Exemplaires': Exemplaire.objects.all(),
             'current_date': datetime.date.today(),
-            'Contact':Contact.objects.all(),
+            'Contact': Contact.objects.all(),
         }
         
         return render(request, 'dashboard.html', context)
