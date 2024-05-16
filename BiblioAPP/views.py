@@ -41,59 +41,76 @@ def contact(request):
     return render(request, 'contact.html')
 
 def dashboard(request):
-    if request.user.is_staff:
-        # Boucle à travers tous les emprunts non retournés
-        for emp in Emprunt.objects.filter(retourner=False):
-            # Vérifie si la date de retour prévue est dépassée d'un an
-            if emp.date_retour_prevue + datetime.timedelta(days=365) < datetime.date.today():
-                exemplaire_id = emp.id_exemplaire_id  # Identifiant de l'exemplaire emprunté
-                emp.id_etudiant.penalite += 1  # Augmente la pénalité de l'étudiant
-                emp.id_etudiant.save()  # Sauvegarde les changements de l'étudiant
+    if not request.user.is_staff:
+        return redirect('index')
 
-                try:
-                    exemplaire = Exemplaire.objects.get(pk=exemplaire_id)  # Récupère l'exemplaire
-                    livre = exemplaire.id_livre  # Récupère le livre correspondant
-                    quantite_avant = livre.quantite  # Quantité de livres avant la suppression
-                    exemplaire.delete()  # Supprime l'exemplaire
+    # Update penalties for overdue loans
+    overdue_loans = Emprunt.objects.filter(retourner=False, date_retour_prevue__lt=datetime.date.today() - datetime.timedelta(days=365))
+    for emp in overdue_loans:
+        emp.id_etudiant.penalite += 1
+        emp.id_etudiant.save()
 
-                    # Vérification s'il ne reste qu'un seul exemplaire disponible
-                    nb_exemplaires = Exemplaire.objects.filter(id_livre=livre, etat='disponible').count()
-                    if nb_exemplaires == 1:
-                        unique_exemplaire = Exemplaire.objects.get(id_livre=livre, etat='disponible')
-                        unique_exemplaire.etat = 'Hors-pret'  # Change l'état du dernier exemplaire disponible
-                        unique_exemplaire.save()
+        exemplaire = Exemplaire.objects.filter(pk=emp.id_exemplaire_id).first()
+        if exemplaire:
+            livre = exemplaire.id_livre
+            quantite_avant = livre.quantite
+            exemplaire.delete()
 
-                    # Mise à jour de la quantité du livre si elle n'est pas déjà mise à jour
-                    if livre.quantite == quantite_avant:
-                        livre.horspret = True  # Marque le livre comme hors prêt
-                        livre.quantite = Exemplaire.objects.filter(id_livre=livre).count()  # Met à jour la quantité
-                        livre.save()
+            nb_exemplaires = Exemplaire.objects.filter(id_livre=livre, etat='disponible').count()
+            if nb_exemplaires == 1:
+                unique_exemplaire = Exemplaire.objects.get(id_livre=livre, etat='disponible')
+                unique_exemplaire.etat = 'Hors-pret'
+                unique_exemplaire.save()
 
-                except Exemplaire.DoesNotExist:
-                    pass  # Si l'exemplaire n'existe pas, on passe
+            if livre.quantite == quantite_avant:
+                livre.horspret = True
+                livre.quantite = Exemplaire.objects.filter(id_livre=livre).count()
+                livre.save()
 
-                emp.delete()  # Supprime l'emprunt
+        emp.delete()
 
-        # Annoter les étudiants avec les comptes de réservations et d'emprunts
-        students = Etudiant.objects.filter(is_staff=0).annotate(
-            reservation_count=Count('reservation'),
-            emprunt_count=Count('emprunt', filter=Q(emprunt__retourner=False))
-        )
+    # Filtering Logic
+    form = StudentSearchForm(request.GET or None)
+    students = Etudiant.objects.filter(is_staff=False).annotate(
+        reservation_count=Count('reservation'),
+        emprunt_count=Count('emprunt', filter=Q(emprunt__retourner=False))
+    )
 
-        context = {
-            'Etudiants': students,  # Passe les étudiants annotés au contexte
-            'Reservations': Reservation.objects.all(),
-            'Emprunts': Emprunt.objects.filter(retourner=False),
-            'historique': Emprunt.objects.all(),
-            'Livres': Livre.objects.all().order_by("titre"),
-            'Exemplaires': Exemplaire.objects.all(),
-            'current_date': datetime.date.today(),
-            'Contact': Contact.objects.all(),
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        filter_by = form.cleaned_data['filter']
+
+        filter_dict = {
+            'nom': 'username__icontains',
+            'cni': 'cni__icontains',
+            'cne': 'massar__icontains',
+            'filiere': 'filiere__icontains'
         }
         
-        return render(request, 'dashboard.html', context)
-    
-    return redirect('index')
+        if filter_by in filter_dict:
+            students = students.filter(**{filter_dict[filter_by]: query})
+
+    livres = Livre.objects.all().order_by("titre")
+    exemplaires = Exemplaire.objects.all()
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        livres = livres.filter(titre__icontains=query)
+        exemplaires = exemplaires.filter(id_livre__in=livres)
+
+    context = {
+        'Etudiants': students,
+        'Reservations': Reservation.objects.all(),
+        'Emprunts': Emprunt.objects.filter(retourner=False),
+        'historique': Emprunt.objects.all(),
+        'Livres': livres,
+        'Exemplaires': exemplaires,
+        'current_date': datetime.date.today(),
+        'Contact': Contact.objects.all(),
+        'form': form
+    }
+
+    return render(request, 'dashboard.html', context)
 
 def index(request):
     # Example view function to render the index page

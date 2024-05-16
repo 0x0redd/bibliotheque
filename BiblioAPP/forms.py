@@ -39,3 +39,22 @@ class BookForm(forms.Form):
     langue = forms.CharField(label="langue", max_length=20)
     quantite = forms.IntegerField(label="quantite")
     image = forms.FileField(label="image",required=False)
+
+class StudentSearchForm(forms.Form):
+    FILTER_CHOICES = [
+        ('nom', 'Nom'),
+        ('cni', 'CNI'),
+        ('cne', 'CNE'),
+        ('filiere', 'Filiere')
+    ]
+    query = forms.CharField(required=False, label='Query', widget=forms.TextInput(attrs={
+        'placeholder': 'Article name or keyword...',
+        'class': 'bg-gray-100 outline-none'
+    }))
+    filter = forms.ChoiceField(choices=FILTER_CHOICES, required=False, label='Filter by', widget=forms.Select(attrs={
+        'class': 'bg-white border border-gray-300 rounded-md shadow-sm'
+    }))
+
+class exemplairesearch(forms.Form):
+    query = forms.CharField(required=False, label='Search Query')
+    
