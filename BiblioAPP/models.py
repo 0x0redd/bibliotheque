@@ -14,7 +14,7 @@ class Etudiant(AbstractUser):
 
 class Livre(models.Model):
     id_livre = models.AutoField(auto_created = True,primary_key=True)
-    titre = models.CharField(max_length=255,unique=True)
+    titre = models.CharField(max_length=255,unique=False)
     description = models.TextField()
     auteur = models.CharField(max_length=255)
     langue = models.CharField(max_length=50)

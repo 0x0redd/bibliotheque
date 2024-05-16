@@ -90,6 +90,7 @@ def dashboard(request):
         if filter_by in filter_dict:
             students = students.filter(**{filter_dict[filter_by]: query})
 
+    form2 = exemplairesearch(request.GET or None)
     livres = Livre.objects.all().order_by("titre")
     exemplaires = Exemplaire.objects.all()
 
@@ -107,7 +108,8 @@ def dashboard(request):
         'Exemplaires': exemplaires,
         'current_date': datetime.date.today(),
         'Contact': Contact.objects.all(),
-        'form': form
+        'form': form,
+        'form2': form2,
     }
 
     return render(request, 'dashboard.html', context)
@@ -173,7 +175,7 @@ def inscription(request):
         form = studentForm(request.POST)
         if form.is_valid():
             # cette fonction pour verifier si le compte n'est pas deja enregiste
-            etudiant = Etudiant.objects.filter(cni=form.cleaned_data["cni"]).count() + Etudiant.objects.filter(massar=form.cleaned_data["massar"]).count() + Etudiant.objects.filter(email=form.cleaned_data["email"]).count()
+            etudiant = Etudiant.objects.filter(cni=form.cleaned_data["cni"]).count() + Etudiant.objects.filter(massar=form.cleaned_data["massar"]).count() + Etudiant.objects.filter(email=form.cleaned_data["email"]).count() + Etudiant.objects.filter(username=form.cleaned_data["nom"]+" "+form.cleaned_data["prenom"]).count()
             if(etudiant>0):# si etudiant ==1 ca signifie qu'il y a quelqu un qui utilise ce code massar ou cni ou email
                 context = {
                     'error_message': "Il semble que ce compte est déjà enregistré",
