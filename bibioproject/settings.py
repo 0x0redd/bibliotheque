@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-z-7k-)si^w7s8g_1qdf@&4k+rsv)gj2z=1p5pyb9#fbyrdx&li'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS =['*']
 
@@ -82,23 +82,23 @@ WSGI_APPLICATION = 'Bibioproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#   'default': {
-#       'ENGINE': 'django.db.backends.sqlite3',
-#       'NAME': BASE_DIR / 'db.sqlite3',
-#   }
-# }
-
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'biblio',
-         'USER': 'root',
-         'PASSWORD': 'admin',
-         'HOST': 'localhost',
-         'PORT': '3306',
-     }
- }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
+}
+
+#DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'biblio',
+#         'USER': 'root',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#     }
+# }
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -168,32 +168,3 @@ MEDIA_URL = '/static/'
 
 
 
-#deploy
-SECURE_HSTS_SECONDS = 3600  # 1 hour
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Also include subdomains
-SECURE_HSTS_PRELOAD = True  # Allow the site to be included in browsers' HSTS preload list
-SECURE_SSL_REDIRECT = True
-
-import secrets
-
-SECRET_KEY = secrets.token_urlsafe(50)
-
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-import dj_database_url
-
-if 'DATABASE_URL' in os.environ:
-    DATABASES['default'] = dj_database_url.config(
-        conn_max_age=500,
-        conn_health_checks=True,
-    )
-
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
